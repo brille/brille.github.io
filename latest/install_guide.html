@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation Guide &mdash; brille  documentation</title>
+  <title>Installation Guide &mdash; brille 0.5.3+master.7d04597 documentation</title>
   
 
   
@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/katex-math.css" type="text/css" />
-  <link rel="stylesheet" href="_static/collapsible-lists/css/tree_view.css" type="text/css" />
 
   
   
@@ -36,8 +35,6 @@
         <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
         <script src="_static/katex_autorenderer.js"></script>
-        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
-        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -71,6 +68,10 @@
           
             
             
+              <div class="version">
+                0.5.3
+              </div>
+            
           
 
           
@@ -102,6 +103,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#restricted-user-access">restricted user access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#legacy-linux-systems">legacy linux systems</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="motivation.html">Introduction</a></li>
@@ -110,10 +112,11 @@
 </ul>
 <p class="caption"><span class="caption-text">API documents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="brille.html">Python module <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="brille.html#pybind11-module-brille-brille">pybind11 module <code class="docutils literal notranslate"><span class="pre">brille._brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="brille.html#documented-thus-far">Documented thus far:</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/library_root.html">C++ Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doxygen.html">Doxygen documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="undoc_brille.html">pybind11 module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a></li>
 </ul>
 
             
@@ -209,8 +212,8 @@ If you are faced with the error</p>
 </div>
 <div class="section" id="source">
 <h2>source<a class="headerlink" href="#source" title="Permalink to this headline">¶</a></h2>
-<p>If your development environment has <a class="reference external" href="https://git-scm.com/">git</a>, Python ≥ 3.4,
-a C++14 compliant compiler, and <a class="reference external" href="https://cmake.org/">CMake</a> ≥ 3.13,
+<p>If your development environment has <a class="reference external" href="https://git-scm.com/">git</a>, Python ≥ 3.6,
+a C++17 compliant compiler, and <a class="reference external" href="https://cmake.org/">CMake</a> ≥ 3.13,
 then you can build the latest version of brille from source via</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/brille/brille
 <span class="nb">cd</span> brille
@@ -253,6 +256,27 @@ directory via</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python setup.py --user install
 </pre></div>
 </div>
+</div>
+<div class="section" id="legacy-linux-systems">
+<h2>legacy linux systems<a class="headerlink" href="#legacy-linux-systems" title="Permalink to this headline">¶</a></h2>
+<p>If the available compiler and <code class="docutils literal notranslate"><span class="pre">pip</span></code> versions are too old and can not be upgraded
+you may find that <code class="docutils literal notranslate"><span class="pre">pip</span></code> reports that the manylinux2010 versions available
+on PyPI are incompatible with your system and building from source may also fail.
+This is known to apply to RHEL7 based systems but may affect others as well.</p>
+<p>In such a case you can produce a suitable installable package on another system by
+replicating the manylinux build system.
+For the specific case of RHEL7, starting on a system with <cite>devtoolset-7</cite> installed run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scl <span class="nb">enable</span> devtoolset-7 bash
+git clone https://github.com/brille/brille.git
+python3 -m pip wheel -w wheelhouse brille
+</pre></div>
+</div>
+<p>which produces a file like <code class="docutils literal notranslate"><span class="pre">brille-0.5.0-cp36-cp36m-linux_x86_64.whl</span></code> that can be copied to the target system.
+To install the <cite>brille</cite> package on the target machine one then runs</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install --user brille-0.5.0-cp36-cp36m-linux_x86_64.whl
+</pre></div>
+</div>
+<p>or similar.</p>
 </div>
 </div>
 

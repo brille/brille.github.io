@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Debugging &mdash; brille 0.5.3+master.7d04597 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        <script src="../_static/katex_autorenderer.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Brillouin Zone" href="bz.html" />
+    <link rel="prev" title="Lattices" href="lattice.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> brille
+          
+
+          
+            
+            <img src="../_static/brille.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install_guide.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../motivation.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../memory_usage.html">Memory Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">User Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../brille.html#documented-thus-far">Documented thus far:</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lattice.html">Lattices</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bz.html">Brillouin Zone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grids.html">Grids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symmetry.html">Symmetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="everything.html">Remainder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting.html">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doxygen.html">Doxygen documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">pybind11 module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">brille</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> &raquo;</li>
+        
+      <li>Debugging</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/module/debug.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="debugging">
+<h1>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h1>
+<p>The binary <a class="reference internal" href="../undoc_brille.html#module-brille._brille" title="brille._brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_brille</span></code></a> module can be set to emit status and timing
+information which can be useful for debugging and fine-grained profiling
+purposes.</p>
+<p>Status output is controlled by <a class="reference internal" href="../undoc_brille.html#brille._brille.emit" title="brille._brille.emit"><code class="xref py py-func docutils literal notranslate"><span class="pre">emit()</span></code></a> and timing output
+is controlled by <a class="reference internal" href="../undoc_brille.html#brille._brille.emit_datetime" title="brille._brille.emit_datetime"><code class="xref py py-func docutils literal notranslate"><span class="pre">emit_datetime()</span></code></a>.</p>
+<dl class="py function">
+<dt id="brille._brille.emit">
+<code class="sig-prename descclassname">brille._brille.</code><code class="sig-name descname">emit</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.emit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>emit() -&gt; bool</p></li>
+</ol>
+<p>Return the output status of the <a class="reference internal" href="../brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> status printer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The value of the status printer STDOUT switch.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+<ol class="arabic simple" start="2">
+<li><p>emit(brille::printer emit status: bool) -&gt; bool</p></li>
+</ol>
+<p>Modify the output status of the <a class="reference internal" href="../brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> status printer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>emt</strong> (<em>bool, optional</em>) – Control whether status messages are printed to STDOUT</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The value of the status printer STDOUT switch.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="brille._brille.emit_datetime">
+<code class="sig-prename descclassname">brille._brille.</code><code class="sig-name descname">emit_datetime</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.emit_datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>emit_datetime() -&gt; bool</p></li>
+</ol>
+<p>Return the timestamp output status of the <a class="reference internal" href="../brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> status printer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The value of the status printer timestamp switch</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+<ol class="arabic simple" start="2">
+<li><p>emit_datetime(brille::printer emit datetime status: bool) -&gt; bool</p></li>
+</ol>
+<p>Modify the timestamp output status of the <a class="reference internal" href="../brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> status printer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>emt</strong> (<em>bool, optional</em>) – Control whether a timestamp preceeds every status message</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The value of the status printer timestamp switch</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bz.html" class="btn btn-neutral float-right" title="Brillouin Zone" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lattice.html" class="btn btn-neutral float-left" title="Lattices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Gregory Tucker
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Plotting utilities for brille &mdash; brille  documentation</title>
+  <title>Plotting utilities for brille &mdash; brille 0.5.3+master.7d04597 documentation</title>
   
 
   
@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/katex-math.css" type="text/css" />
-  <link rel="stylesheet" href="_static/collapsible-lists/css/tree_view.css" type="text/css" />
 
   
   
@@ -36,16 +35,14 @@
         <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
         <script src="_static/katex_autorenderer.js"></script>
-        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
-        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="C++ Library API" href="api/library_root.html" />
-    <link rel="prev" title="Python module brille" href="brille.html" /> 
+    <link rel="next" title="Doxygen documentation" href="doxygen.html" />
+    <link rel="prev" title="Remainder" href="module/everything.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -70,6 +67,10 @@
 
           
             
+            
+              <div class="version">
+                0.5.3
+              </div>
             
           
 
@@ -102,10 +103,11 @@
 </ul>
 <p class="caption"><span class="caption-text">API documents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="brille.html">Python module <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="brille.html#pybind11-module-brille-brille">pybind11 module <code class="docutils literal notranslate"><span class="pre">brille._brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="brille.html#documented-thus-far">Documented thus far:</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/library_root.html">C++ Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doxygen.html">Doxygen documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="undoc_brille.html">pybind11 module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a></li>
 </ul>
 
             
@@ -221,9 +223,9 @@ specialisation.</p></li>
 <dd><p>Plot a <code class="xref py py-class docutils literal notranslate"><span class="pre">BrillouinZone</span></code> or related object.</p>
 <p>Draw the faces of a first Brillouin zone and/or irreducible Brillouin zone
 polyhedron, plus additional structures.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
+<dd class="field-odd"><ul>
 <li><p><strong>bz</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">BrillouinZone</span></code>,          <code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQdc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQcc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQdd</span></code>,          <code class="xref py py-class docutils literal notranslate"><span class="pre">BZNestQdc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZNestQcc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZNestQdd</span></code>,          <code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQdc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQcc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQ</span></code>) – The object containing information about a first Brillouin zone and/or
 an irreducible Brillouin zone.</p></li>
 <li><p><strong>axs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code>, optional) – The axes in which to add the plotted points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
@@ -238,7 +240,7 @@ Brillouin zone polyhedron. If <cite>bz</cite> is not a <code class="xref py py-c
 and input <cite>Q</cite> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, <cite>Q</cite> will be replaced by the contents of
 <cite>bz.rlu</cite> or <cite>bz.invA</cite>, depending on the value of <cite>units</cite>; otherwise
 the units of <cite>Q</cite> are assumed to be the same as <cite>units</cite>.</p></li>
-<li><p><strong>units</strong> (<em>str</em><em>, </em><em>optional</em>) – <p>The units in which to plot the first/irreducible Brillouin zone.</p>
+<li><p><strong>units</strong> (<em>str, optional</em>) – The units in which to plot the first/irreducible Brillouin zone.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25%" />
@@ -261,18 +263,18 @@ the units of <cite>Q</cite> are assumed to be the same as <cite>units</cite>.</p
 </tr>
 </tbody>
 </table>
-</p></li>
-<li><p><strong>irreducible</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to plot the irreducible Brillouin zone polyhedron when it is
+</li>
+<li><p><strong>irreducible</strong> (<em>bool, optional</em>) – Whether to plot the irreducible Brillouin zone polyhedron when it is
 present. When <code class="docutils literal notranslate"><span class="pre">True</span></code>, the first Brillouin zone edges are plotted
 as well.</p></li>
-<li><p><strong>face_vectors</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to plot vectors from the origin through each first Brillouin
+<li><p><strong>face_vectors</strong> (<em>bool, optional</em>) – Whether to plot vectors from the origin through each first Brillouin
 zone face centre.</p></li>
-<li><p><strong>show</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
+<li><p><strong>show</strong> (<em>bool, optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
 <cite>axs</cite>; this is mostly useful in non-interactive environments.</p></li>
 <li><p><strong>color</strong> (<em>optional</em>) – The face color of the drawn polyhedra.</p></li>
 <li><p><strong>edgecolor</strong> (<em>optional</em>) – The edge color of the drawn polyhedra.</p></li>
-<li><p><strong>linewidth</strong> (<em>float</em><em>, </em><em>optional</em>) – The edge line width of drawn polyhedra.</p></li>
-<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – The face alpha of drawn polyhedra.</p></li>
+<li><p><strong>linewidth</strong> (<em>float, optional</em>) – The edge line width of drawn polyhedra.</p></li>
+<li><p><strong>alpha</strong> (<em>float, optional</em>) – The face alpha of drawn polyhedra.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -295,8 +297,8 @@ zone face centre.</p></li>
 <li><p><strong>axs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code>, optional) – The axes in which to add the plotted points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
 axes.</p></li>
-<li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – An optional title for the plotting axes <cite>axs</cite></p></li>
-<li><p><strong>show</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
+<li><p><strong>title</strong> (<em>str, optional</em>) – An optional title for the plotting axes <cite>axs</cite></p></li>
+<li><p><strong>show</strong> (<em>bool, optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
 <cite>axs</cite>; this is mostly useful in non-interactive environments.</p></li>
 </ul>
 </dd>
@@ -316,8 +318,8 @@ line segments to plot.</p></li>
 <li><p><strong>axs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code>, optional) – The axes in which to add the plotted points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
 axes.</p></li>
-<li><p><strong>title</strong> (<em>str</em><em>, </em><em>optional</em>) – An optional title for the plotting axes <cite>axs</cite></p></li>
-<li><p><strong>show</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
+<li><p><strong>title</strong> (<em>str, optional</em>) – An optional title for the plotting axes <cite>axs</cite></p></li>
+<li><p><strong>show</strong> (<em>bool, optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
 <cite>axs</cite>; this is mostly useful in non-interactive environments.</p></li>
 </ul>
 </dd>
@@ -335,15 +337,15 @@ axes.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>poly</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code>) – Any object with both a <code class="docutils literal notranslate"><span class="pre">vertices</span></code> and <code class="docutils literal notranslate"><span class="pre">vertices_per_face</span></code> field
+<li><p><strong>poly</strong> (<a class="reference internal" href="undoc_brille.html#brille._brille.Polyhedron" title="brille._brille.Polyhedron"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code></a>) – Any object with both a <code class="docutils literal notranslate"><span class="pre">vertices</span></code> and <code class="docutils literal notranslate"><span class="pre">vertices_per_face</span></code> field
 could work with thie plotting function, however it is anticipated that a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code> will be provided.</p></li>
+<a class="reference internal" href="undoc_brille.html#brille._brille.Polyhedron" title="brille._brille.Polyhedron"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code></a> will be provided.</p></li>
 <li><p><strong>axs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code>, optional) – The 3D axes in which to add the polyhedron facets. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
 axes.</p></li>
-<li><p><strong>setlims</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to change the limits of <cite>axs</cite> to match the limits of the extent
+<li><p><strong>setlims</strong> (<em>bool, optional</em>) – Whether to change the limits of <cite>axs</cite> to match the limits of the extent
 of <cite>poly.vertices</cite>.</p></li>
-<li><p><strong>show</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
+<li><p><strong>show</strong> (<em>bool, optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
 <cite>axs</cite>; this is mostly useful in non-interactive environments.</p></li>
 <li><p><strong>origin</strong> ({<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>,tuple,list}, optional) – The origin of the plotting coordinate system, all drawn information is
 relative to this vector. Any 3-element object convertible to a
@@ -351,9 +353,9 @@ relative to this vector. Any 3-element object convertible to a
 the zero-vector.</p></li>
 <li><p><strong>color</strong> (<em>optional</em>) – The face color of the drawn polygons.</p></li>
 <li><p><strong>edgecolor</strong> (<em>optional</em>) – The edge color of the drawn polygons.</p></li>
-<li><p><strong>linestyle</strong> (<em>str</em><em>, </em><em>optional</em>) – The edge line style of dranw polygons.</p></li>
-<li><p><strong>linewidth</strong> (<em>float</em><em>, </em><em>optional</em>) – The edge line width of drawn polygons.</p></li>
-<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – The face alpha of drawn polygons.</p></li>
+<li><p><strong>linestyle</strong> (<em>str, optional</em>) – The edge line style of dranw polygons.</p></li>
+<li><p><strong>linewidth</strong> (<em>float, optional</em>) – The edge line width of drawn polygons.</p></li>
+<li><p><strong>alpha</strong> (<em>float, optional</em>) – The face alpha of drawn polygons.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -380,7 +382,7 @@ and <code class="docutils literal notranslate"><span class="pre">max(tetidx)</sp
 <li><p><strong>axs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code>, optional) – The 3D axes in which to add the polyhedron facets. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
 axes.</p></li>
-<li><p><strong>color</strong> (<em>{arraylike</em><em>, </em><em>str</em><em>, </em><em>iterable}</em><em>, </em><em>optional</em>) – The specified <cite>color</cite> will be used to produce a list of <span class="math">\(M\)</span> colors to
+<li><p><strong>color</strong> (<em>{arraylike, str, iterable}, optional</em>) – The specified <cite>color</cite> will be used to produce a list of <span class="math">\(M\)</span> colors to
 use in plotting the <span class="math">\(M\)</span> tetrahedra.
 If <cite>color</cite> has three elements or is a <cite>str</cite> it is assumed to represent
 a single RGB value.
@@ -404,7 +406,7 @@ If no <cite>color</cite> is provided, a list of all named colors known to
 <li><p><strong>axs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code>, optional) – The 3D axes in which to add the polyhedron facets. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
 axes.</p></li>
-<li><p><strong>show</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
+<li><p><strong>show</strong> (<em>bool, optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
 <cite>axs</cite>; this is mostly useful in non-interactive environments.</p></li>
 <li><p><strong>origin</strong> ({<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>,tuple,list}, optional) – The origin of the plotting coordinate system, all drawn information is
 relative to this vector. Any 3-element object convertible to a
@@ -412,9 +414,9 @@ relative to this vector. Any 3-element object convertible to a
 the zero-vector.</p></li>
 <li><p><strong>color</strong> (<em>optional</em>) – The face color of the drawn polygons.</p></li>
 <li><p><strong>edgecolor</strong> (<em>optional</em>) – The edge color of the drawn polygons.</p></li>
-<li><p><strong>linestyle</strong> (<em>str</em><em>, </em><em>optional</em>) – The edge line style of dranw polygons.</p></li>
-<li><p><strong>linewidth</strong> (<em>float</em><em>, </em><em>optional</em>) – The edge line width of drawn polygons.</p></li>
-<li><p><strong>alpha</strong> (<em>float</em><em>, </em><em>optional</em>) – The face alpha of drawn polygons.</p></li>
+<li><p><strong>linestyle</strong> (<em>str, optional</em>) – The edge line style of dranw polygons.</p></li>
+<li><p><strong>linewidth</strong> (<em>float, optional</em>) – The edge line width of drawn polygons.</p></li>
+<li><p><strong>alpha</strong> (<em>float, optional</em>) – The face alpha of drawn polygons.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -436,10 +438,10 @@ the zero-vector.</p></li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="api/library_root.html" class="btn btn-neutral float-right" title="C++ Library API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="doxygen.html" class="btn btn-neutral float-right" title="Doxygen documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="brille.html" class="btn btn-neutral float-left" title="Python module brille" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="module/everything.html" class="btn btn-neutral float-left" title="Remainder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

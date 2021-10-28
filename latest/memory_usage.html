@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Memory Use &mdash; brille  documentation</title>
+  <title>Memory Use &mdash; brille 0.5.3+master.7d04597 documentation</title>
   
 
   
@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/katex-math.css" type="text/css" />
-  <link rel="stylesheet" href="_static/collapsible-lists/css/tree_view.css" type="text/css" />
 
   
   
@@ -36,8 +35,6 @@
         <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
         <script src="_static/katex_autorenderer.js"></script>
-        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
-        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -70,6 +67,10 @@
 
           
             
+            
+              <div class="version">
+                0.5.3
+              </div>
             
           
 
@@ -106,10 +107,11 @@
 </ul>
 <p class="caption"><span class="caption-text">API documents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="brille.html">Python module <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="brille.html#pybind11-module-brille-brille">pybind11 module <code class="docutils literal notranslate"><span class="pre">brille._brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="brille.html#documented-thus-far">Documented thus far:</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/library_root.html">C++ Library API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doxygen.html">Doxygen documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="undoc_brille.html">pybind11 module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a></li>
 </ul>
 
             
@@ -184,59 +186,43 @@ general case.</p>
 <h2>Orthogonal grid<a class="headerlink" href="#orthogonal-grid" title="Permalink to this headline">¶</a></h2>
 <p>An ortogonal grid in <span class="math">\(n\)</span> dimensions is comprised of cells which are
 defined by their <span class="math">\(2^n\)</span> vertices.
-The <a class="reference internal" href="brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> implementation of a three dimenional orthogonal grid is
-in <code class="xref py py-class docutils literal notranslate"><span class="pre">BZGridQdd</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZGridQdc</span></code>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">BZGridcc</span></code> which
-are datatype specialisations of a single C++ class <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BrillouinZoneGrid3</span></code>
-with double (double), double (complex double),
-and complex double (complex double) eigenvalue (eigenvector) element datatypes,
-respectively.</p>
-<p>The orthogonal grid is guaranteed to envelop the polyhedron used in its
-construction and has cell edge lengths determined by either a specified cell
-volume or specified number density which is used to calculate the cell volume.
+While <a class="reference internal" href="brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> does not implement a basic three dimensional orthogonal
+grid, it represents a useful starting point for memory use calculations.</p>
+<p>An orthogonal grid would need to envelop the polyhedron used in its
+construction and would have cell edge lengths determined by either a specified
+cell volume or specified number density.
 If <span class="math">\(V_\text{c}\)</span> is the cell volume and <span class="math">\(V_\text{p}\)</span> the polyhedron
-volume, then the cell number density is <span class="math">\(N = V_\text{p}/V_\text{c}\)</span>.</p>
-<p>The number of grid vertices that are within the polyhedron depends on the shape
-of the polyhedron, but is similar to the number density if the polyhedron is a
-rectangular prism and commensurate with the grid.
-In all other cases the number of useful vertices is lower, so <span class="math">\(N\)</span> is a
-useful upper bound.
-For each vertex equal-sized data is stored, depending entirely on what the
-user provides.
+volume, then the number of cells is <span class="math">\(N = V_\text{p}/V_\text{c}\)</span>.</p>
+<p>The number of grid vertices within the polyhedron would depend on the shape
+of the polyhedron, but should be similar to the number density times the
+polyhedron volume in all cases.
+As with the <a class="reference internal" href="brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> grids, for each vertex equal-sized data is stored,
+depending entirely on what the user provides.
 In the case of phonon mode data for a crystal with <span class="math">\(n_\text{atom}\)</span> atoms
 each phonon mode is comprised of one real scalar and <span class="math">\(n_\text{atom}\)</span>
 complex valued three-vectors, and there are <span class="math">\(3n_\text{atom}\)</span> modes in all.
-Thus, for each vertex the grid stores</p>
-<div class="math">
-\[3 n_\text{atom} + 18 n_\text{atom}^2\]</div>
-<p>8-byte values.</p>
-<p>The grid is stored as list of its cell boundaries, each of which is
+Thus, for each vertex the grid stores
+<span class="math">\(3 n_\text{atom} + 18 n_\text{atom}^2\)</span> 8-byte values.</p>
+<p>The grid itself would be stored as list of its cell boundaries, each of which is
 approximately <span class="math">\(N^{1/3}+1\)</span> in length, and for each cell at least partly in
-the polyhedron the eight corner vertex indices are stored in a structure.
-Since all vertices are indexed this meta information totals</p>
-<div class="math">
-\[N + 3 N^{1/3} + 3\]</div>
-<p>8-byte values.
+the polyhedron the eight corner vertex indices would be stored stored in a
+structure as well.
+Since all vertices are indexed this meta information totals
+<span class="math">\(N + 3 N^{1/3} + 3\)</span> 8-byte values.
 And therefore, the total memory required for an orthogonal grid storing
 phonon data is on the order of</p>
-<div class="math">
-\[\left[N \left(1 + 3 n_\text{atom} + 18 n_\text{atom}^2\right) + 3 N^{1/3} + 3\right]\times 8\text{bytes}\]</div>
-<p>For a number density of <span class="math">\(10^5\)</span> a system with ten atoms would therefore
+<div class="math" id="equation-memuse">
+<span class="eqno">(1)<a class="headerlink" href="#equation-memuse" title="Permalink to this equation">¶</a></span>\[\left[N \left(1 + 3 n_\text{atom} + 18 n_\text{atom}^2\right) + 3 N^{1/3} + 3\right]\times 8\text{bytes}
+
+\]</div>
+<p>For a grid with <span class="math">\(10^5\)</span> cells, a system with ten atoms would therefore
 need up to 1.36 GB and one with one hundred atoms would need up to 134 GB.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The actual implementation of <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BZGridQ</span></code> handles the meta
-information for in-polyhedron grid vertices differently than described
-here.
-This description is aspirational and would rationalise <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BrillouinZoneGrid3</span></code>
-with <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">BrillouinZoneTrellis3</span></code>.
-Overall memory requirements for the current implementation are similar to
-that described above.</p>
-</div>
 </div>
 <div class="section" id="other-grids">
 <h2>Other grids<a class="headerlink" href="#other-grids" title="Permalink to this headline">¶</a></h2>
 <p>For other grids, the per vertex memory usage is similar but the total number of
-vertices is not as easy to estimate.</p>
+vertices is not as easy to estimate. The expression in <a class="reference internal" href="#equation-memuse">(1)</a> should be
+an appropriate order-of-magnitude estimate of memory use.</p>
 </div>
 </div>
 
