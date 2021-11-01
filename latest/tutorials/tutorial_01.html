@@ -7,13 +7,13 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Specifying a lattice Spacegroup &mdash; brille 0.5.3+master.91bd146 documentation</title>
+  <title>Specifying a lattice Spacegroup &mdash; brille 0.5.3+master.69adf57 documentation</title>
   
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
 
   
@@ -32,8 +32,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/contrib/auto-render.min.js"></script>
         <script src="../_static/katex_autorenderer.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -114,8 +114,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../brille.html#documented-thus-far">Documented thus far:</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plotting.html">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../doxygen.html">Doxygen documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">pybind11 module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">Undocumented C++ Classes</a></li>
 </ul>
 
             
@@ -197,7 +198,7 @@ motions can be provided instead.</p>
 <h2>Sodium Chloride symmetry<a class="headerlink" href="#sodium-chloride-symmetry" title="Permalink to this headline">¶</a></h2>
 <p>The Hall symbol for cubic <span class="math">\(F m \bar{3} m\)</span> is <span class="math">\(-F 4 2 3\)</span>.
 The Hall symbol <em>is</em> the encoded generators of the spacegroup, and can be used
-to define a <a class="reference internal" href="../undoc_brille.html#brille._brille.HallSymbol" title="brille._brille.HallSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">HallSymbol</span></code></a> which has the functionality
+to define a <a class="reference internal" href="../module/symmetry.html#brille._brille.HallSymbol" title="brille._brille.HallSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">HallSymbol</span></code></a> which has the functionality
 to decode the generators. Those decoded generators can then be used to generate
 the full spacegroup:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hall_symbol</span> <span class="o">=</span> <span class="n">brille</span><span class="o">.</span><span class="n">HallSymbol</span><span class="p">(</span><span class="s1">&#39;-F 4 2 3&#39;</span><span class="p">)</span>
@@ -404,7 +405,7 @@ the full spacegroup:</p>
 </details><p>In this compact form each <span class="math">\(4 \times 3\)</span> array is the <span class="math">\(3 \times 3\)</span>
 rotation-like part of the motion while the remaining three values are twice the
 translation part of the motion.
-They can be separated and used to define a <a class="reference internal" href="../undoc_brille.html#brille._brille.Symmetry" title="brille._brille.Symmetry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symmetry</span></code></a>
+They can be separated and used to define a <a class="reference internal" href="../module/symmetry.html#brille._brille.Symmetry" title="brille._brille.Symmetry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symmetry</span></code></a>
 object plus a set of generators for the group:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">motions_W</span><span class="p">,</span> <span class="n">motions_w</span> <span class="o">=</span> <span class="n">motions</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:],</span> <span class="n">motions</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">:]</span><span class="o">*</span><span class="mf">0.5</span>
 

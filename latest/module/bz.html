@@ -7,13 +7,13 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Brillouin Zone &mdash; brille 0.5.3+master.91bd146 documentation</title>
+  <title>Brillouin Zone &mdash; brille 0.5.3+master.69adf57 documentation</title>
   
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
 
   
@@ -32,8 +32,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/contrib/auto-render.min.js"></script>
         <script src="../_static/katex_autorenderer.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -114,8 +114,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../plotting.html">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../doxygen.html">Doxygen documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">pybind11 module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">Undocumented C++ Classes</a></li>
 </ul>
 
             
@@ -187,12 +188,12 @@
 <h1>Brillouin Zone<a class="headerlink" href="#brillouin-zone" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="brille._brille.BrillouinZone">
-<em class="property">class </em><code class="sig-prename descclassname">brille._brille.</code><code class="sig-name descname">BrillouinZone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../undoc_brille.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone">brille._brille.BrillouinZone</a></span></em>, <em class="sig-param"><span class="n">lattice</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../undoc_brille.html#brille._brille.Reciprocal" title="brille._brille.Reciprocal">brille._brille.Reciprocal</a></span></em>, <em class="sig-param"><span class="n">use_primitive</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">search_length</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">time_reversal_symmetry</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">wedge_search</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#brille._brille.BrillouinZone" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">brille._brille.</code><code class="sig-name descname">BrillouinZone</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone">brille._brille.BrillouinZone</a></span></em>, <em class="sig-param"><span class="n">lattice</span><span class="p">:</span> <span class="n"><a class="reference internal" href="lattice.html#brille._brille.Reciprocal" title="brille._brille.Reciprocal">brille._brille.Reciprocal</a></span></em>, <em class="sig-param"><span class="n">use_primitive</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">search_length</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">time_reversal_symmetry</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">wedge_search</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#brille._brille.BrillouinZone" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct and hold a first Brillouin zone and, optionally and by default,
 an irreducible Brillouin zone.</p>
 <p>The region closer to a given lattice point than to any other is the
 Wigner-Seitz cell of that lattice. The same construction is one possible
-first Brillouin zone of a reciprocal lattice and is used within <cite>brille</cite>.
+first Brillouin zone of a reciprocal lattice and is used within <code class="docutils literal notranslate"><span class="pre">brille</span></code>.
 For example, a two-dimensional hexagonal lattice has a first Brillouin
 zone which is a hexagon:</p>
 <div class="figure">
@@ -221,12 +222,12 @@ latpt/.style = {color=gray!50!white, fill},]
 \end{tikzpicture}" /></p>
 </div><p>Since all physical properties of a crystal must have the same periodicity
 as its lattice, the powerful feature of the first Brillouin zone is that it
-fully encompases a region of reciprocal space which must fully represent all
+encompasses a region of reciprocal space which must fully represent all
 of reciprocal space.</p>
 <p>Most crystals contain rotational or rotoinversion symmetries in addition to
 the translational ones which give rise to the first Brillouin zone. These
 symmetries are the pointgroup of the lattice and enforce that the properties
-of the crystal also have the same symmetry. The the first Brillouin zone,
+of the crystal also have the same symmetry. The first Brillouin zone,
 therefore, typically contains redundant information.</p>
 <p>An irreducible Brillouin zone is a subsection of the first Brillouin zone
 which contains the minimal part required to have only unique crystal
@@ -260,11 +261,11 @@ latpt/.style = {color=gray!50!white, fill},]
 </div><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>lattice</strong> (<a class="reference internal" href="../undoc_brille.html#brille._brille.Reciprocal" title="brille._brille.Reciprocal"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Reciprocal</span></code></a>) – The reciprocal space lattice for which a Brillouin zone will be found</p></li>
-<li><p><strong>use_primitive</strong> (<em>bool</em>) – If the provided <a class="reference internal" href="../undoc_brille.html#brille._brille.Reciprocal" title="brille._brille.Reciprocal"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Reciprocal</span></code></a> lattice is a
+<li><p><strong>lattice</strong> (<a class="reference internal" href="lattice.html#brille._brille.Reciprocal" title="brille._brille.Reciprocal"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Reciprocal</span></code></a>) – The reciprocal space lattice for which a Brillouin zone will be found</p></li>
+<li><p><strong>use_primitive</strong> (<em>bool</em>) – If the provided <a class="reference internal" href="lattice.html#brille._brille.Reciprocal" title="brille._brille.Reciprocal"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Reciprocal</span></code></a> lattice is a
 conventional Bravais lattice, this parameter controls whether the
 equivalent primitive Bravais lattice should be used to find the first
-Brillouin zone. This is <cite>True</cite> by default and should only be modified
+Brillouin zone. This is <code class="docutils literal notranslate"><span class="pre">True</span></code> by default and should only be modified
 for testing purposes.</p></li>
 <li><p><strong>search_length</strong> (<em>int</em>) – The Wigner-Seitz construction of the first Brillouin zone finds the
 volume of space closer to a chosen reciprocal lattice point than any
@@ -277,24 +278,24 @@ subset of all other planes. The subset used is controlled by
 <span class="math">\((0\,\pm s_j\,\pm s_k)\)</span>, <span class="math">\((\pm s_i\,\pm s_j\,\pm s_k)\)</span> for
 <span class="math">\(1 \le s_\alpha \le\)</span> <cite>search_length</cite>.
 If the reciprocal lattice is primitive then the default <cite>search_length</cite>
-of 1 should always give the correct first Brillouin zone.
+of <code class="docutils literal notranslate"><span class="pre">1</span></code> should always give the correct first Brillouin zone.
 For extra assurance that the correct first Brillouin zone is found, the
-proceedure is internally repeated with <cite>search_length</cite> incremented by
+procedure is internally repeated with <cite>search_length</cite> incremented by
 one and an error is raised if the two constructed polyhedra have
 different volumes.</p></li>
-<li><p><strong>time_reversal_symmetry</strong> (<em>bool</em>) – Controls whether time reversal symmetry should be added pointgroups
+<li><p><strong>time_reversal_symmetry</strong> (<em>bool</em>) – Controls whether time reversal symmetry should be added to pointgroups
 lacking space inversion. This affects the found irreducible Brillouin
-zone for such systems. To avoid inadvertantly adding time reversal
-symmetry when it is not appropriate, this is False by default.</p></li>
+zone for such systems. To avoid inadvertently adding time reversal
+symmetry when it is not appropriate, this is <code class="docutils literal notranslate"><span class="pre">False</span></code> by default.</p></li>
 <li><p><strong>wedge_search</strong> (<em>bool</em>) – Controls whether an irreducible Brillouin zone should be found. With
-this set to False the returned py:class:<cite>brille._brille.BrillouinZone</cite>
-will only contain the first Brillouin zone. If True the pointgroup
+this set to <code class="docutils literal notranslate"><span class="pre">False</span></code> the returned <a class="reference internal" href="#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.BrillouinZone</span></code></a>
+will only contain the first Brillouin zone. If <code class="docutils literal notranslate"><span class="pre">True</span></code> the pointgroup
 symmetry operations will be used to identify <em>an</em> irreducible Brillouin
 zone as well. If the provided lattice’s parameters do not match the
 symmetry of the pointgroup (e.g., a lattice which should be tetragonal
-like <span class="math">\(I4/mmm\)</span> but constructed with <span class="math">\(gamma=120^\circ\)</span>) the
+like <span class="math">\(I4/mmm\)</span> but constructed with <span class="math">\(\gamma=120^\circ\)</span>) the
 algorithm will fail to find an appropriate irreducible Brillouin zone
-and an error will be raised.</p></li>
+and an error will be raised. (Set to <code class="docutils literal notranslate"><span class="pre">True</span></code> by default).</p></li>
 </ul>
 </dd>
 </dl>
@@ -324,7 +325,7 @@ and an error will be raised.</p></li>
 
 <dl class="py method">
 <dt id="brille._brille.BrillouinZone.ir_moveinto">
-<code class="sig-name descname">ir_moveinto</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../undoc_brille.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone">brille._brille.BrillouinZone</a></span></em>, <em class="sig-param"><span class="n">Q</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>numpy.float64<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">threads</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#brille._brille.BrillouinZone.ir_moveinto" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">ir_moveinto</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone">brille._brille.BrillouinZone</a></span></em>, <em class="sig-param"><span class="n">Q</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)">numpy.ndarray</a><span class="p">[</span>numpy.float64<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">threads</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#brille._brille.BrillouinZone.ir_moveinto" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find points equivalent to those provided within the irreducible Brillouin zone.</p>
 <p>The BrillouinZone object defines a volume of reciprocal space which contains
 an irreducible part of the full reciprocal-space. This method will find
@@ -333,45 +334,46 @@ irreducible volume.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Q</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>) – A 2 dimensional array of three-vectors (<cite>Q.shape[1]==3</cite>) expressed in
+<li><p><strong>Q</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A 2 dimensional array of three-vectors (<code class="docutils literal notranslate"><span class="pre">Q.shape[1]==3</span></code>) expressed in
 units of the reciprocal lattice.</p></li>
 <li><p><strong>threads</strong> (<em>integer, optional</em>) – The number of parallel threads that should be used. If this value is less
 than one the maximum number of OpenMP threads will be used – this value
-can be controled by the environment variable <cite>OMP_NUM_THREADS</cite> and is
+can be controlled by the environment variable <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS</span></code> and is
 typically the number of logical cores if not explicitly set.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The array of equivalent irreducible <span class="math">\(\mathbf{q}_\text{ir}\)</span> points
-for all <span class="math">\(\mathbf{Q}\)</span>;
-the closest reciprocal lattice vector, <span class="math">\(\boldsymbol{\tau}\)</span>,
-to each <span class="math">\(\mathbf{Q}\)</span>;
-and the pointgroup symmetry operation and its inverse which obey
-<span class="math">\(\mathbf{Q} = R^{-1} \mathbf{q}_\text{ir} + \boldsymbol{\tau}\)</span>.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>Qir</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – The array of equivalent irreducible <span class="math">\(\mathbf{q}_\text{ir}\)</span> points
+for all <span class="math">\(\mathbf{Q}\)</span>;</p></li>
+<li><p><strong>tau</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – the closest reciprocal lattice vector, <span class="math">\(\boldsymbol{\tau}\)</span>,
+to each <span class="math">\(\mathbf{Q}\)</span>;</p></li>
+<li><p><strong>R</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – the pointgroup symmetry operation <span class="math">\(R\)</span></p></li>
+<li><p><strong>Rinv</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – the inverse point group symmetry operation which obey
+<span class="math">\(\mathbf{Q} = R^{-1} \mathbf{q}_\text{ir} + \boldsymbol{\tau}\)</span>.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="brille._brille.BrillouinZone.ir_moveinto_wedge">
-<code class="sig-name descname">ir_moveinto_wedge</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../undoc_brille.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone">brille._brille.BrillouinZone</a></span></em>, <em class="sig-param"><span class="n">Q</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>numpy.float64<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">threads</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#brille._brille.BrillouinZone.ir_moveinto_wedge" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">ir_moveinto_wedge</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone">brille._brille.BrillouinZone</a></span></em>, <em class="sig-param"><span class="n">Q</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)">numpy.ndarray</a><span class="p">[</span>numpy.float64<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">threads</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#brille._brille.BrillouinZone.ir_moveinto_wedge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find points equivalent to those provided within the irreducible wedge.</p>
 <p>The BrillouinZone object defines a wedge of reciprocal space which contains
 an irreducible part of the full-space 4π steradian solid angle. This method
 will find points equivalent under the pointgroup operations of the lattice
 which fall within this irreducible solid angle and maintain their absolute
-magntiude.</p>
+magnitude.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Q</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>) – A 2 dimensional array of three-vectors (<cite>Q.shape[1]==3</cite>) expressed in
+<li><p><strong>Q</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A 2 dimensional array of three-vectors (<code class="docutils literal notranslate"><span class="pre">Q.shape[1]==3</span></code>) expressed in
 units of the reciprocal lattice.</p></li>
 <li><p><strong>threads</strong> (<em>integer, optional (default 0)</em>) – The number of parallel threads that should be used. If this value is less
 than one the maximum number of OpenMP threads will be used – this value
-can be controled by the environment variable <cite>OMP_NUM_THREADS</cite> and is
+can be controlled by the environment variable <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS</span></code> and is
 typically the number of logical cores if not explicitly set.</p></li>
 </ul>
 </dd>
@@ -381,7 +383,7 @@ for all <span class="math">\(\mathbf{Q}\)</span>, and the pointgroup operation f
 <span class="math">\(\mathbf{Q}_\text{ir} = R \mathbf{Q}\)</span>.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></p>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -425,14 +427,14 @@ for all <span class="math">\(\mathbf{Q}\)</span>, and the pointgroup operation f
 <dl class="py method">
 <dt id="brille._brille.BrillouinZone.ir_polyhedron">
 <em class="property">property </em><code class="sig-name descname">ir_polyhedron</code><a class="headerlink" href="#brille._brille.BrillouinZone.ir_polyhedron" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the irreducible Brillouin zone <a class="reference internal" href="../undoc_brille.html#brille._brille.Polyhedron" title="brille._brille.Polyhedron"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code></a></p>
+<dd><p>Returns the irreducible Brillouin zone <code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>If no irreducible Brillouin zone was requested at construction, the returned
 polyhedron is that of the first Brillouin zone instead.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><a class="reference internal" href="../undoc_brille.html#brille._brille.Polyhedron" title="brille._brille.Polyhedron"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code></a></p>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -440,7 +442,7 @@ polyhedron is that of the first Brillouin zone instead.</p>
 <dl class="py method">
 <dt id="brille._brille.BrillouinZone.ir_polyhedron_generated">
 <em class="property">property </em><code class="sig-name descname">ir_polyhedron_generated</code><a class="headerlink" href="#brille._brille.BrillouinZone.ir_polyhedron_generated" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the found irreducible Brillouin zone <a class="reference internal" href="../undoc_brille.html#brille._brille.Polyhedron" title="brille._brille.Polyhedron"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code></a></p>
+<dd><p>Returns the found irreducible Brillouin zone <code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code></p>
 <p>If the lattice pointgroup does not contain the space inversion operator
 the internally held ‘irreducible’ polyhedron is only half of the real
 irreducible polyhedron. This method gives access to the polyhedron found by
@@ -473,19 +475,19 @@ the algorithm before being doubled for output.</p>
 
 <dl class="py method">
 <dt id="brille._brille.BrillouinZone.isinside">
-<code class="sig-name descname">isinside</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../undoc_brille.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone">brille._brille.BrillouinZone</a></span></em>, <em class="sig-param"><span class="n">points</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>numpy.float64<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>bool<span class="p">]</span><a class="headerlink" href="#brille._brille.BrillouinZone.isinside" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">isinside</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone">brille._brille.BrillouinZone</a></span></em>, <em class="sig-param"><span class="n">points</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)">numpy.ndarray</a><span class="p">[</span>numpy.float64<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>bool<span class="p">]</span><a class="headerlink" href="#brille._brille.BrillouinZone.isinside" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine whether each of the provided reciprocal lattice points is located
 within the first Brillouin zone</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>Q</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>) – A 2 dimensional array of three-vectors (<cite>Q.shape[1]==3</cite>) expressed in
+<dd class="field-odd"><p><strong>Q</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A 2 dimensional array of three-vectors (<code class="docutils literal notranslate"><span class="pre">Q.shape[1]==3</span></code>) expressed in
 units of the reciprocal lattice.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>One dimensional logical array with <cite>True</cite> indicating ‘inside’</p>
+<dd class="field-even"><p>One dimensional logical array with <code class="docutils literal notranslate"><span class="pre">True</span></code> indicating ‘inside’</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></p>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -493,21 +495,21 @@ units of the reciprocal lattice.</p>
 <dl class="py method">
 <dt id="brille._brille.BrillouinZone.lattice">
 <em class="property">property </em><code class="sig-name descname">lattice</code><a class="headerlink" href="#brille._brille.BrillouinZone.lattice" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the defining <a class="reference internal" href="../undoc_brille.html#brille._brille.Reciprocal" title="brille._brille.Reciprocal"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Reciprocal</span></code></a> lattice</p>
+<dd><p>Returns the defining <a class="reference internal" href="lattice.html#brille._brille.Reciprocal" title="brille._brille.Reciprocal"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Reciprocal</span></code></a> lattice</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="brille._brille.BrillouinZone.moveinto">
-<code class="sig-name descname">moveinto</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../undoc_brille.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone">brille._brille.BrillouinZone</a></span></em>, <em class="sig-param"><span class="n">Q</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>numpy.float64<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">threads</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#brille._brille.BrillouinZone.moveinto" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">moveinto</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone">brille._brille.BrillouinZone</a></span></em>, <em class="sig-param"><span class="n">Q</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)">numpy.ndarray</a><span class="p">[</span>numpy.float64<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">threads</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#brille._brille.BrillouinZone.moveinto" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find points equivalent to those provided within the first Brillouin zone.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Q</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>) – A 2 dimensional array of three-vectors (<cite>Q.shape[1]==3</cite>) expressed in
+<li><p><strong>Q</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A 2 dimensional array of three-vectors (<code class="docutils literal notranslate"><span class="pre">Q.shape[1]==3</span></code>) expressed in
 units of the reciprocal lattice.</p></li>
 <li><p><strong>threads</strong> (<em>integer, optional</em>) – The number of parallel threads that should be used. If this value is less
 than one the maximum number of OpenMP threads will be used – this value
-can be controled by the environment variable <cite>OMP_NUM_THREADS</cite> and is
+can be controlled by the environment variable <code class="docutils literal notranslate"><span class="pre">OMP_NUM_THREADS</span></code> and is
 typically the number of logical cores if not explicitly set.</p></li>
 </ul>
 </dd>
@@ -517,7 +519,7 @@ points for all <span class="math">\(\mathbf{Q}\)</span>, and an integer array fi
 <span class="math">\(\boldsymbol{\tau} = \mathbf{Q}-\mathbf{q}\)</span>.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></p>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -561,7 +563,7 @@ points for all <span class="math">\(\mathbf{Q}\)</span>, and an integer array fi
 <dl class="py method">
 <dt id="brille._brille.BrillouinZone.polyhedron">
 <em class="property">property </em><code class="sig-name descname">polyhedron</code><a class="headerlink" href="#brille._brille.BrillouinZone.polyhedron" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the first Brillouin zone <a class="reference internal" href="../undoc_brille.html#brille._brille.Polyhedron" title="brille._brille.Polyhedron"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code></a></p>
+<dd><p>Returns the first Brillouin zone <code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code></p>
 </dd></dl>
 
 <dl class="py method">

@@ -7,13 +7,13 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Symmetry &mdash; brille 0.5.3+master.91bd146 documentation</title>
+  <title>Symmetry &mdash; brille 0.5.3+master.69adf57 documentation</title>
   
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
 
   
@@ -32,8 +32,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/contrib/auto-render.min.js"></script>
         <script src="../_static/katex_autorenderer.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -111,14 +111,16 @@
 <li class="toctree-l2"><a class="reference internal" href="grids.html">Grids</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Symmetry</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#hall-symbol">Hall Symbol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-classes">Other classes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="everything.html">Remainder</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../plotting.html">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../doxygen.html">Doxygen documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">pybind11 module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">Undocumented C++ Classes</a></li>
 </ul>
 
             
@@ -190,25 +192,25 @@
 <h1>Symmetry<a class="headerlink" href="#symmetry" title="Permalink to this headline">¶</a></h1>
 <p>A set of symmetry operations can be represented in various different ways.
 Within <a class="reference internal" href="../brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> each operation is represented as an integer-valued matrix and a floating-point-valued vector.
-The matrix must be the identity matrix, a rotation matrix, or a rotoinversion matrix expressed as integer multiples of the realspace basis vectors.
+The matrix must be the identity matrix, a rotation matrix, or a rotoinversion matrix expressed as integer multiples of the real-space basis vectors.
 The vector is the translation part of the operation expressed in fractional coordinates of the same basis vectors.</p>
 <p>Other representations of a symmetry operation are convenient for human interpretation and communication.
-One such which can be used to specify symmetry operations for <a class="reference internal" href="../undoc_brille.html#brille._brille.Symmetry" title="brille._brille.Symmetry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symmetry</span></code></a> is <a class="reference external" href="https://www.iucr.org/__data/iucr/cifdic_html/1/cif_core.dic/Ispace_group_symop_operation_xyz.html">CIF xyz</a>.
-Which allows for specifying either a list of matrices and list of vectors or a single CIF xyz string:</p>
+One such which can be used to specify symmetry operations for <a class="reference internal" href="#brille._brille.Symmetry" title="brille._brille.Symmetry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symmetry</span></code></a> is <a class="reference external" href="https://www.iucr.org/__data/iucr/cifdic_html/1/cif_core.dic/Ispace_group_symop_operation_xyz.html">CIF xyz</a>,
+which allows for specifying either a list of matrices and list of vectors or a single CIF xyz string:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s0</span> <span class="o">=</span> <span class="n">brille</span><span class="o">.</span><span class="n">_brille</span><span class="o">.</span><span class="n">Symmetry</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]],</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">brille</span><span class="o">.</span><span class="n">_brille</span><span class="o">.</span><span class="n">Symmetry</span><span class="p">(</span><span class="s1">&#39;x, 1/2-y, 1/2+z&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s0</span> <span class="o">==</span> <span class="n">s1</span>
 <span class="go">True</span>
 </pre></div>
 </div>
-<p>With a CIF xyz encoded string from, e.g., a CIF file, one can directly create a <a class="reference internal" href="../undoc_brille.html#brille._brille.Direct" title="brille._brille.Direct"><code class="xref py py-class docutils literal notranslate"><span class="pre">Direct</span></code></a> lattice object
-with the appropriate symmetry operations without also specifiying, e.g., the spacegroup:</p>
+<p>With a CIF xyz encoded string from, e.g., a CIF file, one can directly create a <a class="reference internal" href="lattice.html#brille._brille.Direct" title="brille._brille.Direct"><code class="xref py py-class docutils literal notranslate"><span class="pre">Direct</span></code></a> lattice object
+with the appropriate symmetry operations without also specifying, e.g., the spacegroup:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">basis_lengths</span><span class="p">,</span> <span class="n">basis_angles</span><span class="p">,</span> <span class="n">xyz_string</span> <span class="o">=</span> <span class="n">hypothetical_CIF_parser</span><span class="p">(</span><span class="s1">&#39;some_system.cif&#39;</span><span class="p">)</span>
 <span class="n">lattice</span> <span class="o">=</span> <span class="n">brille</span><span class="o">.</span><span class="n">_brille</span><span class="o">.</span><span class="n">Direct</span><span class="p">(</span><span class="n">basis_lengths</span><span class="p">,</span> <span class="n">basis_angles</span><span class="p">)</span>
 <span class="n">lattice</span><span class="o">.</span><span class="n">spacegroup</span> <span class="o">=</span> <span class="n">brille</span><span class="o">.</span><span class="n">_brille</span><span class="o">.</span><span class="n">Symmetry</span><span class="p">(</span><span class="n">xyz_string</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>in setting the lattice spacegroup, the <a class="reference internal" href="../undoc_brille.html#brille._brille.Symmetry.generate" title="brille._brille.Symmetry.generate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">generate()</span></code></a> method is called,
+<p>in setting the lattice spacegroup, the <a class="reference internal" href="#brille._brille.Symmetry.generate" title="brille._brille.Symmetry.generate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">generate()</span></code></a> method is called,
 so the provided CIF xyz operators need only be the generators of the spacegroup.</p>
 <dl class="py class">
 <dt id="brille._brille.Symmetry">
@@ -216,15 +218,16 @@ so the provided CIF xyz operators need only be the generators of the spacegroup.
 <dd><p>One or more symmetry operations of a space group.</p>
 <p>A symmetry operation is the combination of a generalised rotation, <span class="math">\(W\)</span>,
 and translation, <span class="math">\(\mathbf{w}\)</span>.
-For any position in space, <span class="math">\(\mathbf{x}\)</span>, the operation transforms it to another equivalent position</p>
+For any position in space, <span class="math">\(\mathbf{x}\)</span>, the operation transforms
+<span class="math">\(\mathbf{x}\)</span> to another equivalent position</p>
 <div class="math">
 \[\mathbf{x}' = W \mathbf{x} + \mathbf{w}
 
 \]</div>
 <p>and can equivalently be expressed as <span class="math">\(\mathbf{x}' = \mathscr{M}\mathbf{x}\)</span>.</p>
 <p>Crystallographic symmetry operations have an order, <span class="math">\(o\)</span>,
-for which <span class="math">\(\mathscr{M}^o = \mathscr{E}\)</span> repeated applications of the operation
-is equivalent to the identity operator.</p>
+for which <span class="math">\(\mathscr{M}^o = \mathscr{E}\)</span> i.e. <span class="math">\(o\)</span> repeated
+applications of the operation is equivalent to the identity operator.</p>
 <p>A set of symmetry operations can form a group, <span class="math">\(\mathbb{G}\)</span>, with the property that
 <span class="math">\(\mathscr{M}_k = \mathscr{M}_i \mathscr{M}_j\)</span> with <span class="math">\(\mathscr{M}_i,\mathscr{M}_j,\mathscr{M}_k \in \mathbb{G}\)</span>.</p>
 <p>This class can be used to hold any number of related symmetry operators, and to generate all spacegroup operators from those stored.</p>
@@ -240,7 +243,7 @@ is equivalent to the identity operator.</p>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The overloaded forms of <cite>__init__</cite> take one of <cite>hall</cite>, <cite>(W, w)</cite>, <strong>or</strong> <cite>cifxyz</cite>.</p>
+<p>The overloaded forms of <code class="docutils literal notranslate"><span class="pre">__init__</span></code> take one of <strong>hall</strong>, (<strong>W</strong>, <strong>w</strong>), <em>or</em> <strong>cifxyz</strong>.</p>
 </div>
 <p>Overloaded function.</p>
 <ol class="arabic simple">
@@ -250,12 +253,12 @@ is equivalent to the identity operator.</p>
 </ol>
 <dl class="py method">
 <dt id="brille._brille.Symmetry.generate">
-<code class="sig-name descname">generate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../undoc_brille.html#brille._brille.Symmetry" title="brille._brille.Symmetry">brille._brille.Symmetry</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../undoc_brille.html#brille._brille.Symmetry" title="brille._brille.Symmetry">brille._brille.Symmetry</a><a class="headerlink" href="#brille._brille.Symmetry.generate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">generate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#brille._brille.Symmetry" title="brille._brille.Symmetry">brille._brille.Symmetry</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#brille._brille.Symmetry" title="brille._brille.Symmetry">brille._brille.Symmetry</a><a class="headerlink" href="#brille._brille.Symmetry.generate" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt id="brille._brille.Symmetry.generators">
-<code class="sig-name descname">generators</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../undoc_brille.html#brille._brille.Symmetry" title="brille._brille.Symmetry">brille._brille.Symmetry</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="../undoc_brille.html#brille._brille.Symmetry" title="brille._brille.Symmetry">brille._brille.Symmetry</a><a class="headerlink" href="#brille._brille.Symmetry.generators" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">generators</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#brille._brille.Symmetry" title="brille._brille.Symmetry">brille._brille.Symmetry</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#brille._brille.Symmetry" title="brille._brille.Symmetry">brille._brille.Symmetry</a><a class="headerlink" href="#brille._brille.Symmetry.generators" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -263,8 +266,8 @@ is equivalent to the identity operator.</p>
 <div class="section" id="hall-symbol">
 <h2>Hall Symbol<a class="headerlink" href="#hall-symbol" title="Permalink to this headline">¶</a></h2>
 <p>A more compact representation of a full space group is the <a class="reference external" href="https://doi.org/10.1107/S0567739481001228">Hall</a> <a class="reference external" href="http://cci.lbl.gov/sginfo/hall_symbols.html">symbol</a>
-which has the avantage of representing all unique crystallographic lattices as an encoded set of generators.</p>
-<p>Within <a class="reference internal" href="../brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a>, <a class="reference internal" href="../undoc_brille.html#brille._brille.HallSymbol" title="brille._brille.HallSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">HallSymbol</span></code></a> can be used to decode an arbitrary Hall symbol.
+which has the advantage of representing all unique crystallographic lattices as an encoded set of generators.</p>
+<p>Within <a class="reference internal" href="../brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a>, <a class="reference internal" href="#brille._brille.HallSymbol" title="brille._brille.HallSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">HallSymbol</span></code></a> can be used to decode an arbitrary Hall symbol.
 And then its generators can be extracted to create the spacegroup for lattice:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">basis_lengths</span><span class="p">,</span> <span class="n">basis_angles</span><span class="p">,</span> <span class="n">hall_symbol</span> <span class="o">=</span> <span class="n">hypothetical_CIF_parser</span><span class="p">(</span><span class="s1">&#39;some_system.cif&#39;</span><span class="p">)</span>
 <span class="n">lattice</span> <span class="o">=</span> <span class="n">brille</span><span class="o">.</span><span class="n">_brille</span><span class="o">.</span><span class="n">Direct</span><span class="p">(</span><span class="n">basis_lengths</span><span class="p">,</span> <span class="n">basis_angles</span><span class="p">)</span>
@@ -273,19 +276,37 @@ And then its generators can be extracted to create the spacegroup for lattice:</
 </div>
 <dl class="py class">
 <dt id="brille._brille.HallSymbol">
-<em class="property">class </em><code class="sig-prename descclassname">brille._brille.</code><code class="sig-name descname">HallSymbol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../undoc_brille.html#brille._brille.HallSymbol" title="brille._brille.HallSymbol">brille._brille.HallSymbol</a></span></em>, <em class="sig-param"><span class="n">Hall_symbol</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#brille._brille.HallSymbol" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">brille._brille.</code><code class="sig-name descname">HallSymbol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#brille._brille.HallSymbol" title="brille._brille.HallSymbol">brille._brille.HallSymbol</a></span></em>, <em class="sig-param"><span class="n">Hall_symbol</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#brille._brille.HallSymbol" title="Permalink to this definition">¶</a></dt>
 <dd><p>A crystallographic spacegroup’s symmetries encoded in Hall’s notation</p>
 <p>Hall proposed a compact unambiguous notation for the representation of the
 generators of a spacegroup. Within his notation each motion is comprised of
 a character with one or more subscripts and superscripts which describe its
 order, unique axis, and translation. The notation specifies that, depending
-on the position of a motion and details of any preceeding motion, some or
-all of the sub- and superscripts can be omitted. The <a class="reference internal" href="../undoc_brille.html#brille._brille.HallSymbol" title="brille._brille.HallSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">HallSymbol</span></code></a> has
+on the position of a motion and details of any preceding motion, some or
+all of the sub- and superscripts can be omitted. The <a class="reference internal" href="#brille._brille.HallSymbol" title="brille._brille.HallSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">HallSymbol</span></code></a> has
 been written to handle the logic necessary to decode a Hall symbol into its
 equivalent motions.
-An added compilcation arises when the Hall symbol is encoded as an ASCII
+An added complication arises when the Hall symbol is encoded as an ASCII
 string. Namely, there are no sub- or superscript glyphs and some scheme must
 be enacted to represent them.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="other-classes">
+<h2>Other classes<a class="headerlink" href="#other-classes" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="brille._brille.PointSymmetry">
+<em class="property">class </em><code class="sig-prename descclassname">brille._brille.</code><code class="sig-name descname">PointSymmetry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#brille._brille.PointSymmetry" title="brille._brille.PointSymmetry">brille._brille.PointSymmetry</a></span></em>, <em class="sig-param"><span class="n">Hall_number</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">time_reversal</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#brille._brille.PointSymmetry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Holds the <span class="math">\(3 \times 3\)</span> rotation matrices <span class="math">\(R\)</span> which comprise
+a point group symmetry.</p>
+<p>A point group describes the local symmetry of a lattice point. It contains
+all of the generalised rotations of a <a class="reference internal" href="#brille._brille.Symmetry" title="brille._brille.Symmetry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symmetry</span></code></a>
+with none of its translations.</p>
+<dl class="py method">
+<dt id="brille._brille.PointSymmetry.nfolds">
+<code class="sig-name descname">nfolds</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#brille._brille.PointSymmetry" title="brille._brille.PointSymmetry">brille._brille.PointSymmetry</a></span></em>, <em class="sig-param"><span class="n">arg0</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#brille._brille.PointSymmetry" title="brille._brille.PointSymmetry">brille._brille.PointSymmetry</a><a class="headerlink" href="#brille._brille.PointSymmetry.nfolds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>

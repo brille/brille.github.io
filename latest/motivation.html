@@ -7,13 +7,13 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; brille 0.5.3+master.91bd146 documentation</title>
+  <title>Introduction &mdash; brille 0.5.3+master.69adf57 documentation</title>
   
 
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/katex-math.css" type="text/css" />
 
   
@@ -32,8 +32,8 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/contrib/auto-render.min.js"></script>
         <script src="_static/katex_autorenderer.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -131,8 +131,9 @@
 <li class="toctree-l1"><a class="reference internal" href="brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="brille.html#documented-thus-far">Documented thus far:</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="doxygen.html">Doxygen documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="undoc_brille.html">pybind11 module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="undoc_brille.html">Undocumented C++ Classes</a></li>
 </ul>
 
             
@@ -221,7 +222,7 @@ rotations and rotoinversions that form a group,</p>
 <div class="math">
 \[\def \mat#1#2#3#4{\begin{pmatrix} #1 & #2\\#3 & #4\end{pmatrix}}
 \mathbb{G} = \mat{1}{0}{0}{1}, \mat{0}{-1}{1}{0}, \mat{0}{1}{1}{0}, \ldots\]</div>
-<p>where for every element, <span class="math">\(G\in\mathbb{G}\)</span>, there exists a an equivalent
+<p>where for every element, <span class="math">\(G\in\mathbb{G}\)</span>, there exists an equivalent
 product of elements of <span class="math">\(\mathbb{G}\)</span>. This allows a reduced representation
 of <span class="math">\(\mathbb{G}\)</span> by a minimal set of its elements, called its generators,
 which can be combined to produce all other elements.</p>
@@ -240,11 +241,11 @@ which there are <span class="math">\(230\)</span> distinct combinations in three
 Space groups.</p>
 <div class="section" id="direct-lattices">
 <h4>Direct lattices<a class="headerlink" href="#direct-lattices" title="Permalink to this headline">¶</a></h4>
-<p>While the specific example of a Lattice given above was described in terms of
-a physical lattice, Lattices are not limited to any one space.
-To remove any ambiguity, throughout brille Lattices which describe the positions
-of atoms in real space and their properties are referred to as
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Direct</span></code> lattices.</p>
+<p>While the specific example of a <a class="reference internal" href="module/lattice.html#brille._brille.Lattice" title="brille._brille.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lattice</span></code></a> given above
+was described in terms of a physical lattice, Lattices are not limited to any
+one space. To remove any ambiguity, throughout <a class="reference internal" href="brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> Lattices
+which describe the positions of atoms in real space and their properties are
+referred to as <a class="reference internal" href="module/lattice.html#brille._brille.Direct" title="brille._brille.Direct"><code class="xref py py-class docutils literal notranslate"><span class="pre">Direct</span></code></a> lattices.</p>
 </div>
 <div class="section" id="reciprocal-lattices">
 <h4>Reciprocal lattices<a class="headerlink" href="#reciprocal-lattices" title="Permalink to this headline">¶</a></h4>
@@ -256,7 +257,7 @@ found elsewhere, but importantly where a lattice can be described by the lengths
 of its basis vectors, the basis vectors of its dual lattice have units of
 inverse, or reciprocal, length.
 For this reason the dual lattice of a Direct lattice is referred to here as a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">Reciprocal</span></code> lattice.</p>
+<a class="reference internal" href="module/lattice.html#brille._brille.Reciprocal" title="brille._brille.Reciprocal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reciprocal</span></code></a> lattice.</p>
 </div>
 <div class="section" id="physical-properties">
 <h4>Physical Properties<a class="headerlink" href="#physical-properties" title="Permalink to this headline">¶</a></h4>
@@ -423,8 +424,8 @@ related to those within the irreducible first Brillouin zone by</p>
 Brillouin zone, and <span class="math">\(\boldsymbol{\tau}\)</span> is a Reciprocal lattice point.</p>
 <p>Since the irreducible first Brillouin zone contains all of the information about
 the physical properties of a material, it can and should be used by projects
-aiming to model those properties efficently.
-To help in this task, <a class="reference internal" href="brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> defines <code class="xref py py-class docutils literal notranslate"><span class="pre">BrillouinZone</span></code> to
+aiming to model those properties efficiently.
+To help in this task, <a class="reference internal" href="brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> defines <a class="reference internal" href="module/bz.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><code class="xref py py-class docutils literal notranslate"><span class="pre">BrillouinZone</span></code></a> to
 construct the first Brillouin zone and an irreducible Brillouin zone for any
 Reciprocal lattice.</p>
 </div>
@@ -447,8 +448,8 @@ like the Direct Geometry Time of Flight neutron spectrometer. Such instruments
 have an array of detectors at fixed positions and detect changes in the
 neutron energy by measuring the time it takes for a detected neutron to arrive
 at the detector. By knowing the neutron’s initial, <span class="math">\(\mathbf{k}_\text{i}\)</span>,
-and final momenta, <span class="math">\(\mathbf{k}_\text{f}\)</span> it is
-straightforward to work out the momenta and energy transferred to the sample.</p>
+and final momentum, <span class="math">\(\mathbf{k}_\text{f}\)</span> it is
+straightforward to work out the momentum and energy transferred to the sample.</p>
 <div class="math">
 \[\begin{aligned}
 \mathbf{Q} & = \mathbf{k}_\text{i} - \mathbf{k}_\text{f} \\
@@ -476,10 +477,18 @@ constant-<span class="math">\(\mathbf{Q}\)</span>.
 calculation and interpolates their results onto the <span class="math">\((\mathbf{Q},E)\)</span> paths
 measured during experiments.
 To accomplish this, a number of polyhedron-filling connected grids are defined;
-notably <code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQdc</span></code> and similar variants.</p>
+notably <a class="reference internal" href="module/grids.html#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQdc</span></code></a> and similar variants.
+The model calculation is evaluated for <span class="math">\(\mathbf{Q}\)</span> points defined by
+the vertices of the polyhedra which comprise the grid.
+Interpolation is done then by finding the polyhedron which encloses the desired
+point and linearly weighting the pre-calculated values at the vertices by the
+distance from the desired point to each vertex.</p>
 <div class="section" id="irreducible-brillouin-zone-interpolation">
 <h3>Irreducible Brillouin zone interpolation<a class="headerlink" href="#irreducible-brillouin-zone-interpolation" title="Permalink to this headline">¶</a></h3>
-<p>Each of the polyhedron-filling connected grids takes a first Brillouin zone
+<p>Since physical properties of crystalline solids are unique only within the
+first irreducible Brillouin zone, only <span class="math">\(\mathbf{Q}\)</span> points within this
+region need be calculated by the expensive model calculation. Thus, the
+polyhedron-filling connected grids takes a first Brillouin zone
 polyhedron or an irreducible Brillouin zone polyhedron plus, e.g., a maximum
 distance between grid nodes or a maximum grid cell volume, and define a grid.</p>
 <div class="section" id="cartesian-grid">
@@ -533,8 +542,9 @@ d/.style = {fill=orange!50!white},
 point(s) can be calculated analytically. This lends itself to fast neighbour
 location and fast linear interpolation.</p>
 <p>A disadvantage to such a grid is that it can only be commensurate with
-polyhedra which are also rectangular prisms, which is not the case for all but
-primitive cubic, primitive tetragonal, and primitive orthorhombic space groups.
+polyhedra which are also rectangular prisms, which is the case only for
+irreducible first Brillouin zones of primitive cubic, primitive tetragonal,
+and primitive orthorhombic space groups.
 When the grid is not commensurate with the polyhedron it is likely to introduce
 unmanageable artifacts in any interpolation result.</p>
 <p>The disadvantages of the basic Cartesian grid are so restrictive that
@@ -587,7 +597,7 @@ dotfill/.style={color=black, fill},
 \end{tikzpicture}" /></p>
 </div><p>Another straightforward approach to defining a grid within a polyhedron is the
 use of a tetrahedral tiling. Tetrahedra being the three dimensional simplex.
-Creating such a tiling with nice properties is nontrivial, so brille uses the
+Creating such a tiling with nice properties is nontrivial, so <a class="reference internal" href="brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> uses the
 <a class="reference external" href="http://tetgen.org">TetGen</a> library to do the heavy lifting.</p>
 <p>Tetrahedral tilings have the advantage that they can be made commensurate with
 any polyhedron, and therefore never introduce unmanageable artefacts when
@@ -595,10 +605,12 @@ interpolating near their surfaces.
 But they lack the ability to calculate which tetrahedron contains a specified
 point.
 So interpolating with a tetrahedral tiling is either slow or requires
-substantial metainformation to be determined in advance.</p>
-<p>The class <code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQdc</span></code> implements a 3-D <span class="math">\(n\)</span>-simplex grid which
-fills and does not extend beyond the boundaries of a [irreducible] Brillouin
-zone.</p>
+substantial meta-information to be determined in advance.</p>
+<p>The classes <a class="reference internal" href="module/grids.html#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQdc</span></code></a> and <a class="reference internal" href="module/grids.html#brille._brille.BZNestQdc" title="brille._brille.BZNestQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZNestQdc</span></code></a>
+implement 3-D <span class="math">\(n\)</span>-simplex grids which fills and does not extend beyond
+the boundaries of a [irreducible] Brillouin zone. The differences between the
+two classes relate to how their (meta)data is stored, either in a flat or tree
+format as described in the <a class="reference internal" href="module/grids.html"><span class="doc">grids page</span></a>.</p>
 </div>
 <div class="section" id="hybrid-grid">
 <h4>Hybrid grid<a class="headerlink" href="#hybrid-grid" title="Permalink to this headline">¶</a></h4>
@@ -666,13 +678,13 @@ zone.</p>
 \foreach \i in {0,...,3} {\draw[s\i] (r\i) circle[dot];}
 \foreach \pt in {(g00), (g30), (g31), (g01), (g02), (g22), (g03), (e0), (e1), (e4), (e5)} {\draw[fill=lightgray] \pt circle[dot];}
 \end{tikzpicture}" /></p>
-</div><p>An alternative approach is to combine a cartesian grid with a <span class="math">\(n\)</span>-simplex
+</div><p>An alternative approach is to combine a Cartesian grid with a <span class="math">\(n\)</span>-simplex
 grid. Such a grid has its rectangular-prism cells replaced by triangulated
 truncated-rectangular-prisms on the surface of the polyhedron.</p>
 <p>Such a construction has the advantage of direct calculation of the cell which
 contains any given point with a much-faster search over only those tetrahedra
 within the cell if the rectangular-prism passes the surface of the polyhedron.</p>
-<p>The class <code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQdc</span></code> implements a hybrid grid in three dimensions
+<p>The class <a class="reference internal" href="module/grids.html#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQdc</span></code></a> implements a hybrid grid in three dimensions
 which fills and does not extend beyond the boundaries of a [irreducible]
 Brillouin zone.</p>
 </div>

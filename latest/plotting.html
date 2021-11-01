@@ -7,13 +7,13 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Plotting utilities for brille &mdash; brille 0.5.3+master.91bd146 documentation</title>
+  <title>Plotting utilities for brille &mdash; brille 0.5.3+master.69adf57 documentation</title>
   
 
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
   <link rel="stylesheet" href="_static/katex-math.css" type="text/css" />
 
   
@@ -32,8 +32,8 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/contrib/auto-render.min.js"></script>
         <script src="_static/katex_autorenderer.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -41,7 +41,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Doxygen documentation" href="doxygen.html" />
+    <link rel="next" title="Utilities for brille" href="utils.html" />
     <link rel="prev" title="Remainder" href="module/everything.html" /> 
 </head>
 
@@ -106,8 +106,9 @@
 <li class="toctree-l1"><a class="reference internal" href="brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="brille.html#documented-thus-far">Documented thus far:</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="doxygen.html">Doxygen documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="undoc_brille.html">pybind11 module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="undoc_brille.html">Undocumented C++ Classes</a></li>
 </ul>
 
             
@@ -231,11 +232,11 @@ an irreducible Brillouin zone.</p></li>
 <li><p><strong>axs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code>, optional) – The axes in which to add the plotted points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
 axes.</p></li>
-<li><p><strong>origin</strong> ({<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>,tuple,list}, optional) – The origin of the plotting coordinate system, all drawn information is
+<li><p><strong>origin</strong> ({<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>,tuple,list}, optional) – The origin of the plotting coordinate system, all drawn information is
 relative to this vector. Any 3-element object convertible to a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> is valid input. Invalid input is replaced by
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> is valid input. Invalid input is replaced by
 the zero-vector.</p></li>
-<li><p><strong>Q</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>, optional) – A <span class="math">\(N \times 3\)</span> array of points to draw after the first/irreducible
+<li><p><strong>Q</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, optional) – A <span class="math">\(N \times 3\)</span> array of points to draw after the first/irreducible
 Brillouin zone polyhedron. If <cite>bz</cite> is not a <code class="xref py py-class docutils literal notranslate"><span class="pre">BrillouinZone</span></code>
 and input <cite>Q</cite> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, <cite>Q</cite> will be replaced by the contents of
 <cite>bz.rlu</cite> or <cite>bz.invA</cite>, depending on the value of <cite>units</cite>; otherwise
@@ -293,7 +294,7 @@ zone face centre.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>) – A <span class="math">\(N \times 3\)</span> two dimensional array of <span class="math">\(N\)</span> points to plot.</p></li>
+<li><p><strong>x</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\(N \times 3\)</span> two dimensional array of <span class="math">\(N\)</span> points to plot.</p></li>
 <li><p><strong>axs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code>, optional) – The axes in which to add the plotted points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
 axes.</p></li>
@@ -312,8 +313,8 @@ axes.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>) – A <span class="math">\(N \times 3\)</span> two dimension array of <span class="math">\(N\)</span> points to plot.</p></li>
-<li><p><strong>y</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>) – A <span class="math">\((M+1) \times 3\)</span> two dimensional array of the endpoints of <span class="math">\(M\)</span> connected
+<li><p><strong>x</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\(N \times 3\)</span> two dimension array of <span class="math">\(N\)</span> points to plot.</p></li>
+<li><p><strong>y</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\((M+1) \times 3\)</span> two dimensional array of the endpoints of <span class="math">\(M\)</span> connected
 line segments to plot.</p></li>
 <li><p><strong>axs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code>, optional) – The axes in which to add the plotted points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
@@ -337,9 +338,9 @@ axes.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>poly</strong> (<a class="reference internal" href="undoc_brille.html#brille._brille.Polyhedron" title="brille._brille.Polyhedron"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code></a>) – Any object with both a <code class="docutils literal notranslate"><span class="pre">vertices</span></code> and <code class="docutils literal notranslate"><span class="pre">vertices_per_face</span></code> field
+<li><p><strong>poly</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code>) – Any object with both a <code class="docutils literal notranslate"><span class="pre">vertices</span></code> and <code class="docutils literal notranslate"><span class="pre">vertices_per_face</span></code> field
 could work with thie plotting function, however it is anticipated that a
-<a class="reference internal" href="undoc_brille.html#brille._brille.Polyhedron" title="brille._brille.Polyhedron"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code></a> will be provided.</p></li>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code> will be provided.</p></li>
 <li><p><strong>axs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code>, optional) – The 3D axes in which to add the polyhedron facets. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
 axes.</p></li>
@@ -347,9 +348,9 @@ axes.</p></li>
 of <cite>poly.vertices</cite>.</p></li>
 <li><p><strong>show</strong> (<em>bool, optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
 <cite>axs</cite>; this is mostly useful in non-interactive environments.</p></li>
-<li><p><strong>origin</strong> ({<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>,tuple,list}, optional) – The origin of the plotting coordinate system, all drawn information is
+<li><p><strong>origin</strong> ({<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>,tuple,list}, optional) – The origin of the plotting coordinate system, all drawn information is
 relative to this vector. Any 3-element object convertible to a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> is valid input. Invalid input is replaced by
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> is valid input. Invalid input is replaced by
 the zero-vector.</p></li>
 <li><p><strong>color</strong> (<em>optional</em>) – The face color of the drawn polygons.</p></li>
 <li><p><strong>edgecolor</strong> (<em>optional</em>) – The edge color of the drawn polygons.</p></li>
@@ -374,8 +375,8 @@ the zero-vector.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>allverts</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>) – A <span class="math">\((N \ge 4) \times 3\)</span> array of the vertices of all tetrahedra</p></li>
-<li><p><strong>tetidx</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>) – A <span class="math">\(M \times 4\)</span> array of the indices of <cite>allverts</cite> which make up each of
+<li><p><strong>allverts</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\((N \ge 4) \times 3\)</span> array of the vertices of all tetrahedra</p></li>
+<li><p><strong>tetidx</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\(M \times 4\)</span> array of the indices of <cite>allverts</cite> which make up each of
 the <span class="math">\(M\)</span> tetrahedra to be plotted.
 The values of <cite>tetidx</cite> should obey the inequalities <code class="docutils literal notranslate"><span class="pre">min(tetidx)</span> <span class="pre">≥</span> <span class="pre">0</span></code>
 and <code class="docutils literal notranslate"><span class="pre">max(tetidx)</span> <span class="pre">&lt;</span> <span class="pre">N</span></code>.</p></li>
@@ -402,15 +403,15 @@ If no <cite>color</cite> is provided, a list of all named colors known to
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>verts</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>) – A <span class="math">\(4 \times 3\)</span> array of the four vertices of the tetrahedron.</p></li>
+<li><p><strong>verts</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\(4 \times 3\)</span> array of the four vertices of the tetrahedron.</p></li>
 <li><p><strong>axs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code>, optional) – The 3D axes in which to add the polyhedron facets. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
 axes.</p></li>
 <li><p><strong>show</strong> (<em>bool, optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
 <cite>axs</cite>; this is mostly useful in non-interactive environments.</p></li>
-<li><p><strong>origin</strong> ({<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>,tuple,list}, optional) – The origin of the plotting coordinate system, all drawn information is
+<li><p><strong>origin</strong> ({<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>,tuple,list}, optional) – The origin of the plotting coordinate system, all drawn information is
 relative to this vector. Any 3-element object convertible to a
-<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> is valid input. Invalid input is replaced by
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> is valid input. Invalid input is replaced by
 the zero-vector.</p></li>
 <li><p><strong>color</strong> (<em>optional</em>) – The face color of the drawn polygons.</p></li>
 <li><p><strong>edgecolor</strong> (<em>optional</em>) – The edge color of the drawn polygons.</p></li>
@@ -438,7 +439,7 @@ the zero-vector.</p></li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="doxygen.html" class="btn btn-neutral float-right" title="Doxygen documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="utils.html" class="btn btn-neutral float-right" title="Utilities for brille" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="module/everything.html" class="btn btn-neutral float-left" title="Remainder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

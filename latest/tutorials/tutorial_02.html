@@ -7,13 +7,13 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Simple Interpolation &mdash; brille 0.5.3+master.91bd146 documentation</title>
+  <title>Simple Interpolation &mdash; brille 0.5.3+master.69adf57 documentation</title>
   
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
   <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
 
   
@@ -32,8 +32,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/contrib/auto-render.min.js"></script>
         <script src="../_static/katex_autorenderer.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -127,8 +127,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../brille.html#documented-thus-far">Documented thus far:</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../plotting.html">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../doxygen.html">Doxygen documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">pybind11 module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">Undocumented C++ Classes</a></li>
 </ul>
 
             
@@ -219,14 +220,14 @@ so we start with that:</p>
 </div>
 <p>The created <cite>lattice</cite> spans reciprocal space with three orthogonal basis vectors
 each of unit length, <span class="math">\(1 \AA^{-1}\)</span>, and as a result has a unit cell with
-volume <span class="math">\(1 \AA{-3}\)</span> which we can access through <cite>lattice.volume</cite>.</p>
+volume <span class="math">\(1 \AA^{-3}\)</span> which we can access through <cite>lattice.volume</cite>.</p>
 </div>
 <div class="section" id="construct-the-brillouin-zone-polyhedron">
 <h3>Construct the Brillouin zone polyhedron<a class="headerlink" href="#construct-the-brillouin-zone-polyhedron" title="Permalink to this headline">¶</a></h3>
 <p>To construct the grid we must define its extent, which in <cite>brille</cite> is always a
 first or irreducible Brillouin zone polyhedron. Finding this polyhedron may not
 be trivial, so it is an independent step (with options to control the algorithm
-behaviour, see <a class="reference internal" href="../undoc_brille.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><code class="xref py py-class docutils literal notranslate"><span class="pre">BrillouinZone</span></code></a> for details).</p>
+behaviour, see <a class="reference internal" href="../module/bz.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><code class="xref py py-class docutils literal notranslate"><span class="pre">BrillouinZone</span></code></a> for details).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">brille</span> <span class="kn">import</span> <span class="n">BrillouinZone</span>
 <span class="n">brillouin_zone</span> <span class="o">=</span> <span class="n">BrillouinZone</span><span class="p">(</span><span class="n">lattice</span><span class="p">)</span>
 </pre></div>
@@ -242,7 +243,7 @@ and <cite>brillouin_zone.polyhedron</cite>, respectively.</p>
 <p>Finally, we can construct the interpolation grid. We have multiple options
 within <cite>brille</cite>, but nearly always we should use one of the <a class="reference internal" href="../module/grids.html#hybrid-grids"><span class="std std-ref">Hybrid grids</span></a>.
 In this short tutorial we will interpolate purely real-valued data, so we pick
-a <a class="reference internal" href="../undoc_brille.html#brille._brille.BZTrellisQdd" title="brille._brille.BZTrellisQdd"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQdd</span></code></a> which holds real-valued eigenvalues
+a <a class="reference internal" href="../module/grids.html#brille._brille.BZTrellisQdd" title="brille._brille.BZTrellisQdd"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQdd</span></code></a> which holds real-valued eigenvalues
 and eigenvectors for every vertex in its grid.
 To create a grid we must specify an upper-limit to the grid-cell size, which
 also specifies a lower-limit to the number of points in the grid.
@@ -263,7 +264,7 @@ in this case the two units are the same.</p>
 <h3>Provide the data to be interpolated<a class="headerlink" href="#provide-the-data-to-be-interpolated" title="Permalink to this headline">¶</a></h3>
 <p>The grid must be provided with data corresponding to each grid point in order
 to be used to perform linear interpolation. This is accomplished using one of
-the <a class="reference internal" href="../undoc_brille.html#brille._brille.BZTrellisQdd.fill" title="brille._brille.BZTrellisQdd.fill"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fill()</span></code></a> method overloads.</p>
+the <code class="xref py py-meth docutils literal notranslate"><span class="pre">fill()</span></code> method overloads.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <cite>fill</cite> methods require input for both the eigenvalues and eigenvectors
@@ -310,7 +311,7 @@ integer lattice point to <span class="math">\(\mathbf{Q}\)</span>.</p>
 <span class="k">else</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This should be an error, and impossible.&#39;</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">interpolate_values</span><span class="p">,</span> <span class="n">phi</span><span class="p">(</span><span class="n">q_pts</span><span class="p">)):</span>
+<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">interpolated_values</span><span class="p">,</span> <span class="n">phi</span><span class="p">(</span><span class="n">q_pts</span><span class="p">)):</span>
   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The interpolation worked as expected!&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Linear interpolation of a linear scalar field did not work?!&#39;</span><span class="p">)</span>
@@ -324,7 +325,7 @@ integer lattice point to <span class="math">\(\mathbf{Q}\)</span>.</p>
 </pre></div>
 </div>
 <p>The interpolated results should be exact (to machine precision) in this case
-since the linear interpolation of a linear function is exact independent of the
+since the linear interpolation of a linear function is exactly independent of the
 interpolation grid step size.
 Interpolating any non-linear function will naturally introduce some error in its
 estimate of the function.</p>
@@ -381,7 +382,7 @@ effect for scalars and so does not impact this case.</p>
 <h3>Interpolate<a class="headerlink" href="#interpolate" title="Permalink to this headline">¶</a></h3>
 <p>Since we have provided symmetry information and produced a grid bounded by
 an irreducible Brillouin zone polyhedron, we must use the irreducible
-interpolation method of the grid, <a class="reference internal" href="../undoc_brille.html#brille._brille.BZTrellisQdd.ir_interpolate_at" title="brille._brille.BZTrellisQdd.ir_interpolate_at"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ir_interpolate_at()</span></code></a>.</p>
+interpolation method of the grid, <code class="xref py py-meth docutils literal notranslate"><span class="pre">ir_interpolate_at()</span></code>.</p>
 <p>As the dispersion relation is not a linear function, the linear interpolation
 will always introduce error when compared to the true function.
 The size of this error depends on the grid vertex spacing and the local
@@ -423,7 +424,13 @@ paths through reciprocal space:</p>
 <div class="figure align-center" id="id1">
 <img alt="../_images/tutorial_02_fig0.svg" src="../_images/tutorial_02_fig0.svg" /><p class="caption"><span class="caption-text">Interpolated iron spinwave dispersion (black) and exact solution (red).</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
-<p>On closer inspection, the linear-interpolation introduced errors are more obvious</p>
+<p>On closer inspection, the linear-interpolation introduced errors are more obvious:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">,</span> <span class="n">x_plot</span><span class="p">,</span> <span class="n">omega_fe</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="s1">&#39;--r&#39;</span><span class="p">)</span>
+<span class="n">setp</span><span class="p">(</span><span class="n">gca</span><span class="p">(),</span> <span class="n">xticks</span><span class="o">=</span><span class="n">ticks_at</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">tick_labels</span><span class="p">)</span>
+<span class="n">setp</span><span class="p">(</span><span class="n">gca</span><span class="p">(),</span> <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\omega(\mathbf</span><span class="si">{Q}</span><span class="s1">)$&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\mathbf</span><span class="si">{Q}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">setp</span><span class="p">(</span><span class="n">gca</span><span class="p">(),</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">120</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">247</span><span class="p">,</span><span class="mi">257</span><span class="p">))</span>
+</pre></div>
+</div>
 <div class="figure align-center" id="id2">
 <img alt="../_images/tutorial_02_fig1.svg" src="../_images/tutorial_02_fig1.svg" /><p class="caption"><span class="caption-text">Enlarged region of interpolated iron spinwave dispersion (black) and exact solution (red).</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
