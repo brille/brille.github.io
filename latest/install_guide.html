@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation Guide &mdash; brille 0.5.3+master.7d04597 documentation</title>
+  <title>Installation Guide &mdash; brille 0.5.3+master.91bd146 documentation</title>
   
 
   
@@ -99,6 +99,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#pip">pip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#source">source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#debug">debug</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#development">development</a></li>
 </ul>
 </li>
@@ -226,6 +227,12 @@ If they are not present or not a supported version, they will be downloaded
 automatically from their respective Github repositories.</p>
 </dd>
 </dl>
+<div class="section" id="debug">
+<h3>debug<a class="headerlink" href="#debug" title="Permalink to this headline">¶</a></h3>
+<p>If you encounter the need to debug the <a class="reference internal" href="undoc_brille.html#module-brille._brille" title="brille._brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">_brille</span></code></a> module, you can
+compile and install with debugging symbols via</p>
+<p>which is an alias for <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build</span> <span class="pre">--debug</span> <span class="pre">install</span></code></p>
+</div>
 <div class="section" id="development">
 <h3>development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h3>
 <p>If you plan to modify the pure Python submodules, e.g.,
