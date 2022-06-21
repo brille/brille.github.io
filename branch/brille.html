@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Undocumented C++ Classes &mdash; brille 0.5.8.dev17+g57113f7 documentation</title>
+  <title>Python module brille &mdash; brille 0.5.8.dev20+g8945aa0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
@@ -23,7 +23,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Doxygen documentation" href="doxygen.html" /> 
+    <link rel="next" title="Lattices" href="module/lattice.html" />
+    <link rel="prev" title="Specifying a lattice Spacegroup" href="tutorials/tutorial_01.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -54,15 +55,20 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API documents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="brille.html#documented-thus-far">Documented thus far:</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#documented-thus-far">Documented thus far:</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="module/lattice.html">Lattices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module/debug.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module/bz.html">Brillouin Zone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module/grids.html">Grids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module/symmetry.html">Symmetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module/everything.html">Remainder</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="doxygen.html">Doxygen documentation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Undocumented C++ Classes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#pybind11-module-brille-brille">pybind11 module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="undoc_brille.html">Undocumented C++ Classes</a></li>
 </ul>
 
         </div>
@@ -79,9 +85,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Undocumented C++ Classes</li>
+      <li>Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/undoc_brille.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/brille.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -89,24 +95,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="undocumented-c-classes">
-<h1>Undocumented C++ Classes<a class="headerlink" href="#undocumented-c-classes" title="Permalink to this headline"></a></h1>
-<section id="pybind11-module-brille-brille">
-<h2>pybind11 module <a class="reference internal" href="brille.html#module-brille._brille" title="brille._brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a><a class="headerlink" href="#pybind11-module-brille-brille" title="Permalink to this headline"></a></h2>
-<p>This module provides the interface to the C++ library.</p>
-<p>All of the symbols defined within <a class="reference internal" href="brille.html#module-brille._brille" title="brille._brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a> are imported by
-<a class="reference internal" href="brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> to make using them easier.
-If in doubt, the interfaced classes can be accessed via their submodule
-syntax.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">brille._brille</span> <span class="kn">import</span> <span class="n">Direct</span><span class="p">,</span> <span class="n">BrillouinZone</span>
-<span class="kn">from</span> <span class="nn">brille.plotting</span> <span class="kn">import</span> <span class="n">plot</span> <span class="k">as</span> <span class="n">bplot</span>
-
-<span class="n">direct_lattice</span> <span class="o">=</span> <span class="n">Direct</span><span class="p">((</span><span class="mf">3.95</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mf">12.9</span><span class="p">),</span> <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span> <span class="s1">&#39;I4/mmm&#39;</span><span class="p">)</span>
-<span class="n">brillouin_zone</span> <span class="o">=</span> <span class="n">BrillouinZone</span><span class="p">(</span><span class="n">direct_lattice</span><span class="o">.</span><span class="n">star</span><span class="p">)</span>
-
-<span class="n">bplot</span><span class="p">(</span><span class="n">brillouin_zone</span><span class="p">)</span>
-</pre></div>
-</div>
+  <span class="target" id="module-brille"></span><section id="python-module-brille">
+<h1>Python module <a class="reference internal" href="#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a><a class="headerlink" href="#python-module-brille" title="Permalink to this headline"></a></h1>
+<p>This module provides access to the C++ brille library which can be used to
+interact with spacegroup and pointgroup symmetry operations, to determine the
+first Brillouin zone for a given real space crystallographic lattice, to
+find <em>an</em> irreducible polyhedron from the first Brillouin zone and the
+pointgroup operations of a spacegroup, to construct polyhedron-filling connected
+point networks, and to perform linear-interpolation of user-provided data for
+any reciprocal space point at a symmetry-equivalent position within the
+connected point network.</p>
 <table class="autosummary longtable docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -116,13 +114,30 @@ syntax.</p>
 </tbody>
 </table>
 </section>
+<span class="target" id="module-brille._brille"></span><section id="documented-thus-far">
+<h1>Documented thus far:<a class="headerlink" href="#documented-thus-far" title="Permalink to this headline"></a></h1>
+<p>The pybind-wrapped objects fully documented (in C++ doc strings) thus far are</p>
+<p><a class="reference internal" href="module/lattice.html#brille._brille.Bravais" title="brille._brille.Bravais"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bravais</span></code></a>
+<a class="reference internal" href="module/lattice.html#brille._brille.Lattice" title="brille._brille.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lattice</span></code></a></p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="module/lattice.html">Lattices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module/debug.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module/bz.html">Brillouin Zone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module/grids.html">Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module/symmetry.html">Symmetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module/everything.html">Remainder</a></li>
+</ul>
+</div>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="doxygen.html" class="btn btn-neutral float-left" title="Doxygen documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorials/tutorial_01.html" class="btn btn-neutral float-left" title="Specifying a lattice Spacegroup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="module/lattice.html" class="btn btn-neutral float-right" title="Lattices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
