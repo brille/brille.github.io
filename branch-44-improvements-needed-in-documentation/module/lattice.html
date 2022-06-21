@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lattices &mdash; brille 0.5.8.dev13+g64c39f2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/contrib/auto-render.min.js"></script>
+        <script src="../_static/katex_autorenderer.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Debugging" href="debug.html" />
+    <link rel="prev" title="Python module brille" href="../brille.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> brille
+            <img src="../_static/brille.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.5.8
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install_guide.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../motivation.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../memory_usage.html">Memory Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">User Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../brille.html#documented-thus-far">Documented thus far:</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lattices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bz.html">Brillouin Zone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grids.html">Grids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symmetry.html">Symmetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="everything.html">Remainder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting.html">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doxygen.html">Doxygen documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">Undocumented C++ Classes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">brille</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> &raquo;</li>
+      <li>Lattices</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/module/lattice.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lattices">
+<h1>Lattices<a class="headerlink" href="#lattices" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="brille._brille.Bravais">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">Bravais</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.Bravais" title="brille._brille.Bravais"><span class="pre">brille._brille.Bravais</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.Bravais" title="Permalink to this definition"></a></dt>
+<dd><blockquote>
+<div><p>A Bravais letter indicating the centering of a lattice</p>
+<p>When the unit cell does not reflect the symmetry of the lattice, it is usual
+to refer to a ‘conventional’ crystallographic basis,
+<span class="math">\((\mathbf{a}_s\,\mathbf{b}_s\,\mathbf{c}_s)\)</span>, instead of
+a primitive basis, <span class="math">\((\mathbf{a}_p\,\mathbf{b}_p\,\mathbf{c}_p)\)</span>.
+Such a conventional basis has ‘extra’ lattice points added at the centre of
+the unit cell, the centre of a face, or the centre of three faces.
+The ‘extra’ nodes in the conventional basis are displaced from the origin of
+the unit cell by ‘centring vectors’. As with any space-spanning basis, any
+whole-number linear combination of the conventional basis vectors is a lattice
+point but in addition there exist linear combinations
+<span class="math">\(x\mathbf{a}_s+y\mathbf{b}_s+z\mathbf{c}_s\)</span> with at least
+two fractional coefficients <span class="math">\((x,y,z)\)</span> that are lattice points as well.</p>
+<p>Each conventional basis is ascribed a Bravais letter, which forms part of the
+Hermann-Mauguin symbol of a space group.
+A subset of the 10 possible Bravais letters is used herein:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 35%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bravais letter</p></th>
+<th class="head"><p>Centring</p></th>
+<th class="head"><p>Centring vectors</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>P</p></td>
+<td><p>primitive</p></td>
+<td><p><span class="math">\(\mathbf{0}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>A</p></td>
+<td><p>A-face centred</p></td>
+<td><p><span class="math">\(\frac{\mathbf{b}_s+\mathbf{c}_s}{2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>B</p></td>
+<td><p>B-face centred</p></td>
+<td><p><span class="math">\(\frac{\mathbf{c}_s+\mathbf{a}_s}{2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>C</p></td>
+<td><p>C-face centred</p></td>
+<td><p><span class="math">\(\frac{\mathbf{a}_s+\mathbf{b}_s}{2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>I</p></td>
+<td><p>body centred (<em>Innenzentriert</em>)</p></td>
+<td><p><span class="math">\(\frac{\mathbf{a}_s+\mathbf{b}_s+\mathbf{c}_s}{2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>F</p></td>
+<td><p>all-face centred</p></td>
+<td><p><span class="math">\(\frac{\mathbf{b}_s+\mathbf{c}_s}{2}\)</span>,
+<span class="math">\(\frac{\mathbf{c}_s+\mathbf{a}_s}{2}\)</span>,
+<span class="math">\(\frac{\mathbf{a}_s+\mathbf{b}_s}{2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>R</p></td>
+<td><p>rhombohedrally centred (hexagonal axes)</p></td>
+<td><p><span class="math">\(\frac{2\mathbf{a}_s+\mathbf{b}_s+\mathbf{c}_s}{3}\)</span>
+<span class="math">\(\frac{\mathbf{a}_s+2\mathbf{b}_s+2\mathbf{c}_s}{3}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>For further details, see the <a class="reference external" href="http://reference.iucr.org/dictionary/Centred_lattice">IUCr Online Dictionary of Crystallography</a>.</p>
+</div></blockquote>
+<p>Members:</p>
+<blockquote>
+<div><p>invalid</p>
+<p>P : primitive</p>
+<p>A : A-face centred</p>
+<p>B : B-face centred</p>
+<p>C : C-face centred</p>
+<p>I : body-centred</p>
+<p>F : face centred</p>
+<p>R : rhombohedrally centred</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="brille._brille.Lattice">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">Lattice</span></span><a class="headerlink" href="#brille._brille.Lattice" title="Permalink to this definition"></a></dt>
+<dd><p>A space-spanning lattice in three dimensions</p>
+<p>A space-spanning lattice in <span class="math">\(N\)</span> dimensions has <span class="math">\(N\)</span> basis vectors
+which can be described fully by their <span class="math">\(N\)</span> lengths and the
+<span class="math">\(\sum_1^{N-1} 1\)</span> angles between each set of basis vectors, or
+<span class="math">\(\sum_1^N 1 = \frac{1}{2}N(N+1)\)</span> scalars in total.
+Storing only their lengths and angles is therefore always more efficient than
+storing all <span class="math">\(N^2\)</span> components of the basis vectors in <em>an</em> orthonormal
+frame.
+This class stores the 3 lengths and 3 angles required to describe a
+3 dimensional space-spanning lattice, plus the volume of the lattice unit cell
+and optional symmetry attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong><strong>,</strong><strong>b</strong><strong>,</strong><strong>c</strong> (<em>float</em>) – The basis vector lengths</p></li>
+<li><p><strong>alpha</strong><strong>,</strong><strong>beta</strong><strong>,</strong><strong>gamma</strong> (<em>float</em>) – The angles between the basis vectors, internally always in radian</p></li>
+<li><p><strong>volume</strong> (<em>float</em>) – The volume of the lattice unit cell in units of length cubed.</p></li>
+<li><p><strong>bravais</strong> (<a class="reference internal" href="#brille._brille.Bravais" title="brille._brille.Bravais"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bravais</span></code></a>) – The centring type of the lattice</p></li>
+<li><p><strong>spacegroup</strong> (<a class="reference internal" href="symmetry.html#brille._brille.Symmetry" title="brille._brille.Symmetry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symmetry</span></code></a>) – The Spacegroup symmetry operations of the lattice</p></li>
+<li><p><strong>pointgroup</strong> (<a class="reference internal" href="symmetry.html#brille._brille.PointSymmetry" title="brille._brille.PointSymmetry"><code class="xref py py-class docutils literal notranslate"><span class="pre">PointSymmetry</span></code></a>) – The Pointgroup symmetry operations of the lattice</p></li>
+<li><p><strong>basis</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Basis</span></code>) – The positions of all atoms within the lattice unit cell</p></li>
+</ul>
+</dd>
+</dl>
+<p>Initialize a Lattice from its scalar basis vector lengths and angles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a,b,c</strong> (<em>float</em>) – The basis vector lengths</p></li>
+<li><p><strong>alpha,beta,gamma</strong> (<em>float</em>) – The basis vector angles in radians <em>or</em> degrees with values
+<span class="math">\(\alpha, \beta, \gamma \in (0,2\pi)\)</span> treated as radian
+and all others degrees.</p></li>
+<li><p><strong>HallNumber</strong> (<em>int, optional</em>) – An integer indication of the Hall symmetry.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Lattice</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">HallNumber</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Initialize a Lattice from its basis vector lengths and angles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lengths</strong> (<em>array_like</em>) – The basis vector lengths</p></li>
+<li><p><strong>angles</strong> (<em>array_like</em>) – The basis vector angles in radians <em>or</em> degrees</p></li>
+<li><p><strong>HallNumber</strong> (<em>int, optional</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Lattice</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span> <span class="p">[</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">],</span> <span class="n">HallNumber</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Lattice</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">),</span> <span class="n">HallNumber</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Initialize a Lattice from its basis vectors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vectors</strong> (<em>matrix_like</em>) – The basis vectors as the rows of a 2-D matrix</p></li>
+<li><p><strong>HallNumber</strong> (<em>int, optional</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">avec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.95</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">12.9</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Lattice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">avec</span><span class="p">,</span> <span class="n">bvec</span><span class="p">,</span> <span class="n">cvec</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Lattice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">3.95</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">12.9</span><span class="p">]]))</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="brille._brille.Lattice.get_contravariant_metric_tensor">
+<span class="sig-name descname"><span class="pre">get_contravariant_metric_tensor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.Lattice.get_contravariant_metric_tensor" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the contravariant metric tensor of the lattice</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>The inverse of the metric of the lattice</p>
+<div class="math">
+\[g^{ij} =
+\begin{pmatrix}
+a^2 & ab\cos\gamma & ac\cos\beta \\
+ab\cos\gamma & b^2 & bc\cos\alpha \\
+ac\cos\beta & bc\cos\alpha & c^2
+\end{pmatrix}^{-1}
+
+\]</div>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>matrix_like</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="brille._brille.Lattice.get_covariant_metric_tensor">
+<span class="sig-name descname"><span class="pre">get_covariant_metric_tensor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.Lattice.get_covariant_metric_tensor" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the covariant metric tensor of the lattice</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>The metric of the lattice</p>
+<div class="math">
+\[g_{ij} =
+\begin{pmatrix}
+a^2 & ab\cos\gamma & ac\cos\beta \\
+ab\cos\gamma & b^2 & bc\cos\alpha \\
+ac\cos\beta & bc\cos\alpha & c^2
+\end{pmatrix}
+
+\]</div>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>matrix_like</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="brille._brille.Direct">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">Direct</span></span><a class="headerlink" href="#brille._brille.Direct" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#brille._brille.Lattice" title="brille._brille.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Lattice</span></code></a></p>
+<p>Initialize a Lattice from its scalar basis vector lengths and angles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a,b,c</strong> (<em>float</em>) – The basis vector lengths</p></li>
+<li><p><strong>alpha,beta,gamma</strong> (<em>float</em>) – The basis vector angles in radians <em>or</em> degrees with values
+<span class="math">\(\alpha, \beta, \gamma \in (0,2\pi)\)</span> treated as radian
+and all others degrees.</p></li>
+<li><p><strong>HallNumber</strong> (<em>int, optional</em>) – An integer indication of the Hall symmetry.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Lattice</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">HallNumber</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Initialize a Lattice from its basis vector lengths and angles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lengths</strong> (<em>array_like</em>) – The basis vector lengths</p></li>
+<li><p><strong>angles</strong> (<em>array_like</em>) – The basis vector angles in radians <em>or</em> degrees</p></li>
+<li><p><strong>HallNumber</strong> (<em>int, optional</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Lattice</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span> <span class="p">[</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">],</span> <span class="n">HallNumber</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Lattice</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">),</span> <span class="n">HallNumber</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Initialize a Lattice from its basis vectors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vectors</strong> (<em>matrix_like</em>) – The basis vectors as the rows of a 2-D matrix</p></li>
+<li><p><strong>HallNumber</strong> (<em>int, optional</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">avec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.95</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">12.9</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Lattice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">avec</span><span class="p">,</span> <span class="n">bvec</span><span class="p">,</span> <span class="n">cvec</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Lattice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">3.95</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">12.9</span><span class="p">]]))</span>
+</pre></div>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.Direct.primitive">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">primitive</span></span><a class="headerlink" href="#brille._brille.Direct.primitive" title="Permalink to this definition"></a></dt>
+<dd><p>Return a primitive (non-centred) lattice equivalent to this one</p>
+<p>Every centred lattice has any number of non-centred lattices which are
+equally valid in that they span the same space. This method returns the
+primitive lattice related to a centred lattice by the translation vectors
+described in <a class="reference internal" href="#brille._brille.Bravais" title="brille._brille.Bravais"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bravais</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.Direct.star">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">star</span></span><a class="headerlink" href="#brille._brille.Direct.star" title="Permalink to this definition"></a></dt>
+<dd><p>Return the dual lattice</p>
+<p>A lattice described by the basis vectors <span class="math">\(\mathbf{a}_1\)</span>,
+<span class="math">\(\mathbf{a}_2\)</span>, and <span class="math">\(\mathbf{a}_3\)</span> has a unit cell volume
+given by <span class="math">\(V = \mathbf{a}_1 \cdot (\mathbf{a}_2\times\mathbf{a}_3)\)</span>.
+It’s dual lattice is defined by the basis vectors <span class="math">\(\mathbf{b}_1\)</span>,
+<span class="math">\(\mathbf{b}_2\)</span>, and <span class="math">\(\mathbf{b}_3\)</span> with the relationship</p>
+<div class="math">
+\[\mathbf{b}_i = \frac{2\pi}{V}\mathbf{a}_j\times \mathbf{a}_k
+
+\]</div>
+<p>for <span class="math">\((i,j,k) \in \left\{(1,2,3),(2,3,1),(3,1,2)\right\}\)</span>
+and has unit cell volume <span class="math">\(V* = 2\pi/V\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="brille._brille.Reciprocal">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">Reciprocal</span></span><a class="headerlink" href="#brille._brille.Reciprocal" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#brille._brille.Lattice" title="brille._brille.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Lattice</span></code></a></p>
+<p>Initialize a Lattice from its scalar basis vector lengths and angles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a,b,c</strong> (<em>float</em>) – The basis vector lengths</p></li>
+<li><p><strong>alpha,beta,gamma</strong> (<em>float</em>) – The basis vector angles in radians <em>or</em> degrees with values
+<span class="math">\(\alpha, \beta, \gamma \in (0,2\pi)\)</span> treated as radian
+and all others degrees.</p></li>
+<li><p><strong>HallNumber</strong> (<em>int, optional</em>) – An integer indication of the Hall symmetry.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Lattice</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">HallNumber</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Initialize a Lattice from its basis vector lengths and angles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lengths</strong> (<em>array_like</em>) – The basis vector lengths</p></li>
+<li><p><strong>angles</strong> (<em>array_like</em>) – The basis vector angles in radians <em>or</em> degrees</p></li>
+<li><p><strong>HallNumber</strong> (<em>int, optional</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Lattice</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span> <span class="p">[</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">],</span> <span class="n">HallNumber</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Lattice</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">gamma</span><span class="p">),</span> <span class="n">HallNumber</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Initialize a Lattice from its basis vectors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vectors</strong> (<em>matrix_like</em>) – The basis vectors as the rows of a 2-D matrix</p></li>
+<li><p><strong>HallNumber</strong> (<em>int, optional</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">avec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.95</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">12.9</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Lattice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">avec</span><span class="p">,</span> <span class="n">bvec</span><span class="p">,</span> <span class="n">cvec</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Lattice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">3.95</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">12.9</span><span class="p">]]))</span>
+</pre></div>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.Reciprocal.B">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">B</span></span><a class="headerlink" href="#brille._brille.Reciprocal.B" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the B matrix</p>
+<p>Equation 3 of <a class="reference external" href="https://doi.org/10.1107/S0365110X67000970">Busing and Levy, Acta Cryst. (1967). 22, 457</a>
+<em>Angle Calculations for 3- and 4- Circle X-ray and Neutron Diffractometers</em></p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><div class="math">
+\[B =
+\begin{pmatrix}
+b_1 & b_2\cos\beta_3 & b_3\cos\beta_2 \\
+0 & b_2\sin\beta_3 & -b_3\sin\beta_2\cos\alpha_1 \\
+0 & 0 & \frac{2\pi}{a_3}
+\end{pmatrix}
+
+\]</div>
+<p>For a lattice with basis vector lengths
+<span class="math">\((a_1, a_2, a_3)\)</span> and basis vector angles
+<span class="math">\((\alpha_1, \alpha_2, \alpha_3)\)</span> and its reciprocal lattice with
+basis vector lengths <span class="math">\((b_1, b_2, b_3)\)</span> and basis vector angles
+<span class="math">\((\beta_1, \beta_2, \beta_3)\)</span> and the relationship</p>
+<div class="math">
+\[\mathbf{b}_i = 2\pi \frac{\mathbf{a}_j\times \mathbf{a}_k}{\mathbf{a}_i\cdot\left(\mathbf{a}_j\times \mathbf{a}_k\right)}
+
+\]</div>
+<p>for <span class="math">\((i,j,k) \in \left\{(1,2,3),(2,3,1),(3,1,2)\right\}\)</span></p>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>matrix_like</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.Reciprocal.primitive">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">primitive</span></span><a class="headerlink" href="#brille._brille.Reciprocal.primitive" title="Permalink to this definition"></a></dt>
+<dd><p>Return a primitive (non-centred) lattice equivalent to this one</p>
+<p>Every centred lattice has any number of non-centred lattices which are
+equally valid in that they span the same space. This method returns the
+primitive lattice related to a centred lattice by the translation vectors
+described in <a class="reference internal" href="#brille._brille.Bravais" title="brille._brille.Bravais"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bravais</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.Reciprocal.star">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">star</span></span><a class="headerlink" href="#brille._brille.Reciprocal.star" title="Permalink to this definition"></a></dt>
+<dd><p>Return the dual lattice</p>
+<p>A lattice described by the basis vectors <span class="math">\(\mathbf{a}_1\)</span>,
+<span class="math">\(\mathbf{a}_2\)</span>, and <span class="math">\(\mathbf{a}_3\)</span> has a unit cell volume
+given by <span class="math">\(V = \mathbf{a}_1 \cdot (\mathbf{a}_2\times\mathbf{a}_3)\)</span>.
+It’s dual lattice is defined by the basis vectors <span class="math">\(\mathbf{b}_1\)</span>,
+<span class="math">\(\mathbf{b}_2\)</span>, and <span class="math">\(\mathbf{b}_3\)</span> with the relationship</p>
+<div class="math">
+\[\mathbf{b}_i = \frac{2\pi}{V}\mathbf{a}_j\times \mathbf{a}_k
+
+\]</div>
+<p>for <span class="math">\((i,j,k) \in \left\{(1,2,3),(2,3,1),(3,1,2)\right\}\)</span>
+and has unit cell volume <span class="math">\(V* = 2\pi/V\)</span></p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../brille.html" class="btn btn-neutral float-left" title="Python module brille" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="debug.html" class="btn btn-neutral float-right" title="Debugging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Gregory Tucker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
