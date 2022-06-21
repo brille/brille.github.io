@@ -1,3 +1,3 @@
 GitHub Pages of [brille/brille](https://github.com/brille/brille.git)
 ======================================
-Sphinx HTML documentation of [6eaef402](https://github.com/brille/brille/tree/6eaef4023db7bc12925b1e13b3e1b57dc96d9707)
+Sphinx HTML documentation of [57113f78](https://github.com/brille/brille/tree/57113f78eb462e86624866a5ed8a113e7d667db7)
