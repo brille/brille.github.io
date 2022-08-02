@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Grids &mdash; brille 0.6.1.dev15+gfe0757b documentation</title>
+  <title>Grids &mdash; brille 0.6.1.dev16+g7698bb6 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
@@ -152,17 +152,17 @@ This class should be fine for use in applications where intra-grid-point interpo
 such as Brillouin zone integrations, but should be avoided when interpolation at random points is required.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQdd">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZMeshQdd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdd" title="brille._brille.BZMeshQdd"><span class="pre">brille._brille.BZMeshQdd</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">bz_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="bz.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><span class="pre">brille._brille.BrillouinZone</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_levels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdd" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZMeshQdd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdd" title="brille._brille.BZMeshQdd"><span class="pre">brille._brille.BZMeshQdd</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">brillouin_zone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="bz.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><span class="pre">brille._brille.BrillouinZone</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_levels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdd" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQcc">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZMeshQcc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQcc" title="brille._brille.BZMeshQcc"><span class="pre">brille._brille.BZMeshQcc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">bz_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="bz.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><span class="pre">brille._brille.BrillouinZone</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_levels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQcc" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZMeshQcc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQcc" title="brille._brille.BZMeshQcc"><span class="pre">brille._brille.BZMeshQcc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">brillouin_zone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="bz.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><span class="pre">brille._brille.BrillouinZone</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_levels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQcc" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQdc">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZMeshQdc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><span class="pre">brille._brille.BZMeshQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">bz_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="bz.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><span class="pre">brille._brille.BrillouinZone</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_levels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdc" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZMeshQdc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><span class="pre">brille._brille.BZMeshQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">brillouin_zone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="bz.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><span class="pre">brille._brille.BrillouinZone</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_levels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdc" title="Permalink to this definition"></a></dt>
 <dd><dl class="py property">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQdc.bytes_per_point">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bytes_per_point</span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.bytes_per_point" title="Permalink to this definition"></a></dt>
@@ -177,9 +177,9 @@ such as Brillouin zone integrations, but should be avoided when interpolation at
 <li><p>fill(self: brille._brille.BZMeshQdc, values_data: numpy.ndarray[numpy.float64], values_elements: numpy.ndarray[numpy.int32], vectors_data: numpy.ndarray[numpy.complex128], vectors_elements: numpy.ndarray[numpy.int32], sort: bool = False) -&gt; None</p></li>
 </ol>
 <p>Provide data required for interpolation to the grid without cost information.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul>
+<dd class="field-odd"><ul class="simple">
 <li><p><strong>values_data</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – The eigenvalue data to be stored in the grid. The first dimension must be
 equal in size to the number of grid-vertices. If two dimensional the second
 dimension is interpreted as all information for a single mode flattened
@@ -189,9 +189,8 @@ higher dimensions will be flattened <em>as if row ordered</em> and must flatten 
 a concatenated list of (scalars, vectors, matrices).
 If the provided array can be interpreted as a contiguous row-ordered two
 dimensional array it will be used in place, otherwise a copy will be made.</p></li>
-<li><p><strong>values_elements</strong> (<em>integer vector-like</em>) –</p>
-<dl class="simple">
-<dt>A multi-purpose vector containing, in order:</dt><dd><ul class="simple">
+<li><p><strong>values_elements</strong> (<em>integer vector-like</em>) – A multi-purpose vector containing, in order:</p>
+<ul>
 <li><p>the number of scalar-like eigenvalue elements,</p></li>
 <li><p>the number of vector-like eigenvalue <em>elements</em> (must be <span class="math">\(3\times N\)</span>),</p></li>
 <li><p>the number of matrix-like eigenvalue <em>elements</em> (must be <span class="math">\(9\times N\)</span>),</p></li>
@@ -199,12 +198,10 @@ dimensional array it will be used in place, otherwise a copy will be made.</p></
 <em>how</em> the vector-like and matrix-like parts transform under application
 of a symmetry operation (see note below).</p></li>
 </ul>
-</dd>
-</dl>
 </li>
 <li><p><strong>vectors_data</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – The eigenvector data to be stored in the grid. Same shape restrictions as
-<strong>values_data</strong></p></li>
-<li><p><strong>vectors_elements</strong> – Like <strong>values_elements</strong> but for the eigenvectors</p></li>
+<code class="docutils literal notranslate"><span class="pre">values_data</span></code></p></li>
+<li><p><strong>vectors_elements</strong> – Like <code class="docutils literal notranslate"><span class="pre">values_elements</span></code> but for the eigenvectors</p></li>
 <li><p><strong>sort</strong> (logical (default <code class="docutils literal notranslate"><span class="pre">False</span></code>)) – Whether the equivalent-mode permutations should be (re)determined following
 the update to the flags and weights.</p></li>
 </ul>
@@ -215,8 +212,8 @@ the update to the flags and weights.</p></li>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>
@@ -256,9 +253,8 @@ higher dimensions will be flattened <em>as if row ordered</em> and must flatten 
 a concatenated list of (scalars, vectors, matrices).
 If the provided array can be interpreted as a contiguous row-ordered two
 dimensional array it will be used in place, otherwise a copy will be made.</p></li>
-<li><p><strong>values_elements</strong> (<em>integer vector-like</em>) –</p>
-<dl class="simple">
-<dt>A multi-purpose vector containing, in order:</dt><dd><ul class="simple">
+<li><p><strong>values_elements</strong> (<em>integer vector-like</em>) – A multi-purpose vector containing, in order:</p>
+<ul class="simple">
 <li><p>the number of scalar-like eigenvalue elements,</p></li>
 <li><p>the number of vector-like eigenvalue <em>elements</em> (must be <span class="math">\(3\times N\)</span>),</p></li>
 <li><p>the number of matrix-like eigenvalue <em>elements</em> (must be <span class="math">\(9\times N\)</span>),</p></li>
@@ -268,9 +264,7 @@ of a symmetry operation (see note below),</p></li>
 <li><p>which scalar cost function should be used (see below),</p></li>
 <li><p>which vector cost function should be used (see below).</p></li>
 </ul>
-</dd>
-</dl>
-<p>See the note below fore the meaning of the last three values.</p>
+<p>See the note below for the meaning of the last three values.</p>
 </li>
 <li><p><strong>values_weights</strong> (<em>float, vector-like</em>) – The relative cost weights between scalar-, vector-, and matrix- like
 eigenvalue elements stored in the grid</p></li>
@@ -289,8 +283,8 @@ the update to the flags and weights.</p></li>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>
@@ -315,8 +309,8 @@ the update to the flags and weights.</p></li>
 <p>Mapping of integers to scalar cost function:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 30%" />
-<col style="width: 70%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>
@@ -452,8 +446,8 @@ the update to the flags and weights.</p></li>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>
@@ -478,8 +472,8 @@ the update to the flags and weights.</p></li>
 <p>Mapping of integers to scalar cost function:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 30%" />
-<col style="width: 70%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>
@@ -648,8 +642,8 @@ checks required to find the finest-tetrahedra containing any point is</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZNestQdd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZNestQdd" title="Permalink to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
-<li><p>__init__(self: brille._brille.BZNestQdd, <a href="#id2"><span class="problematic" id="id3">bz_</span></a>: brille._brille.BrillouinZone, max_volume: float, max_branchings: int = 5) -&gt; None</p></li>
-<li><p>__init__(self: brille._brille.BZNestQdd, <a href="#id4"><span class="problematic" id="id5">bz_</span></a>: brille._brille.BrillouinZone, number_density: int, max_branchings: int = 5) -&gt; None</p></li>
+<li><p>__init__(self: brille._brille.BZNestQdd, brillouin_zone: brille._brille.BrillouinZone, max_volume: float, max_branchings: int = 5) -&gt; None</p></li>
+<li><p>__init__(self: brille._brille.BZNestQdd, brillouin_zone: brille._brille.BrillouinZone, number_density: int, max_branchings: int = 5) -&gt; None</p></li>
 </ol>
 </dd></dl>
 
@@ -658,8 +652,8 @@ checks required to find the finest-tetrahedra containing any point is</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZNestQcc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZNestQcc" title="Permalink to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
-<li><p>__init__(self: brille._brille.BZNestQcc, <a href="#id6"><span class="problematic" id="id7">bz_</span></a>: brille._brille.BrillouinZone, max_volume: float, max_branchings: int = 5) -&gt; None</p></li>
-<li><p>__init__(self: brille._brille.BZNestQcc, <a href="#id8"><span class="problematic" id="id9">bz_</span></a>: brille._brille.BrillouinZone, number_density: int, max_branchings: int = 5) -&gt; None</p></li>
+<li><p>__init__(self: brille._brille.BZNestQcc, brillouin_zone: brille._brille.BrillouinZone, max_volume: float, max_branchings: int = 5) -&gt; None</p></li>
+<li><p>__init__(self: brille._brille.BZNestQcc, brillouin_zone: brille._brille.BrillouinZone, number_density: int, max_branchings: int = 5) -&gt; None</p></li>
 </ol>
 </dd></dl>
 
@@ -668,8 +662,8 @@ checks required to find the finest-tetrahedra containing any point is</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZNestQdc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZNestQdc" title="Permalink to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
-<li><p>__init__(self: brille._brille.BZNestQdc, <a href="#id10"><span class="problematic" id="id11">bz_</span></a>: brille._brille.BrillouinZone, max_volume: float, max_branchings: int = 5) -&gt; None</p></li>
-<li><p>__init__(self: brille._brille.BZNestQdc, <a href="#id12"><span class="problematic" id="id13">bz_</span></a>: brille._brille.BrillouinZone, number_density: int, max_branchings: int = 5) -&gt; None</p></li>
+<li><p>__init__(self: brille._brille.BZNestQdc, brillouin_zone: brille._brille.BrillouinZone, max_volume: float, max_branchings: int = 5) -&gt; None</p></li>
+<li><p>__init__(self: brille._brille.BZNestQdc, brillouin_zone: brille._brille.BrillouinZone, number_density: int, max_branchings: int = 5) -&gt; None</p></li>
 </ol>
 <dl class="py property">
 <dt class="sig sig-object py" id="brille._brille.BZNestQdc.bytes_per_point">
@@ -685,9 +679,9 @@ checks required to find the finest-tetrahedra containing any point is</p>
 <li><p>fill(self: brille._brille.BZNestQdc, values_data: numpy.ndarray[numpy.float64], values_elements: numpy.ndarray[numpy.int32], vectors_data: numpy.ndarray[numpy.complex128], vectors_elements: numpy.ndarray[numpy.int32], sort: bool = False) -&gt; None</p></li>
 </ol>
 <p>Provide data required for interpolation to the grid without cost information.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul>
+<dd class="field-odd"><ul class="simple">
 <li><p><strong>values_data</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – The eigenvalue data to be stored in the grid. The first dimension must be
 equal in size to the number of grid-vertices. If two dimensional the second
 dimension is interpreted as all information for a single mode flattened
@@ -697,9 +691,8 @@ higher dimensions will be flattened <em>as if row ordered</em> and must flatten 
 a concatenated list of (scalars, vectors, matrices).
 If the provided array can be interpreted as a contiguous row-ordered two
 dimensional array it will be used in place, otherwise a copy will be made.</p></li>
-<li><p><strong>values_elements</strong> (<em>integer vector-like</em>) –</p>
-<dl class="simple">
-<dt>A multi-purpose vector containing, in order:</dt><dd><ul class="simple">
+<li><p><strong>values_elements</strong> (<em>integer vector-like</em>) – A multi-purpose vector containing, in order:</p>
+<ul>
 <li><p>the number of scalar-like eigenvalue elements,</p></li>
 <li><p>the number of vector-like eigenvalue <em>elements</em> (must be <span class="math">\(3\times N\)</span>),</p></li>
 <li><p>the number of matrix-like eigenvalue <em>elements</em> (must be <span class="math">\(9\times N\)</span>),</p></li>
@@ -707,12 +700,10 @@ dimensional array it will be used in place, otherwise a copy will be made.</p></
 <em>how</em> the vector-like and matrix-like parts transform under application
 of a symmetry operation (see note below).</p></li>
 </ul>
-</dd>
-</dl>
 </li>
 <li><p><strong>vectors_data</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – The eigenvector data to be stored in the grid. Same shape restrictions as
-<strong>values_data</strong></p></li>
-<li><p><strong>vectors_elements</strong> – Like <strong>values_elements</strong> but for the eigenvectors</p></li>
+<code class="docutils literal notranslate"><span class="pre">values_data</span></code></p></li>
+<li><p><strong>vectors_elements</strong> – Like <code class="docutils literal notranslate"><span class="pre">values_elements</span></code> but for the eigenvectors</p></li>
 <li><p><strong>sort</strong> (logical (default <code class="docutils literal notranslate"><span class="pre">False</span></code>)) – Whether the equivalent-mode permutations should be (re)determined following
 the update to the flags and weights.</p></li>
 </ul>
@@ -723,8 +714,8 @@ the update to the flags and weights.</p></li>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>
@@ -764,9 +755,8 @@ higher dimensions will be flattened <em>as if row ordered</em> and must flatten 
 a concatenated list of (scalars, vectors, matrices).
 If the provided array can be interpreted as a contiguous row-ordered two
 dimensional array it will be used in place, otherwise a copy will be made.</p></li>
-<li><p><strong>values_elements</strong> (<em>integer vector-like</em>) –</p>
-<dl class="simple">
-<dt>A multi-purpose vector containing, in order:</dt><dd><ul class="simple">
+<li><p><strong>values_elements</strong> (<em>integer vector-like</em>) – A multi-purpose vector containing, in order:</p>
+<ul class="simple">
 <li><p>the number of scalar-like eigenvalue elements,</p></li>
 <li><p>the number of vector-like eigenvalue <em>elements</em> (must be <span class="math">\(3\times N\)</span>),</p></li>
 <li><p>the number of matrix-like eigenvalue <em>elements</em> (must be <span class="math">\(9\times N\)</span>),</p></li>
@@ -776,9 +766,7 @@ of a symmetry operation (see note below),</p></li>
 <li><p>which scalar cost function should be used (see below),</p></li>
 <li><p>which vector cost function should be used (see below).</p></li>
 </ul>
-</dd>
-</dl>
-<p>See the note below fore the meaning of the last three values.</p>
+<p>See the note below for the meaning of the last three values.</p>
 </li>
 <li><p><strong>values_weights</strong> (<em>float, vector-like</em>) – The relative cost weights between scalar-, vector-, and matrix- like
 eigenvalue elements stored in the grid</p></li>
@@ -797,8 +785,8 @@ the update to the flags and weights.</p></li>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>
@@ -823,8 +811,8 @@ the update to the flags and weights.</p></li>
 <p>Mapping of integers to scalar cost function:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 30%" />
-<col style="width: 70%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>
@@ -960,8 +948,8 @@ the update to the flags and weights.</p></li>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>
@@ -986,8 +974,8 @@ the update to the flags and weights.</p></li>
 <p>Mapping of integers to scalar cost function:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 30%" />
-<col style="width: 70%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>
@@ -1131,8 +1119,8 @@ is triangulated, subsequent fast location of the containing tetrahedron.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZTrellisQdd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZTrellisQdd" title="Permalink to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
-<li><p>__init__(self: brille._brille.BZTrellisQdd, <a href="#id14"><span class="problematic" id="id15">bz_</span></a>: brille._brille.BrillouinZone, node_volume_fraction: float = 0.1, always_triangulate: bool = False) -&gt; None</p></li>
-<li><p>__init__(self: brille._brille.BZTrellisQdd, <a href="#id16"><span class="problematic" id="id17">bz_</span></a>: brille._brille.BrillouinZone, node_volume_fraction: float, always_triangulate: bool, approx_config: brille::approx_float::Config) -&gt; None</p></li>
+<li><p>__init__(self: brille._brille.BZTrellisQdd, brillouin_zone: brille._brille.BrillouinZone, node_volume_fraction: float = 0.1, always_triangulate: bool = False) -&gt; None</p></li>
+<li><p>__init__(self: brille._brille.BZTrellisQdd, brillouin_zone: brille._brille.BrillouinZone, node_volume_fraction: float, always_triangulate: bool, approx_config: brille::approx_float::Config) -&gt; None</p></li>
 </ol>
 </dd></dl>
 
@@ -1141,8 +1129,8 @@ is triangulated, subsequent fast location of the containing tetrahedron.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZTrellisQcc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZTrellisQcc" title="Permalink to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
-<li><p>__init__(self: brille._brille.BZTrellisQcc, <a href="#id18"><span class="problematic" id="id19">bz_</span></a>: brille._brille.BrillouinZone, node_volume_fraction: float = 0.1, always_triangulate: bool = False) -&gt; None</p></li>
-<li><p>__init__(self: brille._brille.BZTrellisQcc, <a href="#id20"><span class="problematic" id="id21">bz_</span></a>: brille._brille.BrillouinZone, node_volume_fraction: float, always_triangulate: bool, approx_config: brille::approx_float::Config) -&gt; None</p></li>
+<li><p>__init__(self: brille._brille.BZTrellisQcc, brillouin_zone: brille._brille.BrillouinZone, node_volume_fraction: float = 0.1, always_triangulate: bool = False) -&gt; None</p></li>
+<li><p>__init__(self: brille._brille.BZTrellisQcc, brillouin_zone: brille._brille.BrillouinZone, node_volume_fraction: float, always_triangulate: bool, approx_config: brille::approx_float::Config) -&gt; None</p></li>
 </ol>
 </dd></dl>
 
@@ -1151,8 +1139,8 @@ is triangulated, subsequent fast location of the containing tetrahedron.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZTrellisQdc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZTrellisQdc" title="Permalink to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
-<li><p>__init__(self: brille._brille.BZTrellisQdc, <a href="#id22"><span class="problematic" id="id23">bz_</span></a>: brille._brille.BrillouinZone, node_volume_fraction: float = 0.1, always_triangulate: bool = False) -&gt; None</p></li>
-<li><p>__init__(self: brille._brille.BZTrellisQdc, <a href="#id24"><span class="problematic" id="id25">bz_</span></a>: brille._brille.BrillouinZone, node_volume_fraction: float, always_triangulate: bool, approx_config: brille::approx_float::Config) -&gt; None</p></li>
+<li><p>__init__(self: brille._brille.BZTrellisQdc, brillouin_zone: brille._brille.BrillouinZone, node_volume_fraction: float = 0.1, always_triangulate: bool = False) -&gt; None</p></li>
+<li><p>__init__(self: brille._brille.BZTrellisQdc, brillouin_zone: brille._brille.BrillouinZone, node_volume_fraction: float, always_triangulate: bool, approx_config: brille::approx_float::Config) -&gt; None</p></li>
 </ol>
 <dl class="py property">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.bytes_per_point">
@@ -1168,9 +1156,9 @@ is triangulated, subsequent fast location of the containing tetrahedron.</p>
 <li><p>fill(self: brille._brille.BZTrellisQdc, values_data: numpy.ndarray[numpy.float64], values_elements: numpy.ndarray[numpy.int32], vectors_data: numpy.ndarray[numpy.complex128], vectors_elements: numpy.ndarray[numpy.int32], sort: bool = False) -&gt; None</p></li>
 </ol>
 <p>Provide data required for interpolation to the grid without cost information.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul>
+<dd class="field-odd"><ul class="simple">
 <li><p><strong>values_data</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – The eigenvalue data to be stored in the grid. The first dimension must be
 equal in size to the number of grid-vertices. If two dimensional the second
 dimension is interpreted as all information for a single mode flattened
@@ -1180,9 +1168,8 @@ higher dimensions will be flattened <em>as if row ordered</em> and must flatten 
 a concatenated list of (scalars, vectors, matrices).
 If the provided array can be interpreted as a contiguous row-ordered two
 dimensional array it will be used in place, otherwise a copy will be made.</p></li>
-<li><p><strong>values_elements</strong> (<em>integer vector-like</em>) –</p>
-<dl class="simple">
-<dt>A multi-purpose vector containing, in order:</dt><dd><ul class="simple">
+<li><p><strong>values_elements</strong> (<em>integer vector-like</em>) – A multi-purpose vector containing, in order:</p>
+<ul>
 <li><p>the number of scalar-like eigenvalue elements,</p></li>
 <li><p>the number of vector-like eigenvalue <em>elements</em> (must be <span class="math">\(3\times N\)</span>),</p></li>
 <li><p>the number of matrix-like eigenvalue <em>elements</em> (must be <span class="math">\(9\times N\)</span>),</p></li>
@@ -1190,12 +1177,10 @@ dimensional array it will be used in place, otherwise a copy will be made.</p></
 <em>how</em> the vector-like and matrix-like parts transform under application
 of a symmetry operation (see note below).</p></li>
 </ul>
-</dd>
-</dl>
 </li>
 <li><p><strong>vectors_data</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – The eigenvector data to be stored in the grid. Same shape restrictions as
-<strong>values_data</strong></p></li>
-<li><p><strong>vectors_elements</strong> – Like <strong>values_elements</strong> but for the eigenvectors</p></li>
+<code class="docutils literal notranslate"><span class="pre">values_data</span></code></p></li>
+<li><p><strong>vectors_elements</strong> – Like <code class="docutils literal notranslate"><span class="pre">values_elements</span></code> but for the eigenvectors</p></li>
 <li><p><strong>sort</strong> (logical (default <code class="docutils literal notranslate"><span class="pre">False</span></code>)) – Whether the equivalent-mode permutations should be (re)determined following
 the update to the flags and weights.</p></li>
 </ul>
@@ -1206,8 +1191,8 @@ the update to the flags and weights.</p></li>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>
@@ -1247,9 +1232,8 @@ higher dimensions will be flattened <em>as if row ordered</em> and must flatten 
 a concatenated list of (scalars, vectors, matrices).
 If the provided array can be interpreted as a contiguous row-ordered two
 dimensional array it will be used in place, otherwise a copy will be made.</p></li>
-<li><p><strong>values_elements</strong> (<em>integer vector-like</em>) –</p>
-<dl class="simple">
-<dt>A multi-purpose vector containing, in order:</dt><dd><ul class="simple">
+<li><p><strong>values_elements</strong> (<em>integer vector-like</em>) – A multi-purpose vector containing, in order:</p>
+<ul class="simple">
 <li><p>the number of scalar-like eigenvalue elements,</p></li>
 <li><p>the number of vector-like eigenvalue <em>elements</em> (must be <span class="math">\(3\times N\)</span>),</p></li>
 <li><p>the number of matrix-like eigenvalue <em>elements</em> (must be <span class="math">\(9\times N\)</span>),</p></li>
@@ -1259,9 +1243,7 @@ of a symmetry operation (see note below),</p></li>
 <li><p>which scalar cost function should be used (see below),</p></li>
 <li><p>which vector cost function should be used (see below).</p></li>
 </ul>
-</dd>
-</dl>
-<p>See the note below fore the meaning of the last three values.</p>
+<p>See the note below for the meaning of the last three values.</p>
 </li>
 <li><p><strong>values_weights</strong> (<em>float, vector-like</em>) – The relative cost weights between scalar-, vector-, and matrix- like
 eigenvalue elements stored in the grid</p></li>
@@ -1280,8 +1262,8 @@ the update to the flags and weights.</p></li>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>
@@ -1306,8 +1288,8 @@ the update to the flags and weights.</p></li>
 <p>Mapping of integers to scalar cost function:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 30%" />
-<col style="width: 70%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>
@@ -1485,8 +1467,8 @@ the update to the flags and weights.</p></li>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>
@@ -1511,8 +1493,8 @@ the update to the flags and weights.</p></li>
 <p>Mapping of integers to scalar cost function:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 30%" />
-<col style="width: 70%" />
+<col style="width: 16%" />
+<col style="width: 84%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>

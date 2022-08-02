@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lattices &mdash; brille 0.6.1.dev15+gfe0757b documentation</title>
+  <title>Lattices &mdash; brille 0.6.1.dev16+g7698bb6 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
@@ -98,6 +98,77 @@
              
   <section id="lattices">
 <h1>Lattices<a class="headerlink" href="#lattices" title="Permalink to this headline"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="brille.Lattice">
+<span class="sig-prename descclassname"><span class="pre">brille.</span></span><span class="sig-name descname"><span class="pre">Lattice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spacegroup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.Lattice" title="Permalink to this definition"></a></dt>
+<dd><p>Construct a space-spanning lattice in three dimensions</p>
+<p>A space-spanning lattice in <span class="math">\(N\)</span> dimensions has <span class="math">\(N\)</span> basis vectors
+which can be described fully by their <span class="math">\(N\)</span> lengths and the
+<span class="math">\(\frac{1}{2} N (N-1)\)</span> angles between each set of basis vectors, or
+<span class="math">\(\frac{1}{2}N(N+1)\)</span> scalars in total.
+This class stores the basis vectors of the lattice described in an orthonormal space,
+plus the metric of the space, and the equivalent information for the dual of the lattice.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brille</span> <span class="kn">import</span> <span class="n">Lattice</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mf">12.9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">avec</span><span class="p">,</span> <span class="n">bvec</span><span class="p">,</span> <span class="n">cvec</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">basis</span> <span class="o">=</span> <span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">symmetry</span> <span class="o">=</span> <span class="p">(</span><span class="n">rotations</span><span class="p">,</span> <span class="n">translations</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lat</span> <span class="o">=</span> <span class="n">Lattice</span><span class="p">(([</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">]),</span> <span class="n">spacegroup</span><span class="o">=</span><span class="s1">&#39;I4/mmm&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="n">basis</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lat</span> <span class="o">=</span> <span class="n">Lattice</span><span class="p">(([</span><span class="n">avec</span><span class="p">,</span> <span class="n">bvec</span><span class="p">,</span> <span class="n">cvec</span><span class="p">],),</span> <span class="n">symmetry</span><span class="o">=</span><span class="n">symmetry</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="n">basis</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lat</span> <span class="o">=</span> <span class="n">Lattice</span><span class="p">([</span><span class="n">avec</span><span class="p">,</span> <span class="n">bvec</span><span class="p">,</span> <span class="n">cvec</span><span class="p">],</span> <span class="n">spacegroup</span><span class="o">=</span><span class="s1">&#39;I4/mmm&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="n">basis</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The parameters packed into <code class="docutils literal notranslate"><span class="pre">values</span></code> are position-based and should be <em>either</em> <code class="docutils literal notranslate"><span class="pre">(lengths,</span> <span class="pre">angles)</span></code>
+<em>or</em> <code class="docutils literal notranslate"><span class="pre">(vectors,)</span></code> [which also requires setting <code class="docutils literal notranslate"><span class="pre">row_vectors=False</span></code> if the matrix represents column vectors].
+The lengths or vector components are interpreted in angstrom or inverse angstrom for real or reciprocal lattice
+parameters, respectively, and are assumed to be angstrom if the keyword <code class="docutils literal notranslate"><span class="pre">real_space</span></code> is missing or True.</p>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul>
+<li><p><strong>values</strong> (<em>(lengths, angles), vectors</em>) – See the note above and the documenation for <code class="docutils literal notranslate"><span class="pre">lengths</span></code>, <code class="docutils literal notranslate"><span class="pre">angles</span></code>, and <code class="docutils literal notranslate"><span class="pre">vectors</span></code> below.</p></li>
+<li><p><strong>lengths</strong> (<em>list, tuple, numpy.ndarray</em>) – The three basis vector lengths in angstrom for real lattice, or inverse angstrom for reciprocal lattices</p></li>
+<li><p><strong>angles</strong> (<em>list, tuple, numpy.ndarray</em>) – The three angles between the basis vectors in degrees or radians. The angles are interpreted as radians
+if none are greater than pi and are otherwise assumed to be degrees.</p></li>
+<li><p><strong>vectors</strong> (<em>list[list,…], tuple(tuple,…), numpy.ndarray</em>) – The basis vectors in angstrom for real lattices, or inverse angstrom for reciprocal lattices,
+expressed in an orthorhombic coordinate system. An optional keyword argument, <code class="docutils literal notranslate"><span class="pre">row_vectors</span></code>, identifies
+if the provided basis vectors are row vectors [<cite>row_vectors=True</cite>, default] or column vectors
+[<code class="docutils literal notranslate"><span class="pre">row_vectors=False</span></code>].</p></li>
+<li><p><strong>spacegroup</strong> (<em>str, tuple(str, str)</em>) – The International Tables name, Hermann-Mauguin symbol with optional choice, or Hall symbol for the
+spacegroup of the lattice. The spacegroup may be provided as positional argument(s) or by keyword.
+If present, the <code class="docutils literal notranslate"><span class="pre">symmetry</span></code> keyword must not be used.
+Valid syntax for <code class="docutils literal notranslate"><span class="pre">(Hermann-Mauguin,</span> <span class="pre">choice)</span></code> input depends on the spacegroup but is generally one of:</p>
+<ul class="simple">
+<li><p>a single letter (‘a’, ‘b’, or ‘c’) with possible prepended ‘-’, denoting unique-axis choice</p></li>
+<li><p>a single digit (‘1’, ‘2’, or ‘3’), denoting origin choice</p></li>
+<li><p>a letter and digit, denoting unique-axis and origin choice</p></li>
+<li><p>a permutation of ‘abc’ with possible ‘-’ before one of the letters, denoting axis permutation</p></li>
+<li><p>or ‘R’ or ‘H’ for trigonal systems with Rhombohedral or Hexagonal lattice settings, respectively.</p></li>
+</ul>
+<p>Acceptable values are contained in the C++ source code in the seventh column of
+<a class="reference external" href="https://github.com/brille/brille/blob/eecb4cb28227665908793abc47e88c69518c09fc/src/spg_database.cpp#L63-L610">this table</a>
+with each line representing one spacegroup with values, in order, defined by the
+<a class="reference external" href="https://github.com/brille/brille/blob/eecb4cb28227665908793abc47e88c69518c09fc/src/spg_database.hpp#L80-L91">class signature</a>
+These values come from spglib, which likely obtained them from
+<a class="reference external" href="https://web.archive.org/web/20210621195003/http://pmsl.planet.sci.kobe-u.ac.jp/~seto/?page_id=37&amp;lang=en">Seto’s Home Page</a>.</p>
+</li>
+<li><p><strong>symmetry</strong> (<em>brille.Symmetry, tuple(matrices, vectors), str</em>) – The spacegroup symmetry operations as an object, a tuple of the (pseudo)rotation matrices and translation
+vectors, or a CIF xyz encoded string. The symmetry information must be provided by keyword.
+If present, the ‘spacegroup’ positional argument(s) or keyword must not be used.</p></li>
+<li><p><strong>basis</strong> (<em>brille.Basis, tuple(positions, types)</em>) – The atom basis information of the lattice, expressed in units of the real space basis vectors. The types
+must be integer and are used only to identify equivalent atoms – they should probably be contiguous from
+zero to 1-N where N is the number of unique atoms in the atom basis.
+If present, either spacegroup or symmetry information must be provided.</p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments are passed to the <a class="reference internal" href="#brille._brille.Lattice" title="brille._brille.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Lattice</span></code></a> constructor,
+see its documentation for details.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="brille._brille.Bravais">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">Bravais</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.Bravais" title="brille._brille.Bravais"><span class="pre">brille._brille.Bravais</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.Bravais" title="Permalink to this definition"></a></dt>
