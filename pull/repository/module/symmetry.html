@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Symmetry &mdash; brille 0.6.1.dev16+g7698bb6 documentation</title>
+  <title>Symmetry &mdash; brille 0.6.1.dev11+gc25ad6d documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
@@ -208,12 +208,17 @@ be enacted to represent them.</p>
 <h2>Other classes<a class="headerlink" href="#other-classes" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="brille._brille.PointSymmetry">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">PointSymmetry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.PointSymmetry" title="brille._brille.PointSymmetry"><span class="pre">brille._brille.PointSymmetry</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Hall_number</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_reversal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.PointSymmetry" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">PointSymmetry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.PointSymmetry" title="Permalink to this definition"></a></dt>
 <dd><p>Holds the <span class="math">\(3 \times 3\)</span> rotation matrices <span class="math">\(R\)</span> which comprise
 a point group symmetry.</p>
 <p>A point group describes the local symmetry of a lattice point. It contains
 all of the generalised rotations of a <a class="reference internal" href="#brille._brille.Symmetry" title="brille._brille.Symmetry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symmetry</span></code></a>
 with none of its translations.</p>
+<p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>__init__(self: brille._brille.PointSymmetry, Hall_number: int, time_reversal: int = 0) -&gt; None</p></li>
+<li><p>__init__(self: brille._brille.PointSymmetry, Symmetry: brille._brille.Symmetry) -&gt; None</p></li>
+</ol>
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.PointSymmetry.nfolds">
 <span class="sig-name descname"><span class="pre">nfolds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.PointSymmetry" title="brille._brille.PointSymmetry"><span class="pre">brille._brille.PointSymmetry</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#brille._brille.PointSymmetry" title="brille._brille.PointSymmetry"><span class="pre">brille._brille.PointSymmetry</span></a></span></span><a class="headerlink" href="#brille._brille.PointSymmetry.nfolds" title="Permalink to this definition"></a></dt>

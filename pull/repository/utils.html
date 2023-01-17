@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Utilities for brille &mdash; brille 0.6.1.dev16+g7698bb6 documentation</title>
+  <title>Utilities for brille &mdash; brille 0.6.1.dev11+gc25ad6d documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
@@ -134,13 +134,13 @@ phonon eigenvectors.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>a, b, c</strong> (<em>float</em>) – Lattice parameters as separate floating point values</p></li>
-<li><p><strong>lens</strong> ((3,) <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or list) – Lattice parameters as a 3-element array or list</p></li>
+<li><p><strong>lens</strong> ((3,) <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or list) – Lattice parameters as a 3-element array or list</p></li>
 <li><p><strong>alpha, beta, gamma</strong> (<em>float</em>) – Lattice angles in degrees or radians as separate floating point values
 Brille tries to determine if the input is in degrees or radians
 by looking at its magnitude. If the values are all less than PI it
 assumes the angles are in radians otherwise it assumes degrees</p></li>
-<li><p><strong>angs</strong> ((3,) <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or list) – Lattice angles in degrees or radians as a 3-element array or list</p></li>
-<li><p><strong>lattice_vectors</strong> ((3, 3) <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or list of list) – The lattice vectors as a 3x3 matrix, array or list of list</p></li>
+<li><p><strong>angs</strong> ((3,) <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or list) – Lattice angles in degrees or radians as a 3-element array or list</p></li>
+<li><p><strong>lattice_vectors</strong> ((3, 3) <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> or list of list) – The lattice vectors as a 3x3 matrix, array or list of list</p></li>
 <li><p><strong>spacegroup</strong> (<em>str or int</em>) – The spacegroup in either International Tables (Hermann-Mauguin)
 notation or a Hall symbol or an integer Hall number.</p></li>
 <li><p><strong>is_reciprocal</strong> (<em>bool, keyword-only optional (default: False)</em>) – Whether the lattice parameters or lattice vectors refers to a
