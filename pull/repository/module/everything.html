@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Remainder &mdash; brille 0.6.1.dev19+g007ae34 documentation</title>
+  <title>Remainder &mdash; brille 0.6.1.dev47+gfdf8ce7 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
@@ -803,6 +803,8 @@ ac\cos\beta & bc\cos\alpha & c^2
 <div><p>none</p>
 <p>angstrom : 10⁻¹⁰ meter</p>
 <p>inverse_angstrom : 1 / angstrom</p>
+<p>real_lattice : fractional coordinates of real lattice</p>
+<p>reciprocal_lattice : fractional coordinates of reciprocal lattice</p>
 </div></blockquote>
 <dl class="py property">
 <dt class="sig sig-object py">
@@ -863,10 +865,9 @@ with none of its translations.</p>
 </div></blockquote>
 <p>Members:</p>
 <blockquote>
-<div><p>Real : real space vector or matrix</p>
-<p>Reciprocal : reciprocal scpace vector or matrix</p>
-<p>Axial : real space axial vector</p>
-<p>Gamma : (real space) phonon eigenvector</p>
+<div><p>vector : Rotates like a vector</p>
+<p>pseudovector : Rotates like a pseudovector</p>
+<p>Gamma : Rotates like a (real space) phonon eigenvector</p>
 </div></blockquote>
 <dl class="py property">
 <dt class="sig sig-object py">

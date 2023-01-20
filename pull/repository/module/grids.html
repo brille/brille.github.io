@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Grids &mdash; brille 0.6.1.dev19+g007ae34 documentation</title>
+  <title>Grids &mdash; brille 0.6.1.dev47+gfdf8ce7 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
@@ -197,6 +197,8 @@ dimensional array it will be used in place, otherwise a copy will be made.</p></
 <li><p>an integer <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> value denoting
 <em>how</em> the vector-like and matrix-like parts transform under application
 of a symmetry operation (see note below).</p></li>
+<li><p>an integer <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> value denoting what units
+the vector-like and matrix-like parts are in (see note below).</p></li>
 </ul>
 </li>
 <li><p><strong>vectors_data</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – The eigenvector data to be stored in the grid. Same shape restrictions as
@@ -222,20 +224,47 @@ the update to the flags and weights.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>0</p></td>
-<td><p><cite>Real</cite></p></td>
+<td><p><cite>vector</cite></p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
-<td><p><cite>Reciprocal</cite></p></td>
+<td><p><cite>pseudovector</cite></p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
-<td><p><cite>Axial</cite></p></td>
-</tr>
-<tr class="row-odd"><td><p>3</p></td>
 <td><p><cite>Gamma</cite></p></td>
 </tr>
 </tbody>
 </table>
 <p>Integer values outside of the mapped range (or missing) are replaced by 0.</p>
+<p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>value</p></th>
+<th class="head"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><cite>none</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><cite>angstrom</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><cite>inverse_angstrom</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p><cite>real_lattice</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p><cite>reciprocal_lattice</cite></p></td>
+</tr>
+</tbody>
+</table>
+<p>Integer values outside of the mapped range (or missing) are replaced by 3.</p>
 </div>
 <ol class="arabic simple" start="2">
 <li><p>fill(self: brille._brille.BZMeshQdc, values_data: numpy.ndarray[numpy.float64], values_elements: numpy.ndarray[numpy.int32], values_weights: numpy.ndarray[numpy.float64], vectors_data: numpy.ndarray[numpy.complex128], vectors_elements: numpy.ndarray[numpy.int32], vectors_weights: numpy.ndarray[numpy.float64], sort: bool = False) -&gt; None</p></li>
@@ -261,6 +290,8 @@ dimensional array it will be used in place, otherwise a copy will be made.</p></
 <li><p>an integer <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> value denoting
 <em>how</em> the vector-like and matrix-like parts transform under application
 of a symmetry operation (see note below),</p></li>
+<li><p>an integer <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> value denoting what units
+the vector-like and matrix-like parts are in (see note below)</p></li>
 <li><p>which scalar cost function should be used (see below),</p></li>
 <li><p>which vector cost function should be used (see below).</p></li>
 </ul>
@@ -293,19 +324,46 @@ the update to the flags and weights.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>0</p></td>
-<td><p><cite>Real</cite></p></td>
+<td><p><cite>vector</cite></p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
-<td><p><cite>Reciprocal</cite></p></td>
+<td><p><cite>pseudovector</cite></p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
-<td><p><cite>Axial</cite></p></td>
-</tr>
-<tr class="row-odd"><td><p>3</p></td>
 <td><p><cite>Gamma</cite></p></td>
 </tr>
 </tbody>
 </table>
+<p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>value</p></th>
+<th class="head"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><cite>none</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><cite>angstrom</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><cite>inverse_angstrom</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p><cite>real_lattice</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p><cite>reciprocal_lattice</cite></p></td>
+</tr>
+</tbody>
+</table>
+<p>Integer values outside of the mapped range (or missing) are replaced by 3.</p>
 <p>Mapping of integers to scalar cost function:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -419,21 +477,22 @@ for the eigenvalues and eigenvectors, respectively.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQdc.set_flags_weights">
 <span class="sig-name descname"><span class="pre">set_flags_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><span class="pre">brille._brille.BZMeshQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.set_flags_weights" title="Permalink to this definition"></a></dt>
-<dd><p>Set <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> and cost functions plus
-relative cost weights for the values and vectors stored in the object</p>
+<dd><p>Set <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a>, <cite>~brille._brille.LengthUnit</cite>
+and cost functions plus relative cost weights for the values and vectors
+stored in the object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>values_flags</strong> (<em>integer, vector-like</em>) – One or more values indicating the <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a>
-value for the eigenvalues stored in the object, plus which cost function
-to use when comparing stored eigenvalues at neighbouring grid points for
-scalar- and vector-like eigenvalues.</p></li>
+value for the eigenvalues stored in the object, the <cite>~brille._brille.LengthUnit</cite>
+value, plus which cost function to use when comparing stored eigenvalues at
+neighbouring grid points for scalar- and vector-like eigenvalues.</p></li>
 <li><p><strong>values_weights</strong> (<em>float, vector-like</em>) – The relative cost weights between scalar-, vector-, and matrix- like
 eigenvalue elements stored in the grid</p></li>
 <li><p><strong>vectors_flags</strong> (<em>integer, vector-like</em>) – One or more values indicating the <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a>
-value for the eigenvectors stored in the object, plus which cost function
-to use when comparing stored eigenvectors at neighbouring grid points for
-scalar- and vector-like eigenvectors.</p></li>
+value for the eigenvalues stored in the object, the <cite>~brille._brille.LengthUnit</cite>
+value, plus which cost function to use when comparing stored eigenvectors at
+neighbouring grid points for scalar- and vector-like eigenvectors.</p></li>
 <li><p><strong>vectors_weights</strong> (<em>float, vector-like</em>) – The relative cost weights between scalar-, vector-, and matrix- like
 eigenvector elements stored in the grid</p></li>
 <li><p><strong>sort</strong> (<em>bool, optional</em>) – Whether the equivalent-mode permutations should be (re)determined following
@@ -456,16 +515,42 @@ the update to the flags and weights.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>0</p></td>
-<td><p><cite>Real</cite></p></td>
+<td><p><cite>vector</cite></p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
-<td><p><cite>Reciprocal</cite></p></td>
+<td><p><cite>pseudovector</cite></p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
-<td><p><cite>Axial</cite></p></td>
+<td><p><cite>Gamma</cite></p></td>
+</tr>
+</tbody>
+</table>
+<p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>value</p></th>
+<th class="head"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><cite>none</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><cite>angstrom</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><cite>inverse_angstrom</cite></p></td>
 </tr>
 <tr class="row-odd"><td><p>3</p></td>
-<td><p><cite>Gamma</cite></p></td>
+<td><p><cite>real_lattice</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p><cite>reciprocal_lattice</cite></p></td>
 </tr>
 </tbody>
 </table>
@@ -699,6 +784,8 @@ dimensional array it will be used in place, otherwise a copy will be made.</p></
 <li><p>an integer <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> value denoting
 <em>how</em> the vector-like and matrix-like parts transform under application
 of a symmetry operation (see note below).</p></li>
+<li><p>an integer <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> value denoting what units
+the vector-like and matrix-like parts are in (see note below).</p></li>
 </ul>
 </li>
 <li><p><strong>vectors_data</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – The eigenvector data to be stored in the grid. Same shape restrictions as
@@ -724,20 +811,47 @@ the update to the flags and weights.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>0</p></td>
-<td><p><cite>Real</cite></p></td>
+<td><p><cite>vector</cite></p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
-<td><p><cite>Reciprocal</cite></p></td>
+<td><p><cite>pseudovector</cite></p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
-<td><p><cite>Axial</cite></p></td>
-</tr>
-<tr class="row-odd"><td><p>3</p></td>
 <td><p><cite>Gamma</cite></p></td>
 </tr>
 </tbody>
 </table>
 <p>Integer values outside of the mapped range (or missing) are replaced by 0.</p>
+<p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>value</p></th>
+<th class="head"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><cite>none</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><cite>angstrom</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><cite>inverse_angstrom</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p><cite>real_lattice</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p><cite>reciprocal_lattice</cite></p></td>
+</tr>
+</tbody>
+</table>
+<p>Integer values outside of the mapped range (or missing) are replaced by 3.</p>
 </div>
 <ol class="arabic simple" start="2">
 <li><p>fill(self: brille._brille.BZNestQdc, values_data: numpy.ndarray[numpy.float64], values_elements: numpy.ndarray[numpy.int32], values_weights: numpy.ndarray[numpy.float64], vectors_data: numpy.ndarray[numpy.complex128], vectors_elements: numpy.ndarray[numpy.int32], vectors_weights: numpy.ndarray[numpy.float64], sort: bool = False) -&gt; None</p></li>
@@ -763,6 +877,8 @@ dimensional array it will be used in place, otherwise a copy will be made.</p></
 <li><p>an integer <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> value denoting
 <em>how</em> the vector-like and matrix-like parts transform under application
 of a symmetry operation (see note below),</p></li>
+<li><p>an integer <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> value denoting what units
+the vector-like and matrix-like parts are in (see note below)</p></li>
 <li><p>which scalar cost function should be used (see below),</p></li>
 <li><p>which vector cost function should be used (see below).</p></li>
 </ul>
@@ -795,19 +911,46 @@ the update to the flags and weights.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>0</p></td>
-<td><p><cite>Real</cite></p></td>
+<td><p><cite>vector</cite></p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
-<td><p><cite>Reciprocal</cite></p></td>
+<td><p><cite>pseudovector</cite></p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
-<td><p><cite>Axial</cite></p></td>
-</tr>
-<tr class="row-odd"><td><p>3</p></td>
 <td><p><cite>Gamma</cite></p></td>
 </tr>
 </tbody>
 </table>
+<p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>value</p></th>
+<th class="head"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><cite>none</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><cite>angstrom</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><cite>inverse_angstrom</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p><cite>real_lattice</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p><cite>reciprocal_lattice</cite></p></td>
+</tr>
+</tbody>
+</table>
+<p>Integer values outside of the mapped range (or missing) are replaced by 3.</p>
 <p>Mapping of integers to scalar cost function:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -921,21 +1064,22 @@ for the eigenvalues and eigenvectors, respectively.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZNestQdc.set_flags_weights">
 <span class="sig-name descname"><span class="pre">set_flags_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZNestQdc" title="brille._brille.BZNestQdc"><span class="pre">brille._brille.BZNestQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZNestQdc.set_flags_weights" title="Permalink to this definition"></a></dt>
-<dd><p>Set <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> and cost functions plus
-relative cost weights for the values and vectors stored in the object</p>
+<dd><p>Set <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a>, <cite>~brille._brille.LengthUnit</cite>
+and cost functions plus relative cost weights for the values and vectors
+stored in the object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>values_flags</strong> (<em>integer, vector-like</em>) – One or more values indicating the <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a>
-value for the eigenvalues stored in the object, plus which cost function
-to use when comparing stored eigenvalues at neighbouring grid points for
-scalar- and vector-like eigenvalues.</p></li>
+value for the eigenvalues stored in the object, the <cite>~brille._brille.LengthUnit</cite>
+value, plus which cost function to use when comparing stored eigenvalues at
+neighbouring grid points for scalar- and vector-like eigenvalues.</p></li>
 <li><p><strong>values_weights</strong> (<em>float, vector-like</em>) – The relative cost weights between scalar-, vector-, and matrix- like
 eigenvalue elements stored in the grid</p></li>
 <li><p><strong>vectors_flags</strong> (<em>integer, vector-like</em>) – One or more values indicating the <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a>
-value for the eigenvectors stored in the object, plus which cost function
-to use when comparing stored eigenvectors at neighbouring grid points for
-scalar- and vector-like eigenvectors.</p></li>
+value for the eigenvalues stored in the object, the <cite>~brille._brille.LengthUnit</cite>
+value, plus which cost function to use when comparing stored eigenvectors at
+neighbouring grid points for scalar- and vector-like eigenvectors.</p></li>
 <li><p><strong>vectors_weights</strong> (<em>float, vector-like</em>) – The relative cost weights between scalar-, vector-, and matrix- like
 eigenvector elements stored in the grid</p></li>
 <li><p><strong>sort</strong> (<em>bool, optional</em>) – Whether the equivalent-mode permutations should be (re)determined following
@@ -958,16 +1102,42 @@ the update to the flags and weights.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>0</p></td>
-<td><p><cite>Real</cite></p></td>
+<td><p><cite>vector</cite></p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
-<td><p><cite>Reciprocal</cite></p></td>
+<td><p><cite>pseudovector</cite></p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
-<td><p><cite>Axial</cite></p></td>
+<td><p><cite>Gamma</cite></p></td>
+</tr>
+</tbody>
+</table>
+<p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>value</p></th>
+<th class="head"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><cite>none</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><cite>angstrom</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><cite>inverse_angstrom</cite></p></td>
 </tr>
 <tr class="row-odd"><td><p>3</p></td>
-<td><p><cite>Gamma</cite></p></td>
+<td><p><cite>real_lattice</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p><cite>reciprocal_lattice</cite></p></td>
 </tr>
 </tbody>
 </table>
@@ -1181,6 +1351,8 @@ dimensional array it will be used in place, otherwise a copy will be made.</p></
 <li><p>an integer <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> value denoting
 <em>how</em> the vector-like and matrix-like parts transform under application
 of a symmetry operation (see note below).</p></li>
+<li><p>an integer <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> value denoting what units
+the vector-like and matrix-like parts are in (see note below).</p></li>
 </ul>
 </li>
 <li><p><strong>vectors_data</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – The eigenvector data to be stored in the grid. Same shape restrictions as
@@ -1206,20 +1378,47 @@ the update to the flags and weights.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>0</p></td>
-<td><p><cite>Real</cite></p></td>
+<td><p><cite>vector</cite></p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
-<td><p><cite>Reciprocal</cite></p></td>
+<td><p><cite>pseudovector</cite></p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
-<td><p><cite>Axial</cite></p></td>
-</tr>
-<tr class="row-odd"><td><p>3</p></td>
 <td><p><cite>Gamma</cite></p></td>
 </tr>
 </tbody>
 </table>
 <p>Integer values outside of the mapped range (or missing) are replaced by 0.</p>
+<p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>value</p></th>
+<th class="head"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><cite>none</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><cite>angstrom</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><cite>inverse_angstrom</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p><cite>real_lattice</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p><cite>reciprocal_lattice</cite></p></td>
+</tr>
+</tbody>
+</table>
+<p>Integer values outside of the mapped range (or missing) are replaced by 3.</p>
 </div>
 <ol class="arabic simple" start="2">
 <li><p>fill(self: brille._brille.BZTrellisQdc, values_data: numpy.ndarray[numpy.float64], values_elements: numpy.ndarray[numpy.int32], values_weights: numpy.ndarray[numpy.float64], vectors_data: numpy.ndarray[numpy.complex128], vectors_elements: numpy.ndarray[numpy.int32], vectors_weights: numpy.ndarray[numpy.float64], sort: bool = False) -&gt; None</p></li>
@@ -1245,6 +1444,8 @@ dimensional array it will be used in place, otherwise a copy will be made.</p></
 <li><p>an integer <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> value denoting
 <em>how</em> the vector-like and matrix-like parts transform under application
 of a symmetry operation (see note below),</p></li>
+<li><p>an integer <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> value denoting what units
+the vector-like and matrix-like parts are in (see note below)</p></li>
 <li><p>which scalar cost function should be used (see below),</p></li>
 <li><p>which vector cost function should be used (see below).</p></li>
 </ul>
@@ -1277,19 +1478,46 @@ the update to the flags and weights.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>0</p></td>
-<td><p><cite>Real</cite></p></td>
+<td><p><cite>vector</cite></p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
-<td><p><cite>Reciprocal</cite></p></td>
+<td><p><cite>pseudovector</cite></p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
-<td><p><cite>Axial</cite></p></td>
-</tr>
-<tr class="row-odd"><td><p>3</p></td>
 <td><p><cite>Gamma</cite></p></td>
 </tr>
 </tbody>
 </table>
+<p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>value</p></th>
+<th class="head"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><cite>none</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><cite>angstrom</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><cite>inverse_angstrom</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p><cite>real_lattice</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p><cite>reciprocal_lattice</cite></p></td>
+</tr>
+</tbody>
+</table>
+<p>Integer values outside of the mapped range (or missing) are replaced by 3.</p>
 <p>Mapping of integers to scalar cost function:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1465,21 +1693,22 @@ for the eigenvalues and eigenvectors, respectively.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.set_flags_weights">
 <span class="sig-name descname"><span class="pre">set_flags_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.set_flags_weights" title="Permalink to this definition"></a></dt>
-<dd><p>Set <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> and cost functions plus
-relative cost weights for the values and vectors stored in the object</p>
+<dd><p>Set <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a>, <cite>~brille._brille.LengthUnit</cite>
+and cost functions plus relative cost weights for the values and vectors
+stored in the object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>values_flags</strong> (<em>integer, vector-like</em>) – One or more values indicating the <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a>
-value for the eigenvalues stored in the object, plus which cost function
-to use when comparing stored eigenvalues at neighbouring grid points for
-scalar- and vector-like eigenvalues.</p></li>
+value for the eigenvalues stored in the object, the <cite>~brille._brille.LengthUnit</cite>
+value, plus which cost function to use when comparing stored eigenvalues at
+neighbouring grid points for scalar- and vector-like eigenvalues.</p></li>
 <li><p><strong>values_weights</strong> (<em>float, vector-like</em>) – The relative cost weights between scalar-, vector-, and matrix- like
 eigenvalue elements stored in the grid</p></li>
 <li><p><strong>vectors_flags</strong> (<em>integer, vector-like</em>) – One or more values indicating the <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a>
-value for the eigenvectors stored in the object, plus which cost function
-to use when comparing stored eigenvectors at neighbouring grid points for
-scalar- and vector-like eigenvectors.</p></li>
+value for the eigenvalues stored in the object, the <cite>~brille._brille.LengthUnit</cite>
+value, plus which cost function to use when comparing stored eigenvectors at
+neighbouring grid points for scalar- and vector-like eigenvectors.</p></li>
 <li><p><strong>vectors_weights</strong> (<em>float, vector-like</em>) – The relative cost weights between scalar-, vector-, and matrix- like
 eigenvector elements stored in the grid</p></li>
 <li><p><strong>sort</strong> (<em>bool, optional</em>) – Whether the equivalent-mode permutations should be (re)determined following
@@ -1502,16 +1731,42 @@ the update to the flags and weights.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>0</p></td>
-<td><p><cite>Real</cite></p></td>
+<td><p><cite>vector</cite></p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
-<td><p><cite>Reciprocal</cite></p></td>
+<td><p><cite>pseudovector</cite></p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
-<td><p><cite>Axial</cite></p></td>
+<td><p><cite>Gamma</cite></p></td>
+</tr>
+</tbody>
+</table>
+<p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>value</p></th>
+<th class="head"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><cite>none</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><cite>angstrom</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><cite>inverse_angstrom</cite></p></td>
 </tr>
 <tr class="row-odd"><td><p>3</p></td>
-<td><p><cite>Gamma</cite></p></td>
+<td><p><cite>real_lattice</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p><cite>reciprocal_lattice</cite></p></td>
 </tr>
 </tbody>
 </table>
@@ -1659,10 +1914,9 @@ existing file – if <cite>entry</cite> exists in the file it is overwritten.</p
 </div></blockquote>
 <p>Members:</p>
 <blockquote>
-<div><p>Real : real space vector or matrix</p>
-<p>Reciprocal : reciprocal scpace vector or matrix</p>
-<p>Axial : real space axial vector</p>
-<p>Gamma : (real space) phonon eigenvector</p>
+<div><p>vector : Rotates like a vector</p>
+<p>pseudovector : Rotates like a pseudovector</p>
+<p>Gamma : Rotates like a (real space) phonon eigenvector</p>
 </div></blockquote>
 </dd></dl>
 
