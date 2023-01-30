@@ -1,0 +1,872 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Matplotlib utilities for brille &#8212; brille 0.7.1.dev20+gc6f13ad documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/katex-math.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/contrib/auto-render.min.js"></script>
+    <script src="../_static/katex_autorenderer.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="OpenGL visualisation" href="vis.html" />
+    <link rel="prev" title="Visualisation" href="../visualisation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/brille.svg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User documents
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../install_guide.html">
+   Installation Guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../motivation.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../memory_usage.html">
+   Memory Use
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tutorial.html">
+   User Guide
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/tutorial_02.html">
+     Simple Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/tutorial_00.html">
+     Interpolating Sodium Chloride phonons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tutorials/tutorial_01.html">
+     Specifying a lattice Spacegroup
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  API documents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../brille.html">
+   Python module
+   <code class="xref py py-mod docutils literal notranslate">
+    <span class="pre">
+     brille
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../visualisation.html">
+   Visualisation
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Matplotlib utilities for
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       brille
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="vis.html">
+     OpenGL visualisation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../utils.html">
+   Utilities for
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     brille
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../doxygen.html">
+   Doxygen documentation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../undoc_brille.html">
+   Undocumented C++ Classes
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="None">
+<i class="fa fa-link"></i>
+ &nbsp; <span class="headerbtn__text-container">Related</span> 
+  </button>
+<div class="menu-dropdown__content" style="transform:translateX(0%)">
+    <ul>
+      <li>
+        <a href="https://brille.github.io"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">brille</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://brille.github.io/brillem"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">brillem</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://brille.github.io/brilleu"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">brilleu</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/pace-neutrons"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">PACE</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://euphonic.readthedocs.io"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">Euphonic</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="None">
+<i class="fa fa-history"></i>
+ &nbsp; <span class="headerbtn__text-container">0.7.1 (latest)</span> 
+  </button>
+<div class="menu-dropdown__content" style="transform:translateX(0%)">
+    <ul>
+      <li>
+        <a href="https://brille.github.io/stable"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">stable</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://brille.github.io/v0.7"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container"><strong>v0.7</strong></span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://brille.github.io/v0.5"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">v0.5</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://brille.github.io/v0.4"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">v0.4</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://brille.github.io/v0.3"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">v0.3</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+<i class="fab fa-github"></i>
+
+  </button>
+<div class="menu-dropdown__content" >
+    <ul>
+      <li>
+        <a href="https://github.com/brille/brille"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/brille/brille/issues/new?title=Issue%20on%20page%20%2Fmodule/plotting.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/brille/brille/edit/master/docs/module/plotting.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+<i class="fas fa-download"></i>
+
+  </button>
+<div class="menu-dropdown__content" >
+    <ul>
+      <li>
+        <a href="../_sources/module/plotting.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Matplotlib utilities for brille</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <span class="target" id="module-brille.plotting"></span><section id="matplotlib-utilities-for-brille">
+<h1>Matplotlib utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code><a class="headerlink" href="#matplotlib-utilities-for-brille" title="Permalink to this headline">#</a></h1>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="brille.plotting.plot">
+<span class="sig-prename descclassname"><span class="pre">brille.plotting.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.plotting.plot" title="Permalink to this definition">#</a></dt>
+<dd><p>A gateway plotting function which infers intention from its input.</p>
+<p>There are a number of plotting routines within this module that have names
+associated with their intended input and functionality. Their signatures
+are sufficiently distinct that the intended plotting function can be
+determined by examining the calling signature alone.
+This function takes any input and calls one of <a class="reference internal" href="#brille.plotting.plot_bz" title="brille.plotting.plot_bz"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_bz()</span></code></a>,
+<a class="reference internal" href="#brille.plotting.plot_polyhedron" title="brille.plotting.plot_polyhedron"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_polyhedron()</span></code></a>, <a class="reference internal" href="#brille.plotting.plot_points" title="brille.plotting.plot_points"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_points()</span></code></a>,
+<a class="reference internal" href="#brille.plotting.plot_points_with_lines" title="brille.plotting.plot_points_with_lines"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_points_with_lines()</span></code></a>, or <a class="reference internal" href="#brille.plotting.plot_tetrahedra" title="brille.plotting.plot_tetrahedra"><code class="xref py py-func docutils literal notranslate"><span class="pre">plot_tetrahedra()</span></code></a>, depending
+on the input provided.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – Variable length argument list, used exclusively for determining the
+implied plotting specialisation.</p></li>
+<li><p><strong>**kwargs</strong> – Arbitrary keyword arguments, passed unmodified to the implied
+specialisation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The return type depends on which specialisation is called.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>variable</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the specialisation can not be inferred from <code class="docutils literal notranslate"><span class="pre">*args</span></code> then an
+    exception is raised.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="brille.plotting.plot_bz">
+<span class="sig-prename descclassname"><span class="pre">brille.plotting.</span></span><span class="sig-name descname"><span class="pre">plot_bz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'invA'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">irreducible</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">face_vectors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'b'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linewidth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.plotting.plot_bz" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot a <code class="xref py py-class docutils literal notranslate"><span class="pre">BrillouinZone</span></code> or related object.</p>
+<p>Draw the faces of a first Brillouin zone and/or irreducible Brillouin zone
+polyhedron, plus additional structures.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul>
+<li><p><strong>bz</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">BrillouinZone</span></code>,          <code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQdc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQcc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQdd</span></code>,          <code class="xref py py-class docutils literal notranslate"><span class="pre">BZNestQdc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZNestQcc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZNestQdd</span></code>,          <code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQdc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQcc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQ</span></code>) – The object containing information about a first Brillouin zone and/or
+an irreducible Brillouin zone.</p></li>
+<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The axes in which to add the plotted points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
+<code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
+axes.</p></li>
+<li><p><strong>origin</strong> ({<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>,tuple,list}, optional) – The origin of the plotting coordinate system, all drawn information is
+relative to this vector. Any 3-element object convertible to a
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> is valid input. Invalid input is replaced by
+the zero-vector.</p></li>
+<li><p><strong>Q</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>, optional) – A <span class="math">\(N \times 3\)</span> array of points to draw after the first/irreducible
+Brillouin zone polyhedron. If <cite>bz</cite> is not a <code class="xref py py-class docutils literal notranslate"><span class="pre">BrillouinZone</span></code>
+and input <cite>Q</cite> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, <cite>Q</cite> will be replaced by the contents of
+<cite>bz.rlu</cite> or <cite>bz.invA</cite>, depending on the value of <cite>units</cite>; otherwise
+the units of <cite>Q</cite> are assumed to be the same as <cite>units</cite>.</p></li>
+<li><p><strong>units</strong> (<em>str, optional</em>) – The units in which to plot the first/irreducible Brillouin zone.</p>
+<table class="table">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>valid units</p></th>
+<th class="head"><p>corresponding to</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'invA'</span></code></p></td>
+<td><p>inverse ångstrom</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'rlu'</span></code></p></td>
+<td><p>reciprocal lattice units of the conventional cell</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'primitive'</span></code></p></td>
+<td><p>reciprocal lattice units of the primitive cell</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p><strong>irreducible</strong> (<em>bool, optional</em>) – Whether to plot the irreducible Brillouin zone polyhedron when it is
+present. When <code class="docutils literal notranslate"><span class="pre">True</span></code>, the first Brillouin zone edges are plotted
+as well.</p></li>
+<li><p><strong>face_vectors</strong> (<em>bool, optional</em>) – Whether to plot vectors from the origin through each first Brillouin
+zone face centre.</p></li>
+<li><p><strong>show</strong> (<em>bool, optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
+<cite>axs</cite>; this is mostly useful in non-interactive environments.</p></li>
+<li><p><strong>color</strong> (<em>optional</em>) – The face color of the drawn polyhedra.</p></li>
+<li><p><strong>edgecolor</strong> (<em>optional</em>) – The edge color of the drawn polyhedra.</p></li>
+<li><p><strong>linewidth</strong> (<em>float, optional</em>) – The edge line width of drawn polyhedra.</p></li>
+<li><p><strong>alpha</strong> (<em>float, optional</em>) – The face alpha of drawn polyhedra.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The value of <cite>axs</cite> after plotting.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib:axes:Axes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="brille.plotting.plot_points">
+<span class="sig-prename descclassname"><span class="pre">brille.plotting.</span></span><span class="sig-name descname"><span class="pre">plot_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.plotting.plot_points" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\(N \times 3\)</span> two dimensional array of <span class="math">\(N\)</span> points to plot.</p></li>
+<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The axes in which to add the plotted points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
+<code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
+axes.</p></li>
+<li><p><strong>title</strong> (<em>str, optional</em>) – An optional title for the plotting axes <cite>axs</cite></p></li>
+<li><p><strong>show</strong> (<em>bool, optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
+<cite>axs</cite>; this is mostly useful in non-interactive environments.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="brille.plotting.plot_points_with_lines">
+<span class="sig-prename descclassname"><span class="pre">brille.plotting.</span></span><span class="sig-name descname"><span class="pre">plot_points_with_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.plotting.plot_points_with_lines" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot points with lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\(N \times 3\)</span> two dimension array of <span class="math">\(N\)</span> points to plot.</p></li>
+<li><p><strong>y</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\((M+1) \times 3\)</span> two dimensional array of the endpoints of <span class="math">\(M\)</span> connected
+line segments to plot.</p></li>
+<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The axes in which to add the plotted points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
+<code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
+axes.</p></li>
+<li><p><strong>title</strong> (<em>str, optional</em>) – An optional title for the plotting axes <cite>axs</cite></p></li>
+<li><p><strong>show</strong> (<em>bool, optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
+<cite>axs</cite>; this is mostly useful in non-interactive environments.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <span class="math">\(M\)</span> line segments defined by <cite>y</cite> are drawn before the points in <cite>x</cite>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="brille.plotting.plot_polyhedron">
+<span class="sig-prename descclassname"><span class="pre">brille.plotting.</span></span><span class="sig-name descname"><span class="pre">plot_polyhedron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">poly</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">setlims</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.plotting.plot_polyhedron" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot a single polyhedron.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>poly</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code>) – Any object with both a <code class="docutils literal notranslate"><span class="pre">vertices</span></code> and <code class="docutils literal notranslate"><span class="pre">vertices_per_face</span></code> field
+could work with thie plotting function, however it is anticipated that a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code> will be provided.</p></li>
+<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The 3D axes in which to add the polyhedron facets. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
+<code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
+axes.</p></li>
+<li><p><strong>setlims</strong> (<em>bool, optional</em>) – Whether to change the limits of <cite>axs</cite> to match the limits of the extent
+of <cite>poly.vertices</cite>.</p></li>
+<li><p><strong>show</strong> (<em>bool, optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
+<cite>axs</cite>; this is mostly useful in non-interactive environments.</p></li>
+<li><p><strong>origin</strong> ({<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>,tuple,list}, optional) – The origin of the plotting coordinate system, all drawn information is
+relative to this vector. Any 3-element object convertible to a
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> is valid input. Invalid input is replaced by
+the zero-vector.</p></li>
+<li><p><strong>color</strong> (<em>optional</em>) – The face color of the drawn polygons.</p></li>
+<li><p><strong>edgecolor</strong> (<em>optional</em>) – The edge color of the drawn polygons.</p></li>
+<li><p><strong>linestyle</strong> (<em>str, optional</em>) – The edge line style of dranw polygons.</p></li>
+<li><p><strong>linewidth</strong> (<em>float, optional</em>) – The edge line width of drawn polygons.</p></li>
+<li><p><strong>alpha</strong> (<em>float, optional</em>) – The face alpha of drawn polygons.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The value of <cite>axs</cite> after plotting.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib:axes:Axes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="brille.plotting.plot_tetrahedra">
+<span class="sig-prename descclassname"><span class="pre">brille.plotting.</span></span><span class="sig-name descname"><span class="pre">plot_tetrahedra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allverts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tetidx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.plotting.plot_tetrahedra" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot a number of tetrahedra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>allverts</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\((N \ge 4) \times 3\)</span> array of the vertices of all tetrahedra</p></li>
+<li><p><strong>tetidx</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\(M \times 4\)</span> array of the indices of <cite>allverts</cite> which make up each of
+the <span class="math">\(M\)</span> tetrahedra to be plotted.
+The values of <cite>tetidx</cite> should obey the inequalities <code class="docutils literal notranslate"><span class="pre">min(tetidx)</span> <span class="pre">≥</span> <span class="pre">0</span></code>
+and <code class="docutils literal notranslate"><span class="pre">max(tetidx)</span> <span class="pre">&lt;</span> <span class="pre">N</span></code>.</p></li>
+<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The 3D axes in which to add the polyhedron facets. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
+<code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
+axes.</p></li>
+<li><p><strong>color</strong> (<em>{arraylike, str, iterable}, optional</em>) – The specified <cite>color</cite> will be used to produce a list of <span class="math">\(M\)</span> colors to
+use in plotting the <span class="math">\(M\)</span> tetrahedra.
+If <cite>color</cite> has three elements or is a <cite>str</cite> it is assumed to represent
+a single RGB value.
+In all cases the single or multiple colors provided in <cite>color</cite> are tiled
+into a list with at least <span class="math">\(M\)</span> elements before being truncated.
+If no <cite>color</cite> is provided, a list of all named colors known to
+<a class="reference external" href="https://matplotlib.org/stable/api/colors_api.html#module-matplotlib.colors" title="(in Matplotlib v3.6.3)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib.colors</span></code></a> is tiled.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="brille.plotting.plot_tetrahedron">
+<span class="sig-prename descclassname"><span class="pre">brille.plotting.</span></span><span class="sig-name descname"><span class="pre">plot_tetrahedron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.plotting.plot_tetrahedron" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot a single tetrahedron.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verts</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\(4 \times 3\)</span> array of the four vertices of the tetrahedron.</p></li>
+<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The 3D axes in which to add the polyhedron facets. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
+<code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
+axes.</p></li>
+<li><p><strong>show</strong> (<em>bool, optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
+<cite>axs</cite>; this is mostly useful in non-interactive environments.</p></li>
+<li><p><strong>origin</strong> ({<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>,tuple,list}, optional) – The origin of the plotting coordinate system, all drawn information is
+relative to this vector. Any 3-element object convertible to a
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a> is valid input. Invalid input is replaced by
+the zero-vector.</p></li>
+<li><p><strong>color</strong> (<em>optional</em>) – The face color of the drawn polygons.</p></li>
+<li><p><strong>edgecolor</strong> (<em>optional</em>) – The edge color of the drawn polygons.</p></li>
+<li><p><strong>linestyle</strong> (<em>str, optional</em>) – The edge line style of dranw polygons.</p></li>
+<li><p><strong>linewidth</strong> (<em>float, optional</em>) – The edge line width of drawn polygons.</p></li>
+<li><p><strong>alpha</strong> (<em>float, optional</em>) – The face alpha of drawn polygons.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The value of <cite>axs</cite> after plotting.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib:axes:Axes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../visualisation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Visualisation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="vis.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">OpenGL visualisation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Gregory Tucker<br/>
+  
+      &copy; Copyright 2020-2023, Gregory Tucker.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
