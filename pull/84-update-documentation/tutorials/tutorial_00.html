@@ -1,0 +1,790 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Interpolating Sodium Chloride phonons &#8212; brille 0.7.1.dev21+ge6d1fb3 documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/katex-math.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/contrib/auto-render.min.js"></script>
+    <script src="../_static/katex_autorenderer.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Specifying a lattice Spacegroup" href="tutorial_01.html" />
+    <link rel="prev" title="Simple Interpolation" href="tutorial_02.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/brille.svg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User documents
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../install_guide.html">
+   Installation Guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../motivation.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../memory_usage.html">
+   Memory Use
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../tutorial.html">
+   User Guide
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="tutorial_02.html">
+     Simple Interpolation
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Interpolating Sodium Chloride phonons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tutorial_01.html">
+     Specifying a lattice Spacegroup
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  API documents
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../brille.html">
+   Python module
+   <code class="xref py py-mod docutils literal notranslate">
+    <span class="pre">
+     brille
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../visualisation.html">
+   Visualisation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module/plotting.html">
+     Matplotlib utilities for
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       brille
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module/vis.html">
+     OpenGL visualisation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../utils.html">
+   Utilities for
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     brille
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../doxygen.html">
+   Doxygen documentation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../undoc_brille.html">
+   Undocumented C++ Classes
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="None">
+<i class="fa fa-link"></i>
+ &nbsp; <span class="headerbtn__text-container">Related</span> 
+  </button>
+<div class="menu-dropdown__content" style="transform:translateX(0%)">
+    <ul>
+      <li>
+        <a href="https://brille.github.io"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">brille</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://brille.github.io/brillem"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">brillem</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://brille.github.io/brilleu"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">brilleu</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/pace-neutrons"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">PACE</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://euphonic.readthedocs.io"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">Euphonic</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="None">
+<i class="fa fa-history"></i>
+ &nbsp; <span class="headerbtn__text-container">0.7.1 (latest)</span> 
+  </button>
+<div class="menu-dropdown__content" style="transform:translateX(0%)">
+    <ul>
+      <li>
+        <a href="https://brille.github.io/stable"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">stable</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://brille.github.io/v0.7"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container"><strong>v0.7</strong></span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://brille.github.io/v0.5"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">v0.5</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://brille.github.io/v0.4"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">v0.4</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://brille.github.io/v0.3"
+   class="headerbtn"
+   
+>
+  
+
+<span class="headerbtn__text-container">v0.3</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+<i class="fab fa-github"></i>
+
+  </button>
+<div class="menu-dropdown__content" >
+    <ul>
+      <li>
+        <a href="https://github.com/brille/brille"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/brille/brille/issues/new?title=Issue%20on%20page%20%2Ftutorials/tutorial_00.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/brille/brille/edit/master/docs/tutorials/tutorial_00.rst"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+<i class="fas fa-download"></i>
+
+  </button>
+<div class="menu-dropdown__content" >
+    <ul>
+      <li>
+        <a href="../_sources/tutorials/tutorial_00.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dispersion-plots">
+   Dispersion plots
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inelastic-neutron-scattering">
+   Inelastic Neutron Scattering
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Interpolating Sodium Chloride phonons</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dispersion-plots">
+   Dispersion plots
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inelastic-neutron-scattering">
+   Inelastic Neutron Scattering
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="interpolating-sodium-chloride-phonons">
+<h1>Interpolating Sodium Chloride phonons<a class="headerlink" href="#interpolating-sodium-chloride-phonons" title="Permalink to this headline">#</a></h1>
+<p>Sodium Chloride forms face-centred cubic crystals in Space group
+<span class="math">\(F m \bar{3} m\)</span> (Hall symbol <span class="math">\(-F 4 2 3\)</span>) with lattice
+parameter <span class="math">\(a \approx 5.69\)</span> Å.</p>
+<p><a class="reference external" href="https://euphonic.readthedocs.io/en/stable/index.html" title="(in Euphonic)"><span class="xref std std-doc">Euphonic</span></a> is a project which can take force constant information at
+gridded positions in <span class="math">\(\mathbf{Q}\)</span> and use Fourier interpolation to
+approximate the dynamical matrix at arbitrary <span class="math">\(\mathbf{Q}\)</span>.
+It can then solve the eigenvalue problem to determine the eigenvalues,
+<span class="math">\(\omega_i^2(\mathbf{Q})\)</span>, and eigenvectors,
+<span class="math">\(\hat{\epsilon}_{ij}(\mathbf{Q})\)</span>, which are the squared energy
+and vectors related to the atom-resolved displacements for the
+<span class="math">\({i=1,…,3 N_\text{atom}}\)</span> phonon branches,
+where <span class="math">\({j=1,\ldots,N_\text{atom}}\)</span>.</p>
+<p>In the specific case of NaCl with its basis described in the face-centred
+lattice, the dynamical matrix is a <span class="math">\(24\times24\)</span> matrix and the eigenvalue
+problem can be solved relatively quickly on a modern computer.
+Still, it may be advantageous to minimise the work performed by
+<a class="reference external" href="https://euphonic.readthedocs.io/en/stable/index.html" title="(in Euphonic)"><span class="xref std std-doc">Euphonic</span></a> and let <a class="reference internal" href="../brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> do the heavy lifting.</p>
+<p>The interface between <a class="reference internal" href="../brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> and <a class="reference external" href="https://euphonic.readthedocs.io/en/stable/index.html" title="(in Euphonic)"><span class="xref std std-doc">Euphonic</span></a> is implemented as
+a class <a class="reference external" href="https://brille.github.io/brilleu/latest/brilleu.html#brilleu.BrillEu" title="(in brilleu)"><code class="xref py py-class docutils literal notranslate"><span class="pre">brilleu.BrillEu</span></code></a> in the <a class="reference external" href="https://brille.github.io/brilleu/latest/index.html" title="(in brilleu)"><span class="xref std std-doc">brilleu</span></a> module.</p>
+<p>The first step in creating an appropriate interpolation grid object is to load
+the force constant data from, e.g., a CASTEP binary file.
+An appropriate file for <a class="reference external" href="https://github.com/brille/brilleu/raw/master/brilleu/NaCl.castep_bin">NaCl</a> can be used in conjunction with
+<a class="reference download internal" download="" href="../_downloads/6c53e4ad648d9756e7ca578019e7b4de/tutorial_00.py"><code class="xref download docutils literal notranslate"><span class="pre">this</span> <span class="pre">script</span></code></a> to reproduce the content of this
+tutorial.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nacl</span> <span class="o">=</span> <span class="n">getBrillEuObj</span><span class="p">(</span><span class="s1">&#39;NaCl&#39;</span><span class="p">,</span> <span class="n">max_volume</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scattering_lengths</span><span class="o">=</span><span class="n">scattering_lengths</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Constructing the <a class="reference external" href="https://brille.github.io/brilleu/latest/brilleu.html#brilleu.BrillEu" title="(in brilleu)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BrillEu</span></code></a> object creates a hybrid grid
+in the irreducible Brillouin zone and then uses the
+<a class="reference external" href="https://euphonic.readthedocs.io/en/stable/force-constants.html#euphonic.force_constants.ForceConstants" title="(in Euphonic)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForceConstants</span></code></a> object to store
+<span class="math">\(\omega_i(\mathbf{q}_\text{ir})\)</span> and
+<span class="math">\(\hat{\epsilon}_{ij}(\mathbf{q}_\text{ir})\)</span> at each grid vertex.
+The stored data are then used to determine a sorting permutation for each vertex
+which attempts to place equivalent modes at equal indexes on all neighbouring
+vertices. As we will see, this process is not yet perfected.</p>
+<section id="dispersion-plots">
+<h2>Dispersion plots<a class="headerlink" href="#dispersion-plots" title="Permalink to this headline">#</a></h2>
+<p>Interpolation can be used to determine the dispersion relation along any path
+in reciprocal space. One such path starts at the origin and goes to
+<span class="math">\(\mathbf{Q} = (1\,2\,3)\)</span> which is on the Brillouin zone boundary for
+<span class="math">\(\mathbf{G} = (1\,1\,3)\)</span> and passes through the
+<span class="math">\(\mathbf{G} = (1\,1\,1)\)</span> and <span class="math">\(\mathbf{G} = (0\,2\,2)\)</span>
+first Brillouin zones.</p>
+<figure class="align-center" id="id1">
+<img alt="NaCl [123] path" src="../_images/nacl_123_path.png" />
+<figcaption>
+<p><span class="caption-text">The <span class="math">\((0\,0\,0)\)</span>, <span class="math">\((1\,1\,1)\)</span>, <span class="math">\((0\,2\,2)\)</span>, and
+<span class="math">\((1\,1\,3)\)</span> first Brillouin zones and the path from <span class="math">\((0\,0\,0)\)</span>
+to <span class="math">\((1\,2\,3)\)</span></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We can construct points along the path and find <span class="math">\(\omega_i(\mathbf{Q})\)</span>
+using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">qhkl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">xi</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">xi</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">xi</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+<span class="n">w_q</span> <span class="o">=</span> <span class="n">nacl</span><span class="o">.</span><span class="n">w_q</span><span class="p">(</span><span class="n">qhkl</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Since this path passes through four first Brillouin zones, an equivalent path
+must pass through the irreducible Brillouin zone multiple times. We can find
+the irreducible path using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">irqhkl</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">rot</span><span class="p">,</span> <span class="n">invrot</span> <span class="o">=</span> <span class="n">nacl</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">BrillouinZone</span><span class="o">.</span><span class="n">ir_moveinto</span><span class="p">(</span><span class="n">qhkl</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id2">
+<img alt="NaCl [123] irreducible path and dispersion" src="../_images/nacl_123_disp.png" />
+<figcaption>
+<p><span class="caption-text">The irreducible path is shown in the irreducible Brillouin zone on the left,
+note that it passes through the irreducible polyhedron multiple times.
+The dispersion relation on the right is obtained by linear interpolation
+within the irreducible polyhedron.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="inelastic-neutron-scattering">
+<h2>Inelastic Neutron Scattering<a class="headerlink" href="#inelastic-neutron-scattering" title="Permalink to this headline">#</a></h2>
+<p>Inelastic neutron scattering experiments performed with surveying instruments
+produce observations of scattering intensity at points in <span class="math">\((\mathbf{Q},E)\)</span>
+which are not on a regular grid.</p>
+<p>The intensity measured in a neutron scattering experiment from one-phonon
+scattering</p>
+<div class="math">
+\[\begin{aligned}
+S(\mathbf{Q}, E) & \propto \sum_i S_i(\mathbf{Q}) \delta(E-\hbar\omega_i(\mathbf{Q})) \\
+S_i(\mathbf{Q}) & = \frac{1}{\omega_i(\mathbf{Q})}
+                   \left|\sum_j \frac{b_j}{\sqrt{M_j}}
+                                \mathbf{Q}\cdot\hat{\epsilon}_{ij}(\mathbf{Q})
+                                e^{i \mathbf{Q}\cdot\mathbf{r}^0_j}
+                   \right|^2
+\end{aligned}\]</div>
+<p>with <span class="math">\(S_i(\mathbf{Q})\)</span> and <span class="math">\(\omega_i(\mathbf{Q})\)</span> directly calculable
+from theory via, e.g., <a class="reference external" href="https://euphonic.readthedocs.io/en/stable/structure-factor.html#euphonic.structure_factor.StructureFactor" title="(in Euphonic)"><code class="xref py py-class docutils literal notranslate"><span class="pre">StructureFactor</span></code></a>.</p>
+<p>If the observations were on a regular <span class="math">\((\mathbf{Q},E)\)</span> grid then it would
+be straightforward to calculate <span class="math">\(S_i(\mathbf{Q})\)</span> and
+<span class="math">\(\omega_i(\mathbf{Q})\)</span> for each unique <span class="math">\(\mathbf{Q}\)</span>
+with the extension to <span class="math">\(S(\mathbf{Q},E)\)</span> involving an approximation to
+the convolution of the instrumental resolution and a delta function.</p>
+<p>Since, the detectors observe along (nonlinear) kinematically constrained
+paths through <span class="math">\((\mathbf{Q},E)\)</span>, each observation is likely to have a
+unique <span class="math">\(\mathbf{Q}\)</span> and, as a result, the calculation of
+<span class="math">\(S_i(\mathbf{Q})\)</span> and <span class="math">\(\omega_i(\mathbf{Q})\)</span> is necessary for
+<em>every</em> observation.</p>
+<p>If the <span class="math">\((\mathbf{Q},E)\)</span> observation positions are known for all detectors
+then <a class="reference internal" href="../brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> can be used to find <span class="math">\(S(\mathbf{Q},E)\)</span>.
+Correct handling of the non-uniform observations is non-trivial and special
+software packages exist for this purpose, e.g., <a class="reference external" href="https://github.com/pace-neutrons/horace">Horace</a>.
+Here we will avoid these complications by calculating <span class="math">\(S(\mathbf{Q},E)\)</span>
+for all points in a <span class="math">\((\mathbf{Q},E)\)</span> grid.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span><span class="p">,</span> <span class="n">nu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">50</span><span class="n">j</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">60</span><span class="n">j</span><span class="p">]</span>
+<span class="n">ξ</span> <span class="o">=</span> <span class="n">mu</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">mu</span><span class="o">.</span><span class="n">size</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">En</span> <span class="o">=</span> <span class="n">nu</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nu</span><span class="o">.</span><span class="n">size</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Qhkl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">ξ</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">ξ</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">ξ</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">brSQE</span> <span class="o">=</span> <span class="n">nacl</span><span class="p">(</span><span class="n">Qhkl</span><span class="p">,</span> <span class="n">En</span><span class="p">,</span> <span class="n">resfun</span><span class="o">=</span><span class="s1">&#39;sho&#39;</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">mu</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id3">
+<img alt="NaCl [123] inelastic neutron scattering intensity map" src="../_images/nacl_123_sqw.png" />
+<figcaption>
+<p><span class="caption-text">Inleastic neutron scattering intensity for the same path through recprocal
+space as above.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="tutorial_02.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Simple Interpolation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="tutorial_01.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Specifying a lattice Spacegroup</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Gregory Tucker<br/>
+  
+      &copy; Copyright 2020-2023, Gregory Tucker.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
