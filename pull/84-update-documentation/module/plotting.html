@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Matplotlib utilities for brille &#8212; brille 0.7.1.dev22+g775b300 documentation</title>
+    <title>Matplotlib utilities for brille &#8212; brille 0.7.1.dev23+gc9ca4f3 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -620,7 +620,7 @@ polyhedron, plus additional structures.</p>
 <dd class="field-odd"><ul>
 <li><p><strong>bz</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">BrillouinZone</span></code>,          <code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQdc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQcc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQdd</span></code>,          <code class="xref py py-class docutils literal notranslate"><span class="pre">BZNestQdc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZNestQcc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZNestQdd</span></code>,          <code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQdc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQcc</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQ</span></code>) – The object containing information about a first Brillouin zone and/or
 an irreducible Brillouin zone.</p></li>
-<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The axes in which to add the plotted points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
+<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.7.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The axes in which to add the plotted points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
 axes.</p></li>
 <li><p><strong>origin</strong> ({<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>,tuple,list}, optional) – The origin of the plotting coordinate system, all drawn information is
@@ -686,7 +686,7 @@ zone face centre.</p></li>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\(N \times 3\)</span> two dimensional array of <span class="math">\(N\)</span> points to plot.</p></li>
-<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The axes in which to add the plotted points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
+<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.7.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The axes in which to add the plotted points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
 axes.</p></li>
 <li><p><strong>title</strong> (<em>str, optional</em>) – An optional title for the plotting axes <cite>axs</cite></p></li>
@@ -707,7 +707,7 @@ axes.</p></li>
 <li><p><strong>x</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\(N \times 3\)</span> two dimension array of <span class="math">\(N\)</span> points to plot.</p></li>
 <li><p><strong>y</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\((M+1) \times 3\)</span> two dimensional array of the endpoints of <span class="math">\(M\)</span> connected
 line segments to plot.</p></li>
-<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The axes in which to add the plotted points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
+<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.7.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The axes in which to add the plotted points. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
 axes.</p></li>
 <li><p><strong>title</strong> (<em>str, optional</em>) – An optional title for the plotting axes <cite>axs</cite></p></li>
@@ -732,7 +732,7 @@ axes.</p></li>
 <li><p><strong>poly</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code>) – Any object with both a <code class="docutils literal notranslate"><span class="pre">vertices</span></code> and <code class="docutils literal notranslate"><span class="pre">vertices_per_face</span></code> field
 could work with thie plotting function, however it is anticipated that a
 <code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Polyhedron</span></code> will be provided.</p></li>
-<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The 3D axes in which to add the polyhedron facets. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
+<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.7.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The 3D axes in which to add the polyhedron facets. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
 axes.</p></li>
 <li><p><strong>setlims</strong> (<em>bool, optional</em>) – Whether to change the limits of <cite>axs</cite> to match the limits of the extent
@@ -771,7 +771,7 @@ the zero-vector.</p></li>
 the <span class="math">\(M\)</span> tetrahedra to be plotted.
 The values of <cite>tetidx</cite> should obey the inequalities <code class="docutils literal notranslate"><span class="pre">min(tetidx)</span> <span class="pre">≥</span> <span class="pre">0</span></code>
 and <code class="docutils literal notranslate"><span class="pre">max(tetidx)</span> <span class="pre">&lt;</span> <span class="pre">N</span></code>.</p></li>
-<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The 3D axes in which to add the polyhedron facets. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
+<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.7.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The 3D axes in which to add the polyhedron facets. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
 axes.</p></li>
 <li><p><strong>color</strong> (<em>{arraylike, str, iterable}, optional</em>) – The specified <cite>color</cite> will be used to produce a list of <span class="math">\(M\)</span> colors to
@@ -781,7 +781,7 @@ a single RGB value.
 In all cases the single or multiple colors provided in <cite>color</cite> are tiled
 into a list with at least <span class="math">\(M\)</span> elements before being truncated.
 If no <cite>color</cite> is provided, a list of all named colors known to
-<a class="reference external" href="https://matplotlib.org/stable/api/colors_api.html#module-matplotlib.colors" title="(in Matplotlib v3.6.3)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib.colors</span></code></a> is tiled.</p></li>
+<a class="reference external" href="https://matplotlib.org/stable/api/colors_api.html#module-matplotlib.colors" title="(in Matplotlib v3.7.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">matplotlib.colors</span></code></a> is tiled.</p></li>
 </ul>
 </dd>
 </dl>
@@ -795,7 +795,7 @@ If no <cite>color</cite> is provided, a list of all named colors known to
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>verts</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>) – A <span class="math">\(4 \times 3\)</span> array of the four vertices of the tetrahedron.</p></li>
-<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.6.3)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The 3D axes in which to add the polyhedron facets. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
+<li><p><strong>axs</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.7.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional) – The 3D axes in which to add the polyhedron facets. If <code class="docutils literal notranslate"><span class="pre">None</span></code> then
 <code class="xref py py-func docutils literal notranslate"><span class="pre">matplotlib.axes.gca()</span></code> is used to get or spawn the current
 axes.</p></li>
 <li><p><strong>show</strong> (<em>bool, optional</em>) – Whether to call <cite>matplotlib.pyplot.show()</cite> after adding the points to
