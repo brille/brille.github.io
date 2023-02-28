@@ -1,719 +1,128 @@
-
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Simple Interpolation &#8212; brille 0.7.1.dev20+gc6f13ad documentation</title>
-    
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/katex-math.css" />
-    
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/contrib/auto-render.min.js"></script>
-    <script src="../_static/katex_autorenderer.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Interpolation &mdash; brille 0.7.1.dev2+g5263c91 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/contrib/auto-render.min.js"></script>
+        <script src="../_static/katex_autorenderer.js"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Interpolating Sodium Chloride phonons" href="tutorial_00.html" />
-    <link rel="prev" title="User Guide" href="../tutorial.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
+    <link rel="prev" title="User Guide" href="../tutorial.html" /> 
+</head>
 
-    <!-- Google Analytics -->
-    
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/brille.svg" class="logo" alt="logo">
-      
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  User documents
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../install_guide.html">
-   Installation Guide
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../motivation.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../memory_usage.html">
-   Memory Use
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../tutorial.html">
-   User Guide
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Simple Interpolation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="tutorial_00.html">
-     Interpolating Sodium Chloride phonons
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="tutorial_01.html">
-     Specifying a lattice Spacegroup
-    </a>
-   </li>
-  </ul>
- </li>
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> brille
+            <img src="../_static/brille.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.7.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install_guide.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../motivation.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../memory_usage.html">Memory Use</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorial.html">User Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Simple Interpolation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#interpolation-of-a-scalar-field">Interpolation of a scalar field</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#construct-the-lattice">Construct the lattice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#construct-the-brillouin-zone-polyhedron">Construct the Brillouin zone polyhedron</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#construct-the-interpolation-grid">Construct the interpolation grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#provide-the-data-to-be-interpolated">Provide the data to be interpolated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#perform-the-interpolation">Perform the interpolation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  API documents
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../brille.html">
-   Python module
-   <code class="xref py py-mod docutils literal notranslate">
-    <span class="pre">
-     brille
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../visualisation.html">
-   Visualisation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../module/plotting.html">
-     Matplotlib utilities for
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       brille
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../module/vis.html">
-     OpenGL visualisation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../utils.html">
-   Utilities for
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     brille
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../doxygen.html">
-   Doxygen documentation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="simple">
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../undoc_brille.html">
-   Undocumented C++ Classes
-  </a>
- </li>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#interpolation-of-a-dispersing-excitation">Interpolation of a dispersing excitation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fill">Fill</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interpolate">Interpolate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_00.html">Interpolating Sodium Chloride phonons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_01.html">Specifying a lattice Spacegroup</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#documented-thus-far">Documented thus far:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting.html">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doxygen.html">Doxygen documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">Undocumented C++ Classes</a></li>
 </ul>
 
-    </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
         </div>
-    </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="None">
-<i class="fa fa-link"></i>
- &nbsp; <span class="headerbtn__text-container">Related</span> 
-  </button>
-<div class="menu-dropdown__content" style="transform:translateX(0%)">
-    <ul>
-      <li>
-        <a href="https://brille.github.io"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">brille</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://brille.github.io/brillem"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">brillem</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://brille.github.io/brilleu"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">brilleu</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/pace-neutrons"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">PACE</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://euphonic.readthedocs.io"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">Euphonic</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="None">
-<i class="fa fa-history"></i>
- &nbsp; <span class="headerbtn__text-container">0.7.1 (latest)</span> 
-  </button>
-<div class="menu-dropdown__content" style="transform:translateX(0%)">
-    <ul>
-      <li>
-        <a href="https://brille.github.io/stable"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">stable</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://brille.github.io/v0.7"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container"><strong>v0.7</strong></span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://brille.github.io/v0.5"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">v0.5</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://brille.github.io/v0.4"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">v0.4</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://brille.github.io/v0.3"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">v0.3</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-<i class="fab fa-github"></i>
-
-  </button>
-<div class="menu-dropdown__content" >
-    <ul>
-      <li>
-        <a href="https://github.com/brille/brille"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/brille/brille/issues/new?title=Issue%20on%20page%20%2Ftutorials/tutorial_02.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/brille/brille/edit/master/docs/tutorials/tutorial_02.rst"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-<i class="fas fa-download"></i>
-
-  </button>
-<div class="menu-dropdown__content" >
-    <ul>
-      <li>
-        <a href="../_sources/tutorials/tutorial_02.rst.txt"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.rst</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
-</div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interpolation-of-a-scalar-field">
-   Interpolation of a scalar field
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#construct-the-lattice">
-     Construct the lattice
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#construct-the-brillouin-zone-polyhedron">
-     Construct the Brillouin zone polyhedron
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#construct-the-interpolation-grid">
-     Construct the interpolation grid
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#provide-the-data-to-be-interpolated">
-     Provide the data to be interpolated
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#perform-the-interpolation">
-     Perform the interpolation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interpolation-of-a-dispersing-excitation">
-   Interpolation of a dispersing excitation
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fill">
-     Fill
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#interpolate">
-     Interpolate
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
+      </div>
     </nav>
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Simple Interpolation</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interpolation-of-a-scalar-field">
-   Interpolation of a scalar field
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#construct-the-lattice">
-     Construct the lattice
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#construct-the-brillouin-zone-polyhedron">
-     Construct the Brillouin zone polyhedron
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#construct-the-interpolation-grid">
-     Construct the interpolation grid
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#provide-the-data-to-be-interpolated">
-     Provide the data to be interpolated
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#perform-the-interpolation">
-     Perform the interpolation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interpolation-of-a-dispersing-excitation">
-   Interpolation of a dispersing excitation
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setup">
-     Setup
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fill">
-     Fill
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#interpolate">
-     Interpolate
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <main id="main-content" role="main">
-                
-              <div>
-                
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">brille</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../tutorial.html">User Guide</a> &raquo;</li>
+      <li>Simple Interpolation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorials/tutorial_02.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="simple-interpolation">
-<h1>Simple Interpolation<a class="headerlink" href="#simple-interpolation" title="Permalink to this headline">#</a></h1>
+<h1>Simple Interpolation<a class="headerlink" href="#simple-interpolation" title="Permalink to this headline"></a></h1>
 <p>One of the main purposes of <cite>brille</cite> is to perform linear interpolation.
 This short tutorial will teach you how to perform simple linear interpolation using <cite>brille</cite>.
 All examples here are used in the continuous testing of <cite>brille</cite> and are
 from the file <cite>wrap/tests/test_4_interpolation.py</cite> available in the repository.</p>
 <section id="interpolation-of-a-scalar-field">
-<h2>Interpolation of a scalar field<a class="headerlink" href="#interpolation-of-a-scalar-field" title="Permalink to this headline">#</a></h2>
+<h2>Interpolation of a scalar field<a class="headerlink" href="#interpolation-of-a-scalar-field" title="Permalink to this headline"></a></h2>
 <p>A scalar field is any function <span class="math">\(\phi(\mathbf{Q})\)</span> which is single-valued
 at all <span class="math">\(\mathbf{Q}\)</span>. Here we will interpolate a scalar field of the form
 <span class="math">\(\phi(\mathbf{Q}) = \mathbf{Q}\cdot\hat{\mathbf{x}}\)</span>, which is a linear
 scalar field.</p>
 <section id="construct-the-lattice">
-<h3>Construct the lattice<a class="headerlink" href="#construct-the-lattice" title="Permalink to this headline">#</a></h3>
+<h3>Construct the lattice<a class="headerlink" href="#construct-the-lattice" title="Permalink to this headline"></a></h3>
 <p>Linear interpolation can only be performed using <cite>brille</cite> if a grid is constructed first.
 The construction of a grid requires that we define a space-filling lattice,
 so we start with that:</p>
@@ -726,7 +135,7 @@ each of unit length, <span class="math">\(1 \AA^{-1}\)</span>, and as a result h
 volume <span class="math">\(1 \AA^{-3}\)</span> which we can access through <cite>lattice.volume</cite>.</p>
 </section>
 <section id="construct-the-brillouin-zone-polyhedron">
-<h3>Construct the Brillouin zone polyhedron<a class="headerlink" href="#construct-the-brillouin-zone-polyhedron" title="Permalink to this headline">#</a></h3>
+<h3>Construct the Brillouin zone polyhedron<a class="headerlink" href="#construct-the-brillouin-zone-polyhedron" title="Permalink to this headline"></a></h3>
 <p>To construct the grid we must define its extent, which in <cite>brille</cite> is always a
 first or irreducible Brillouin zone polyhedron. Finding this polyhedron may not
 be trivial, so it is an independent step (with options to control the algorithm
@@ -742,7 +151,7 @@ first Brillouin zone polyhedron, accessible through <cite>brillouin_zone.ir_poly
 and <cite>brillouin_zone.polyhedron</cite>, respectively.</p>
 </section>
 <section id="construct-the-interpolation-grid">
-<h3>Construct the interpolation grid<a class="headerlink" href="#construct-the-interpolation-grid" title="Permalink to this headline">#</a></h3>
+<h3>Construct the interpolation grid<a class="headerlink" href="#construct-the-interpolation-grid" title="Permalink to this headline"></a></h3>
 <p>Finally, we can construct the interpolation grid. We have multiple options
 within <cite>brille</cite>, but nearly always we should use one of the <a class="reference internal" href="../module/grids.html#hybrid-grids"><span class="std std-ref">Hybrid grids</span></a>.
 In this short tutorial we will interpolate purely real-valued data, so we pick
@@ -764,7 +173,7 @@ units of the reciprocal lattice units or <span class="math">\(\AA^{-1}\)</span>,
 in this case the two units are the same.</p>
 </section>
 <section id="provide-the-data-to-be-interpolated">
-<h3>Provide the data to be interpolated<a class="headerlink" href="#provide-the-data-to-be-interpolated" title="Permalink to this headline">#</a></h3>
+<h3>Provide the data to be interpolated<a class="headerlink" href="#provide-the-data-to-be-interpolated" title="Permalink to this headline"></a></h3>
 <p>The grid must be provided with data corresponding to each grid point in order
 to be used to perform linear interpolation. This is accomplished using one of
 the <code class="xref py py-meth docutils literal notranslate"><span class="pre">fill()</span></code> method overloads.</p>
@@ -796,7 +205,7 @@ default, <span class="math">\(0\)</span>, is acceptable here.</p>
 </div>
 </section>
 <section id="perform-the-interpolation">
-<h3>Perform the interpolation<a class="headerlink" href="#perform-the-interpolation" title="Permalink to this headline">#</a></h3>
+<h3>Perform the interpolation<a class="headerlink" href="#perform-the-interpolation" title="Permalink to this headline"></a></h3>
 <p>The extent of the grid is the first Brillouin zone polyhedron which, in this
 case, has all coordinates <span class="math">\(x_i \in (-0.5, 0.5)\)</span>.
 If the grid is used to interpolate at a <span class="math">\(\mathbf{Q}\)</span> inside of the first
@@ -835,7 +244,7 @@ estimate of the function.</p>
 </section>
 </section>
 <section id="interpolation-of-a-dispersing-excitation">
-<h2>Interpolation of a dispersing excitation<a class="headerlink" href="#interpolation-of-a-dispersing-excitation" title="Permalink to this headline">#</a></h2>
+<h2>Interpolation of a dispersing excitation<a class="headerlink" href="#interpolation-of-a-dispersing-excitation" title="Permalink to this headline"></a></h2>
 <p>Excitations which have energies dependent on <span class="math">\(\mathbf{Q}\)</span> are said to be
 dispersive. One such dispersive excitation is the accoustic ferromagnetic
 spinwave in iron, which has a dispersion</p>
@@ -850,7 +259,7 @@ are the three Cartesian directions.</p>
 it is possible to use <a class="reference internal" href="../brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> to estimate its energy at arbitrary
 <span class="math">\(\mathbf{Q}\)</span> using linear interpolation.</p>
 <section id="setup">
-<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h3>
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline"></a></h3>
 <p>The lattice parameter of iron is <span class="math">\(a = 2.87 \AA\)</span> and its cubic lattice has
 the symmetry of the spacegroup with Hermann-Mauguin symbol <span class="math">\(I m \bar{3} m\)</span>.
 We will construct an irreducible Brillouin zone polyhedron, and then use it to
@@ -864,7 +273,7 @@ produce a hybrid interpolation grid with at least <span class="math">\(1000\)</s
 </div>
 </section>
 <section id="fill">
-<h3>Fill<a class="headerlink" href="#fill" title="Permalink to this headline">#</a></h3>
+<h3>Fill<a class="headerlink" href="#fill" title="Permalink to this headline"></a></h3>
 <p>We then can use the relative lattice unit grid points to fill the dispersion
 information into the grid. Again we will provide the same information for the
 eigenvalues and eigenvectors, and again there is a single scalar value for the
@@ -882,7 +291,7 @@ effect for scalars and so does not impact this case.</p>
 </div>
 </section>
 <section id="interpolate">
-<h3>Interpolate<a class="headerlink" href="#interpolate" title="Permalink to this headline">#</a></h3>
+<h3>Interpolate<a class="headerlink" href="#interpolate" title="Permalink to this headline"></a></h3>
 <p>Since we have provided symmetry information and produced a grid bounded by
 an irreducible Brillouin zone polyhedron, we must use the irreducible
 interpolation method of the grid, <code class="xref py py-meth docutils literal notranslate"><span class="pre">ir_interpolate_at()</span></code>.</p>
@@ -926,7 +335,7 @@ paths through reciprocal space:</p>
 <p>Produces the following plot:</p>
 <figure class="align-center" id="id1">
 <img alt="../_images/tutorial_02_fig0.svg" src="../_images/tutorial_02_fig0.svg" /><figcaption>
-<p><span class="caption-text">Interpolated iron spinwave dispersion (black) and exact solution (red).</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Interpolated iron spinwave dispersion (black) and exact solution (red).</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>On closer inspection, the linear-interpolation introduced errors are more obvious:</p>
@@ -938,7 +347,7 @@ paths through reciprocal space:</p>
 </div>
 <figure class="align-center" id="id2">
 <img alt="../_images/tutorial_02_fig1.svg" src="../_images/tutorial_02_fig1.svg" /><figcaption>
-<p><span class="caption-text">Enlarged region of interpolated iron spinwave dispersion (black) and exact solution (red).</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Enlarged region of interpolated iron spinwave dispersion (black) and exact solution (red).</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
@@ -946,50 +355,34 @@ paths through reciprocal space:</p>
 </section>
 
 
-              </div>
-              
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../tutorial.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">User Guide</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="tutorial_00.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Interpolating Sodium Chloride phonons</p>
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../tutorial.html" class="btn btn-neutral float-left" title="User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial_00.html" class="btn btn-neutral float-right" title="Interpolating Sodium Chloride phonons" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Gregory Tucker<br/>
-  
-      &copy; Copyright 2020-2023, Gregory Tucker.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
 
+  <hr/>
 
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Gregory Tucker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
       </div>
-    </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
 
-
-  </body>
+</body>
 </html>

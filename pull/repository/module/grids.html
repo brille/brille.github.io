@@ -1,663 +1,113 @@
-
 <!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>Grids &#8212; brille 0.7.1.dev20+gc6f13ad documentation</title>
-    
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/katex-math.css" />
-    
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/contrib/auto-render.min.js"></script>
-    <script src="../_static/katex_autorenderer.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grids &mdash; brille 0.7.1.dev2+g5263c91 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/katex-math.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.15.0/dist/contrib/auto-render.min.js"></script>
+        <script src="../_static/katex_autorenderer.js"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Symmetry" href="symmetry.html" />
-    <link rel="prev" title="Brillouin Zone" href="bz.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
+    <link rel="prev" title="Brillouin Zone" href="bz.html" /> 
+</head>
 
-    <!-- Google Analytics -->
-    
-  </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="../_static/brille.svg" class="logo" alt="logo">
-      
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  User documents
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../install_guide.html">
-   Installation Guide
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../motivation.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../memory_usage.html">
-   Memory Use
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../tutorial.html">
-   User Guide
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tutorials/tutorial_02.html">
-     Simple Interpolation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tutorials/tutorial_00.html">
-     Interpolating Sodium Chloride phonons
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tutorials/tutorial_01.html">
-     Specifying a lattice Spacegroup
-    </a>
-   </li>
-  </ul>
- </li>
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> brille
+            <img src="../_static/brille.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.7.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install_guide.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../motivation.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../memory_usage.html">Memory Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">User Guide</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  API documents
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../brille.html">
-   Python module
-   <code class="xref py py-mod docutils literal notranslate">
-    <span class="pre">
-     brille
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../visualisation.html">
-   Visualisation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="plotting.html">
-     Matplotlib utilities for
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       brille
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="vis.html">
-     OpenGL visualisation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../utils.html">
-   Utilities for
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     brille
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../doxygen.html">
-   Doxygen documentation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="simple">
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../undoc_brille.html">
-   Undocumented C++ Classes
-  </a>
- </li>
+<p class="caption" role="heading"><span class="caption-text">API documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../brille.html#documented-thus-far">Documented thus far:</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lattice.html">Lattices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bz.html">Brillouin Zone</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Grids</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#regular-grids">Regular grids</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#triangulated-grids">Triangulated grids</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#simple">Simple</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hierarchy">Hierarchy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hybrid-grids">Hybrid grids</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#helper-classes">Helper classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="symmetry.html">Symmetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="everything.html">Remainder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting.html">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doxygen.html">Doxygen documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">Undocumented C++ Classes</a></li>
 </ul>
 
-    </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
         </div>
-    </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="None">
-<i class="fa fa-link"></i>
- &nbsp; <span class="headerbtn__text-container">Related</span> 
-  </button>
-<div class="menu-dropdown__content" style="transform:translateX(0%)">
-    <ul>
-      <li>
-        <a href="https://brille.github.io"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">brille</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://brille.github.io/brillem"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">brillem</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://brille.github.io/brilleu"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">brilleu</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/pace-neutrons"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">PACE</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://euphonic.readthedocs.io"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">Euphonic</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="None">
-<i class="fa fa-history"></i>
- &nbsp; <span class="headerbtn__text-container">0.7.1 (latest)</span> 
-  </button>
-<div class="menu-dropdown__content" style="transform:translateX(0%)">
-    <ul>
-      <li>
-        <a href="https://brille.github.io/stable"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">stable</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://brille.github.io/v0.7"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container"><strong>v0.7</strong></span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://brille.github.io/v0.5"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">v0.5</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://brille.github.io/v0.4"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">v0.4</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://brille.github.io/v0.3"
-   class="headerbtn"
-   
->
-  
-
-<span class="headerbtn__text-container">v0.3</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-<i class="fab fa-github"></i>
-
-  </button>
-<div class="menu-dropdown__content" >
-    <ul>
-      <li>
-        <a href="https://github.com/brille/brille"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/brille/brille/issues/new?title=Issue%20on%20page%20%2Fmodule/grids.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/brille/brille/edit/master/docs/module/grids.rst"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-<i class="fas fa-download"></i>
-
-  </button>
-<div class="menu-dropdown__content" >
-    <ul>
-      <li>
-        <a href="../_sources/module/grids.rst.txt"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.rst</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
-</div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regular-grids">
-   Regular grids
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#triangulated-grids">
-   Triangulated grids
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#simple">
-     Simple
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hierarchy">
-     Hierarchy
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hybrid-grids">
-   Hybrid grids
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#helper-classes">
-   Helper classes
-  </a>
- </li>
-</ul>
-
+      </div>
     </nav>
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Grids</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regular-grids">
-   Regular grids
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#triangulated-grids">
-   Triangulated grids
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#simple">
-     Simple
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hierarchy">
-     Hierarchy
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#hybrid-grids">
-   Hybrid grids
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#helper-classes">
-   Helper classes
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <main id="main-content" role="main">
-                
-              <div>
-                
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">brille</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> &raquo;</li>
+      <li>Grids</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/module/grids.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <section id="grids">
-<h1>Grids<a class="headerlink" href="#grids" title="Permalink to this headline">#</a></h1>
+<h1>Grids<a class="headerlink" href="#grids" title="Permalink to this headline"></a></h1>
 <p>There are likely myriad ways one could divide an <span class="math">\(N\)</span> dimensional
 space but the two most basic building blocks are the parallelepiped
 (or its <span class="math">\(N\)</span> dimensional equivalent) and the <span class="math">\(N\)</span>-simplex.
@@ -677,7 +127,7 @@ To allow this, each type of grid is exposed to Python three times with a suffix
 <cite>dd</cite> for <cite>(double, double)</cite>, <cite>dc</cite> for <cite>(double, std::complex&lt;double&gt;)</cite>
 and <cite>cc</cite> for <cite>(std::complex&lt;double&gt;, std::complex&lt;double&gt;)</cite>.</p>
 <section id="regular-grids">
-<h2>Regular grids<a class="headerlink" href="#regular-grids" title="Permalink to this headline">#</a></h2>
+<h2>Regular grids<a class="headerlink" href="#regular-grids" title="Permalink to this headline"></a></h2>
 <p>Interpolation using grids constructed of regular parallelepipeds is possible,
 but will lead to artefacts near the Brillouin zone boundary if the primitive
 lattice has any non-orthogonal basis vectors.
@@ -685,7 +135,7 @@ This is such a large restriction that regular grids are no longer supported in <
 <div class="figure" style="text-align: center"><p><img  src="../_images/tikz-e0ae3754da374bddfe7ac535009b74dca4f59200.svg" alt="Figure made with TikZ" /></p>
 </div></section>
 <section id="triangulated-grids">
-<h2>Triangulated grids<a class="headerlink" href="#triangulated-grids" title="Permalink to this headline">#</a></h2>
+<h2>Triangulated grids<a class="headerlink" href="#triangulated-grids" title="Permalink to this headline"></a></h2>
 <p>An alternative to the regular parallelepiped grid which may still have some utility is the
 triangulation of a bounded space.
 If the triangulated space is bounded by a polyhedron then the triangulation can always
@@ -694,7 +144,7 @@ represent it exactly, though possibly with sub-optimal triangulated cells.</p>
 </div><p>There are two exposed implementations of the triangulated grid,
 both detailed below under the headings <a class="reference internal" href="#simple">Simple</a> and <a class="reference internal" href="#hierarchy">Hierarchy</a>.</p>
 <section id="simple">
-<h3>Simple<a class="headerlink" href="#simple" title="Permalink to this headline">#</a></h3>
+<h3>Simple<a class="headerlink" href="#simple" title="Permalink to this headline"></a></h3>
 <p>The <a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQdc</span></code></a> and its type-siblings implement a simple triangulated grid.
 Locating the tetrahedron within the grid which contains a test point could require as many in-tetrahedron
 checks as there are tetrahedra in the grid.
@@ -702,26 +152,26 @@ This class should be fine for use in applications where intra-grid-point interpo
 such as Brillouin zone integrations, but should be avoided when interpolation at random points is required.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQdd">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZMeshQdd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdd" title="brille._brille.BZMeshQdd"><span class="pre">brille._brille.BZMeshQdd</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">brillouin_zone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="bz.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><span class="pre">brille._brille.BrillouinZone</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_levels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdd" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZMeshQdd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdd" title="brille._brille.BZMeshQdd"><span class="pre">brille._brille.BZMeshQdd</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">brillouin_zone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="bz.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><span class="pre">brille._brille.BrillouinZone</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_levels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdd" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQcc">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZMeshQcc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQcc" title="brille._brille.BZMeshQcc"><span class="pre">brille._brille.BZMeshQcc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">brillouin_zone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="bz.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><span class="pre">brille._brille.BrillouinZone</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_levels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQcc" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZMeshQcc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQcc" title="brille._brille.BZMeshQcc"><span class="pre">brille._brille.BZMeshQcc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">brillouin_zone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="bz.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><span class="pre">brille._brille.BrillouinZone</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_levels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQcc" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQdc">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZMeshQdc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><span class="pre">brille._brille.BZMeshQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">brillouin_zone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="bz.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><span class="pre">brille._brille.BrillouinZone</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_levels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdc" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZMeshQdc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><span class="pre">brille._brille.BZMeshQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">brillouin_zone</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="bz.html#brille._brille.BrillouinZone" title="brille._brille.BrillouinZone"><span class="pre">brille._brille.BrillouinZone</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_levels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdc" title="Permalink to this definition"></a></dt>
 <dd><dl class="py property">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQdc.bytes_per_point">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bytes_per_point</span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.bytes_per_point" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bytes_per_point</span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.bytes_per_point" title="Permalink to this definition"></a></dt>
 <dd><p>Return the memory required per interpolation point <em>result</em> in bytes</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQdc.fill">
-<span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZMeshQdc.fill" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZMeshQdc.fill" title="Permalink to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
 <li><p>fill(self: brille._brille.BZMeshQdc, values_data: numpy.ndarray[numpy.float64], values_elements: numpy.ndarray[numpy.int32], vectors_data: numpy.ndarray[numpy.complex128], vectors_elements: numpy.ndarray[numpy.int32], sort: bool = False) -&gt; None</p></li>
@@ -762,7 +212,7 @@ the update to the flags and weights.</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -786,7 +236,7 @@ the update to the flags and weights.</p></li>
 </table>
 <p>Integer values outside of the mapped range (or missing) are replaced by 0.</p>
 <p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -862,7 +312,7 @@ the update to the flags and weights.</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -885,7 +335,7 @@ the update to the flags and weights.</p></li>
 </tbody>
 </table>
 <p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -915,7 +365,7 @@ the update to the flags and weights.</p></li>
 </table>
 <p>Integer values outside of the mapped range (or missing) are replaced by 3.</p>
 <p>Mapping of integers to scalar cost function:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -932,7 +382,7 @@ the update to the flags and weights.</p></li>
 </tbody>
 </table>
 <p>Mapping of integers to vector cost function:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -966,7 +416,7 @@ the update to the flags and weights.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQdc.from_file">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'BZMeshQdc'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><span class="pre">brille._brille.BZMeshQdc</span></a></span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.from_file" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'BZMeshQdc'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><span class="pre">brille._brille.BZMeshQdc</span></a></span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.from_file" title="Permalink to this definition"></a></dt>
 <dd><p>Save the object to an HDF5 file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -984,7 +434,7 @@ with a default equal to the object Class name</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQdc.ir_interpolate_at">
-<span class="sig-name descname"><span class="pre">ir_interpolate_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><span class="pre">brille._brille.BZMeshQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useparallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_move_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.complex128</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.ir_interpolate_at" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">ir_interpolate_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><span class="pre">brille._brille.BZMeshQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useparallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_move_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.complex128</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.ir_interpolate_at" title="Permalink to this definition"></a></dt>
 <dd><p>Perform linear interpolation of the stored data at irreducible equivalent points</p>
 <p>The irreducible first Brillouin zone is the part of reciprocal space which is
 invariant under application of the integer translations <em>and</em> the pointgroup
@@ -1026,7 +476,7 @@ for the eigenvalues and eigenvectors, respectively.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQdc.set_flags_weights">
-<span class="sig-name descname"><span class="pre">set_flags_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><span class="pre">brille._brille.BZMeshQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.set_flags_weights" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_flags_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><span class="pre">brille._brille.BZMeshQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.set_flags_weights" title="Permalink to this definition"></a></dt>
 <dd><p>Set <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a>, <cite>~brille._brille.LengthUnit</cite>
 and cost functions plus relative cost weights for the values and vectors
 stored in the object</p>
@@ -1053,7 +503,7 @@ the update to the flags and weights.</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -1076,7 +526,7 @@ the update to the flags and weights.</p></li>
 </tbody>
 </table>
 <p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -1105,7 +555,7 @@ the update to the flags and weights.</p></li>
 </tbody>
 </table>
 <p>Mapping of integers to scalar cost function:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -1122,7 +572,7 @@ the update to the flags and weights.</p></li>
 </tbody>
 </table>
 <p>Mapping of integers to vector cost function:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -1156,12 +606,12 @@ the update to the flags and weights.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQdc.sort">
-<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><span class="pre">brille._brille.BZMeshQdc</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.sort" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><span class="pre">brille._brille.BZMeshQdc</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.sort" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQdc.to_file">
-<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><span class="pre">brille._brille.BZMeshQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'BZMeshQdc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ac'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.to_file" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><span class="pre">brille._brille.BZMeshQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'BZMeshQdc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ac'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.to_file" title="Permalink to this definition"></a></dt>
 <dd><p>Save the object to an HDF5 file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1177,7 +627,7 @@ existing file – if <cite>entry</cite> exists in the file it is overwritten.</p
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Possible <cite>flags</cite> are:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 50%" />
@@ -1225,13 +675,13 @@ existing file – if <cite>entry</cite> exists in the file it is overwritten.</p
 
 <dl class="py property">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQdc.values">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">values</span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.values" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">values</span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.values" title="Permalink to this definition"></a></dt>
 <dd><p>Return a shared view of the stored eigenvalues</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="brille._brille.BZMeshQdc.vectors">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vectors</span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.vectors" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vectors</span></span><a class="headerlink" href="#brille._brille.BZMeshQdc.vectors" title="Permalink to this definition"></a></dt>
 <dd><p>Return a shared view of the stored eigenvectors</p>
 </dd></dl>
 
@@ -1239,7 +689,7 @@ existing file – if <cite>entry</cite> exists in the file it is overwritten.</p
 
 </section>
 <section id="hierarchy">
-<h3>Hierarchy<a class="headerlink" href="#hierarchy" title="Permalink to this headline">#</a></h3>
+<h3>Hierarchy<a class="headerlink" href="#hierarchy" title="Permalink to this headline"></a></h3>
 <p>The <a class="reference internal" href="#brille._brille.BZNestQdc" title="brille._brille.BZNestQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZNestQdc</span></code></a> and its type-siblings implements a triangulated grid with
 multiple triangulations of the Brillouin Zone of increasingly finer maximum tetrahedron size;
 overlapping regions of these triangulations are identified and stored to simplify later finding
@@ -1274,7 +724,7 @@ checks required to find the finest-tetrahedra containing any point is</p>
 <p>tetrahedra. As long as <span class="math">\(N_\text{checks} &lt; N_\text{tetrahedra}^n\)</span> this location method will be more efficient.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="brille._brille.BZNestQdd">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZNestQdd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZNestQdd" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZNestQdd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZNestQdd" title="Permalink to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
 <li><p>__init__(self: brille._brille.BZNestQdd, brillouin_zone: brille._brille.BrillouinZone, max_volume: float, max_branchings: int = 5) -&gt; None</p></li>
@@ -1284,7 +734,7 @@ checks required to find the finest-tetrahedra containing any point is</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="brille._brille.BZNestQcc">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZNestQcc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZNestQcc" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZNestQcc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZNestQcc" title="Permalink to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
 <li><p>__init__(self: brille._brille.BZNestQcc, brillouin_zone: brille._brille.BrillouinZone, max_volume: float, max_branchings: int = 5) -&gt; None</p></li>
@@ -1294,7 +744,7 @@ checks required to find the finest-tetrahedra containing any point is</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="brille._brille.BZNestQdc">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZNestQdc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZNestQdc" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZNestQdc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZNestQdc" title="Permalink to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
 <li><p>__init__(self: brille._brille.BZNestQdc, brillouin_zone: brille._brille.BrillouinZone, max_volume: float, max_branchings: int = 5) -&gt; None</p></li>
@@ -1302,13 +752,13 @@ checks required to find the finest-tetrahedra containing any point is</p>
 </ol>
 <dl class="py property">
 <dt class="sig sig-object py" id="brille._brille.BZNestQdc.bytes_per_point">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bytes_per_point</span></span><a class="headerlink" href="#brille._brille.BZNestQdc.bytes_per_point" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bytes_per_point</span></span><a class="headerlink" href="#brille._brille.BZNestQdc.bytes_per_point" title="Permalink to this definition"></a></dt>
 <dd><p>Return the memory required per interpolation point <em>result</em> in bytes</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZNestQdc.fill">
-<span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZNestQdc.fill" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZNestQdc.fill" title="Permalink to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
 <li><p>fill(self: brille._brille.BZNestQdc, values_data: numpy.ndarray[numpy.float64], values_elements: numpy.ndarray[numpy.int32], vectors_data: numpy.ndarray[numpy.complex128], vectors_elements: numpy.ndarray[numpy.int32], sort: bool = False) -&gt; None</p></li>
@@ -1349,7 +799,7 @@ the update to the flags and weights.</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -1373,7 +823,7 @@ the update to the flags and weights.</p></li>
 </table>
 <p>Integer values outside of the mapped range (or missing) are replaced by 0.</p>
 <p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -1449,7 +899,7 @@ the update to the flags and weights.</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -1472,7 +922,7 @@ the update to the flags and weights.</p></li>
 </tbody>
 </table>
 <p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -1502,7 +952,7 @@ the update to the flags and weights.</p></li>
 </table>
 <p>Integer values outside of the mapped range (or missing) are replaced by 3.</p>
 <p>Mapping of integers to scalar cost function:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -1519,7 +969,7 @@ the update to the flags and weights.</p></li>
 </tbody>
 </table>
 <p>Mapping of integers to vector cost function:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -1553,7 +1003,7 @@ the update to the flags and weights.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZNestQdc.from_file">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'BZNestQdc'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#brille._brille.BZNestQdc" title="brille._brille.BZNestQdc"><span class="pre">brille._brille.BZNestQdc</span></a></span></span><a class="headerlink" href="#brille._brille.BZNestQdc.from_file" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'BZNestQdc'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#brille._brille.BZNestQdc" title="brille._brille.BZNestQdc"><span class="pre">brille._brille.BZNestQdc</span></a></span></span><a class="headerlink" href="#brille._brille.BZNestQdc.from_file" title="Permalink to this definition"></a></dt>
 <dd><p>Save the object to an HDF5 file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1571,7 +1021,7 @@ with a default equal to the object Class name</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZNestQdc.ir_interpolate_at">
-<span class="sig-name descname"><span class="pre">ir_interpolate_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZNestQdc" title="brille._brille.BZNestQdc"><span class="pre">brille._brille.BZNestQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useparallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_move_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.complex128</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#brille._brille.BZNestQdc.ir_interpolate_at" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">ir_interpolate_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZNestQdc" title="brille._brille.BZNestQdc"><span class="pre">brille._brille.BZNestQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useparallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_move_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.complex128</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#brille._brille.BZNestQdc.ir_interpolate_at" title="Permalink to this definition"></a></dt>
 <dd><p>Perform linear interpolation of the stored data at irreducible equivalent points</p>
 <p>The irreducible first Brillouin zone is the part of reciprocal space which is
 invariant under application of the integer translations <em>and</em> the pointgroup
@@ -1613,7 +1063,7 @@ for the eigenvalues and eigenvectors, respectively.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZNestQdc.set_flags_weights">
-<span class="sig-name descname"><span class="pre">set_flags_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZNestQdc" title="brille._brille.BZNestQdc"><span class="pre">brille._brille.BZNestQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZNestQdc.set_flags_weights" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_flags_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZNestQdc" title="brille._brille.BZNestQdc"><span class="pre">brille._brille.BZNestQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZNestQdc.set_flags_weights" title="Permalink to this definition"></a></dt>
 <dd><p>Set <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a>, <cite>~brille._brille.LengthUnit</cite>
 and cost functions plus relative cost weights for the values and vectors
 stored in the object</p>
@@ -1640,7 +1090,7 @@ the update to the flags and weights.</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -1663,7 +1113,7 @@ the update to the flags and weights.</p></li>
 </tbody>
 </table>
 <p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -1692,7 +1142,7 @@ the update to the flags and weights.</p></li>
 </tbody>
 </table>
 <p>Mapping of integers to scalar cost function:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -1709,7 +1159,7 @@ the update to the flags and weights.</p></li>
 </tbody>
 </table>
 <p>Mapping of integers to vector cost function:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -1743,12 +1193,12 @@ the update to the flags and weights.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZNestQdc.sort">
-<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZNestQdc" title="brille._brille.BZNestQdc"><span class="pre">brille._brille.BZNestQdc</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZNestQdc.sort" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZNestQdc" title="brille._brille.BZNestQdc"><span class="pre">brille._brille.BZNestQdc</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZNestQdc.sort" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZNestQdc.to_file">
-<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZNestQdc" title="brille._brille.BZNestQdc"><span class="pre">brille._brille.BZNestQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'BZNestQdc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ac'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#brille._brille.BZNestQdc.to_file" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZNestQdc" title="brille._brille.BZNestQdc"><span class="pre">brille._brille.BZNestQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'BZNestQdc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ac'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#brille._brille.BZNestQdc.to_file" title="Permalink to this definition"></a></dt>
 <dd><p>Save the object to an HDF5 file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1764,7 +1214,7 @@ existing file – if <cite>entry</cite> exists in the file it is overwritten.</p
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Possible <cite>flags</cite> are:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 50%" />
@@ -1812,13 +1262,13 @@ existing file – if <cite>entry</cite> exists in the file it is overwritten.</p
 
 <dl class="py property">
 <dt class="sig sig-object py" id="brille._brille.BZNestQdc.values">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">values</span></span><a class="headerlink" href="#brille._brille.BZNestQdc.values" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">values</span></span><a class="headerlink" href="#brille._brille.BZNestQdc.values" title="Permalink to this definition"></a></dt>
 <dd><p>Return a shared view of the stored eigenvalues</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="brille._brille.BZNestQdc.vectors">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vectors</span></span><a class="headerlink" href="#brille._brille.BZNestQdc.vectors" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vectors</span></span><a class="headerlink" href="#brille._brille.BZNestQdc.vectors" title="Permalink to this definition"></a></dt>
 <dd><p>Return a shared view of the stored eigenvectors</p>
 </dd></dl>
 
@@ -1827,7 +1277,7 @@ existing file – if <cite>entry</cite> exists in the file it is overwritten.</p
 </section>
 </section>
 <section id="hybrid-grids">
-<span id="id1"></span><h2>Hybrid grids<a class="headerlink" href="#hybrid-grids" title="Permalink to this headline">#</a></h2>
+<span id="id1"></span><h2>Hybrid grids<a class="headerlink" href="#hybrid-grids" title="Permalink to this headline"></a></h2>
 <p>A hybrid grid employs both a regular grid of parallelepipeds and, where the regular grid
 passes the Brillouin zone boundary, individually triangulated cells.
 This enables fast location of the cell containing any interpolation point and, if it
@@ -1836,7 +1286,7 @@ is triangulated, subsequent fast location of the containing tetrahedron.</p>
 </div><p>The three exposed hybrid grid implementations have the same set of methods and are:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdd">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZTrellisQdd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZTrellisQdd" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZTrellisQdd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZTrellisQdd" title="Permalink to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
 <li><p>__init__(self: brille._brille.BZTrellisQdd, brillouin_zone: brille._brille.BrillouinZone, node_volume_fraction: float = 0.1, always_triangulate: bool = False) -&gt; None</p></li>
@@ -1846,7 +1296,7 @@ is triangulated, subsequent fast location of the containing tetrahedron.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQcc">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZTrellisQcc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZTrellisQcc" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZTrellisQcc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZTrellisQcc" title="Permalink to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
 <li><p>__init__(self: brille._brille.BZTrellisQcc, brillouin_zone: brille._brille.BrillouinZone, node_volume_fraction: float = 0.1, always_triangulate: bool = False) -&gt; None</p></li>
@@ -1856,7 +1306,7 @@ is triangulated, subsequent fast location of the containing tetrahedron.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZTrellisQdc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZTrellisQdc" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">BZTrellisQdc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZTrellisQdc" title="Permalink to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
 <li><p>__init__(self: brille._brille.BZTrellisQdc, brillouin_zone: brille._brille.BrillouinZone, node_volume_fraction: float = 0.1, always_triangulate: bool = False) -&gt; None</p></li>
@@ -1864,18 +1314,18 @@ is triangulated, subsequent fast location of the containing tetrahedron.</p>
 </ol>
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.all_node_types">
-<span class="sig-name descname"><span class="pre">all_node_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List[brille::NodeType]</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.all_node_types" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">all_node_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List[brille::NodeType]</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.all_node_types" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.bytes_per_point">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bytes_per_point</span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.bytes_per_point" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bytes_per_point</span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.bytes_per_point" title="Permalink to this definition"></a></dt>
 <dd><p>Return the memory required per interpolation point <em>result</em> in bytes</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.fill">
-<span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZTrellisQdc.fill" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.BZTrellisQdc.fill" title="Permalink to this definition"></a></dt>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
 <li><p>fill(self: brille._brille.BZTrellisQdc, values_data: numpy.ndarray[numpy.float64], values_elements: numpy.ndarray[numpy.int32], vectors_data: numpy.ndarray[numpy.complex128], vectors_elements: numpy.ndarray[numpy.int32], sort: bool = False) -&gt; None</p></li>
@@ -1916,7 +1366,7 @@ the update to the flags and weights.</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -1940,7 +1390,7 @@ the update to the flags and weights.</p></li>
 </table>
 <p>Integer values outside of the mapped range (or missing) are replaced by 0.</p>
 <p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -2016,7 +1466,7 @@ the update to the flags and weights.</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -2039,7 +1489,7 @@ the update to the flags and weights.</p></li>
 </tbody>
 </table>
 <p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -2069,7 +1519,7 @@ the update to the flags and weights.</p></li>
 </table>
 <p>Integer values outside of the mapped range (or missing) are replaced by 3.</p>
 <p>Mapping of integers to scalar cost function:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -2086,7 +1536,7 @@ the update to the flags and weights.</p></li>
 </tbody>
 </table>
 <p>Mapping of integers to vector cost function:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -2120,7 +1570,7 @@ the update to the flags and weights.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.from_file">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'BZTrellisQdc'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.from_file" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'BZTrellisQdc'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.from_file" title="Permalink to this definition"></a></dt>
 <dd><p>Save the object to an HDF5 file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2138,7 +1588,7 @@ with a default equal to the object Class name</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.interpolate_at">
-<span class="sig-name descname"><span class="pre">interpolate_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useparallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_move_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.complex128</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.interpolate_at" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">interpolate_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useparallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_move_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.complex128</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.interpolate_at" title="Permalink to this definition"></a></dt>
 <dd><p>Perform linear interpolation of the stored data at equivalent points</p>
 <p>The first Brillouin zone is the part of reciprocal space which is invariant
 under application of the integer translations of a reciprocal space lattice.
@@ -2180,7 +1630,7 @@ for the eigenvalues and eigenvectors, respectively.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.ir_interpolate_at">
-<span class="sig-name descname"><span class="pre">ir_interpolate_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useparallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_move_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.complex128</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.ir_interpolate_at" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">ir_interpolate_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useparallel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_not_move_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.complex128</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.ir_interpolate_at" title="Permalink to this definition"></a></dt>
 <dd><p>Perform linear interpolation of the stored data at irreducible equivalent points</p>
 <p>The irreducible first Brillouin zone is the part of reciprocal space which is
 invariant under application of the integer translations <em>and</em> the pointgroup
@@ -2222,27 +1672,27 @@ for the eigenvalues and eigenvectors, respectively.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.node_at">
-<span class="sig-name descname"><span class="pre">node_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">subscript</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">brille::polyhedron::Poly&lt;double,</span> <span class="pre">brille::Array2&gt;</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.node_at" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">node_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">subscript</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">brille::polyhedron::Poly&lt;double,</span> <span class="pre">brille::Array2&gt;</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.node_at" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.node_at_type">
-<span class="sig-name descname"><span class="pre">node_at_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">subscript</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">brille::NodeType</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.node_at_type" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">node_at_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">subscript</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">3</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">brille::NodeType</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.node_at_type" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.node_containing">
-<span class="sig-name descname"><span class="pre">node_containing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">brille::polyhedron::Poly&lt;double,</span> <span class="pre">brille::Array2&gt;</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.node_containing" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">node_containing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">brille::polyhedron::Poly&lt;double,</span> <span class="pre">brille::Array2&gt;</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.node_containing" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.node_containing_type">
-<span class="sig-name descname"><span class="pre">node_containing_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">brille::NodeType</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.node_containing_type" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">node_containing_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">brille::NodeType</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.node_containing_type" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.set_flags_weights">
-<span class="sig-name descname"><span class="pre">set_flags_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.set_flags_weights" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_flags_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.int32</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectors_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.set_flags_weights" title="Permalink to this definition"></a></dt>
 <dd><p>Set <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a>, <cite>~brille._brille.LengthUnit</cite>
 and cost functions plus relative cost weights for the values and vectors
 stored in the object</p>
@@ -2269,7 +1719,7 @@ the update to the flags and weights.</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Mapping of integers to <a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">RotatesLike</span></code></a> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -2292,7 +1742,7 @@ the update to the flags and weights.</p></li>
 </tbody>
 </table>
 <p>Mapping of integers to <code class="xref py py-class docutils literal notranslate"><span class="pre">LengthUnit</span></code> values:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -2321,7 +1771,7 @@ the update to the flags and weights.</p></li>
 </tbody>
 </table>
 <p>Mapping of integers to scalar cost function:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -2338,7 +1788,7 @@ the update to the flags and weights.</p></li>
 </tbody>
 </table>
 <p>Mapping of integers to vector cost function:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
 <col style="width: 84%" />
@@ -2372,12 +1822,12 @@ the update to the flags and weights.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.sort">
-<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.sort" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.sort" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.to_file">
-<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'BZTrellisQdc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ac'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.to_file" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><span class="pre">brille._brille.BZTrellisQdc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'BZTrellisQdc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ac'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.to_file" title="Permalink to this definition"></a></dt>
 <dd><p>Save the object to an HDF5 file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2393,7 +1843,7 @@ existing file – if <cite>entry</cite> exists in the file it is overwritten.</p
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Possible <cite>flags</cite> are:</p>
-<table class="table">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 50%" />
@@ -2441,13 +1891,13 @@ existing file – if <cite>entry</cite> exists in the file it is overwritten.</p
 
 <dl class="py property">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.values">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">values</span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.values" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">values</span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.values" title="Permalink to this definition"></a></dt>
 <dd><p>Return a shared view of the stored eigenvalues</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="brille._brille.BZTrellisQdc.vectors">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vectors</span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.vectors" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vectors</span></span><a class="headerlink" href="#brille._brille.BZTrellisQdc.vectors" title="Permalink to this definition"></a></dt>
 <dd><p>Return a shared view of the stored eigenvectors</p>
 </dd></dl>
 
@@ -2455,10 +1905,10 @@ existing file – if <cite>entry</cite> exists in the file it is overwritten.</p
 
 </section>
 <section id="helper-classes">
-<h2>Helper classes<a class="headerlink" href="#helper-classes" title="Permalink to this headline">#</a></h2>
+<h2>Helper classes<a class="headerlink" href="#helper-classes" title="Permalink to this headline"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="brille._brille.RotatesLike">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">RotatesLike</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><span class="pre">brille._brille.RotatesLike</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.RotatesLike" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">RotatesLike</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.RotatesLike" title="brille._brille.RotatesLike"><span class="pre">brille._brille.RotatesLike</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.RotatesLike" title="Permalink to this definition"></a></dt>
 <dd><blockquote>
 <div><p>Enumeration indicating how vector and matrix values transform</p>
 </div></blockquote>
@@ -2474,50 +1924,34 @@ existing file – if <cite>entry</cite> exists in the file it is overwritten.</p
 </section>
 
 
-              </div>
-              
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="bz.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Brillouin Zone</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="symmetry.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Symmetry</p>
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bz.html" class="btn btn-neutral float-left" title="Brillouin Zone" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="symmetry.html" class="btn btn-neutral float-right" title="Symmetry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Gregory Tucker<br/>
-  
-      &copy; Copyright 2020-2023, Gregory Tucker.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
 
+  <hr/>
 
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Gregory Tucker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
       </div>
-    </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
 
-
-  </body>
+</body>
 </html>
