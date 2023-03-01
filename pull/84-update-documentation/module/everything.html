@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Remainder &#8212; brille 0.7.1.dev23+gc9ca4f3 documentation</title>
+    <title>Remainder &#8212; brille 0.7.1.dev26+g04d39e0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -40,7 +40,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Visualisation" href="../visualisation.html" />
-    <link rel="prev" title="Symmetry" href="symmetry.html" />
+    <link rel="prev" title="Floating point tolerance" href="tolerance.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -621,11 +621,11 @@ title="Print to PDF"
 <a class="reference internal" href="../brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> to make using them easier.
 If in doubt, the interfaced classes can be accessed via their submodule
 syntax.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">brille._brille</span> <span class="kn">import</span> <span class="n">Direct</span><span class="p">,</span> <span class="n">BrillouinZone</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">brille._brille</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">BrillouinZone</span>
 <span class="kn">from</span> <span class="nn">brille.plotting</span> <span class="kn">import</span> <span class="n">plot</span> <span class="k">as</span> <span class="n">bplot</span>
 
-<span class="n">direct_lattice</span> <span class="o">=</span> <span class="n">Direct</span><span class="p">((</span><span class="mf">3.95</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mf">12.9</span><span class="p">),</span> <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span> <span class="s1">&#39;I4/mmm&#39;</span><span class="p">)</span>
-<span class="n">brillouin_zone</span> <span class="o">=</span> <span class="n">BrillouinZone</span><span class="p">(</span><span class="n">direct_lattice</span><span class="o">.</span><span class="n">star</span><span class="p">)</span>
+<span class="n">lattice</span> <span class="o">=</span> <span class="n">Lattice</span><span class="p">((</span><span class="mf">3.95</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mf">12.9</span><span class="p">),</span> <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span> <span class="s1">&#39;I4/mmm&#39;</span><span class="p">)</span>
+<span class="n">brillouin_zone</span> <span class="o">=</span> <span class="n">BrillouinZone</span><span class="p">(</span><span class="n">lattice</span><span class="p">)</span>
 
 <span class="n">bplot</span><span class="p">(</span><span class="n">brillouin_zone</span><span class="p">)</span>
 </pre></div>
@@ -640,10 +640,14 @@ syntax.</p>
 </table>
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">AngleUnit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">brille._brille.AngleUnit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">AngleUnit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enum.html#brille._brille.AngleUnit" title="brille._brille.AngleUnit"><span class="pre">brille._brille.AngleUnit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
 <blockquote>
-<div><p>The units of a number representing an angle</p>
+<div><p>The units of a number representing an angle.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brille</span> <span class="kn">import</span> <span class="n">AngleUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">AngleUnit</span><span class="o">.</span><span class="n">radian</span>
+</pre></div>
+</div>
 </div></blockquote>
 <p>Members:</p>
 <blockquote>
@@ -657,6 +661,49 @@ syntax.</p>
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">ApproxConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="tolerance.html#brille._brille.ApproxConfig" title="brille._brille.ApproxConfig"><span class="pre">brille._brille.ApproxConfig</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">real_space_tolerance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reciprocal_space_tolerance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>A local set of approximate floating point comparison values</p>
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">digits</span></span></dt>
+<dd><p>A multiplier on the machine epsilon, below which two floating point numbers are approximately the same.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">real_space_tolerance</span></span></dt>
+<dd><p>An absolute real space floating point tolerance in angstrom</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reciprocal_space_tolerance</span></span></dt>
+<dd><p>An absolute reciprocal space floating point tolerance in inverse angstrom</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">Basis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>An atom basis in a unit cell</p>
+<p>The positions and types of all symmetry-distinct atoms in a lattice define the atom basis.
+Two equivalent-type atoms may exchange position within the unit cell under application of
+a symmetry of the spacegroup.</p>
+<p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>__init__(self: brille._brille.Basis, positions: numpy.ndarray[numpy.float64]) -&gt; None</p></li>
+</ol>
+<p>Given only atom positions, assume all are unique types</p>
+<ol class="arabic simple" start="2">
+<li><p>__init__(self: brille._brille.Basis, positions: numpy.ndarray[numpy.float64], types: List[int]) -&gt; None</p></li>
+</ol>
 </dd></dl>
 
 <dl class="py class">
@@ -1306,15 +1353,19 @@ ac\cos\beta & bc\cos\alpha & c^2
 
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">LengthUnit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">brille._brille.LengthUnit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">LengthUnit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enum.html#brille._brille.LengthUnit" title="brille._brille.LengthUnit"><span class="pre">brille._brille.LengthUnit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
 <blockquote>
-<div><p>The units of a number representing a length</p>
+<div><p>The units of a number representing a length.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brille</span> <span class="kn">import</span> <span class="n">LengthUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">LengthUnit</span><span class="o">.</span><span class="n">angstrom</span>
+</pre></div>
+</div>
 </div></blockquote>
 <p>Members:</p>
 <blockquote>
-<div><p>none</p>
-<p>angstrom : 10⁻¹⁰ meter</p>
+<div><p>none : A default value, the used value may be inferred</p>
+<p>angstrom : 10<sup>-10</sup> meter</p>
 <p>inverse_angstrom : 1 / angstrom</p>
 <p>real_lattice : fractional coordinates of real lattice</p>
 <p>reciprocal_lattice : fractional coordinates of reciprocal lattice</p>
@@ -1328,10 +1379,19 @@ ac\cos\beta & bc\cos\alpha & c^2
 
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">NodeType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">brille._brille.NodeType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">NodeType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="enum.html#brille._brille.NodeType" title="brille._brille.NodeType"><span class="pre">brille._brille.NodeType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
 <blockquote>
-<div><p>The units of a number representing a length</p>
+<div><p>An enumeration to differentiate between Node types of the <a class="reference internal" href="grids.html#brille._brille.BZTrellisQdd" title="brille._brille.BZTrellisQdd"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.BZTrellisQdd</span></code></a>,
+<a class="reference internal" href="grids.html#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.BZTrellisQdc</span></code></a>, and <a class="reference internal" href="grids.html#brille._brille.BZTrellisQcc" title="brille._brille.BZTrellisQcc"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.BZTrellisQcc</span></code></a>, classes.</p>
+<p>The return type of the methods, e.g.,
+<a class="reference internal" href="grids.html#brille._brille.BZTrellisQdc.node_at_type" title="brille._brille.BZTrellisQdc.node_at_type"><code class="xref py py-meth docutils literal notranslate"><span class="pre">node_at_type()</span></code></a>,
+<a class="reference internal" href="grids.html#brille._brille.BZTrellisQdc.node_containing_type" title="brille._brille.BZTrellisQdc.node_containing_type"><code class="xref py py-meth docutils literal notranslate"><span class="pre">node_containing_type()</span></code></a>, and
+<a class="reference internal" href="grids.html#brille._brille.BZTrellisQdc.all_node_types" title="brille._brille.BZTrellisQdc.all_node_types"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all_node_types()</span></code></a>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brill</span> <span class="kn">import</span> <span class="n">NodeType</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nt</span> <span class="o">=</span> <span class="n">NodeType</span><span class="o">.</span><span class="n">polygon</span>
+</pre></div>
+</div>
 </div></blockquote>
 <p>Members:</p>
 <blockquote>
@@ -1366,6 +1426,30 @@ with none of its translations.</p>
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">nfolds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="symmetry.html#brille._brille.PointSymmetry" title="brille._brille.PointSymmetry"><span class="pre">brille._brille.PointSymmetry</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="symmetry.html#brille._brille.PointSymmetry" title="brille._brille.PointSymmetry"><span class="pre">brille._brille.PointSymmetry</span></a></span></span></dt>
 <dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">Pointgroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">brille._brille.Pointgroup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Pointgroup</span> <span class="pre">number:</span> <span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>Point group information as in <code class="xref py py-mod docutils literal notranslate"><span class="pre">spglib</span></code></p>
+<p>Wrapped access to the struct originally in
+<a class="reference external" href="https://github.com/spglib/spglib/blob/develop/src/pointgroup.h">pointgroup.h</a></p>
+<p>Initialize from the serial index in the static <cite>pointgroup_data</cite> array</p>
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">holohedry</span></span></dt>
+<dd><p>Return a string representation of the Holohedry value</p>
+<p>One of <cite>triclinic</cite>, <cite>monoclinic</cite>, <cite>orthogonal</cite>, <cite>tetragonal</cite>, <cite>trigonal</cite>, <cite>hexagonal</cite>, or <cite>cubic</cite>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">laue</span></span></dt>
+<dd><p>Return a string representation of the Laue class</p>
+<p>One of <cite>1</cite>, <cite>2m</cite>, <cite>mmm</cite>, <cite>4m</cite>, <cite>4mmm</cite>, <cite>3</cite>, <cite>3m</cite>, <cite>6m</cite>, <cite>6mmm</cite>, <cite>m3</cite>, or <cite>m3m</cite>.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -1415,6 +1499,15 @@ and an integer.</p>
 <dd><p>Return the visit count</p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">Spacegroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">brille._brille.Spacegroup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Hall</span> <span class="pre">number:</span> <span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_builtins.pybind11_object</span></code></p>
+<p>The space group information as in :py:mod:<a href="#id2"><span class="problematic" id="id3">`</span></a>spglib:</p>
+<p>Equivalent to the struct <cite>SpacegroupType</cite> from
+<a class="reference external" href="https://github.com/spglib/spglib/blob/develop/src/spg_database.h">spg_database.h</a></p>
 </dd></dl>
 
 <dl class="py class">
@@ -1541,8 +1634,12 @@ applications of the operation is equivalent to the identity operator.</p>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
 <li><p>real_space_tolerance() -&gt; float</p></li>
-<li><p>real_space_tolerance(arg0: float) -&gt; None</p></li>
 </ol>
+<p>Return the module-global real space floating point tolerance in angstrom.</p>
+<ol class="arabic simple" start="2">
+<li><p>real_space_tolerance(tolerance: float) -&gt; None</p></li>
+</ol>
+<p>Set the module-global real space floating point tolerance in angstrom</p>
 </dd></dl>
 
 <dl class="py function">
@@ -1551,8 +1648,12 @@ applications of the operation is equivalent to the identity operator.</p>
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
 <li><p>reciprocal_space_tolerance() -&gt; float</p></li>
-<li><p>reciprocal_space_tolerance(arg0: float) -&gt; None</p></li>
 </ol>
+<p>Return the module-global reciprocal space floating point tolerance in inverse angstrom.</p>
+<ol class="arabic simple" start="2">
+<li><p>reciprocal_space_tolerance(tolerance: float) -&gt; None</p></li>
+</ol>
+<p>Set the module-global reciprocal space floating point tolerance in angstrom</p>
 </dd></dl>
 
 </section>
@@ -1566,11 +1667,11 @@ applications of the operation is equivalent to the identity operator.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="symmetry.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="tolerance.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Symmetry</p>
+            <p class="prev-next-title">Floating point tolerance</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../visualisation.html" title="next page">

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Undocumented C++ Classes &#8212; brille 0.7.1.dev23+gc9ca4f3 documentation</title>
+    <title>Undocumented C++ Classes &#8212; brille 0.7.1.dev26+g04d39e0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -620,11 +620,11 @@ title="Print to PDF"
 <a class="reference internal" href="brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> to make using them easier.
 If in doubt, the interfaced classes can be accessed via their submodule
 syntax.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">brille._brille</span> <span class="kn">import</span> <span class="n">Direct</span><span class="p">,</span> <span class="n">BrillouinZone</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">brille._brille</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">BrillouinZone</span>
 <span class="kn">from</span> <span class="nn">brille.plotting</span> <span class="kn">import</span> <span class="n">plot</span> <span class="k">as</span> <span class="n">bplot</span>
 
-<span class="n">direct_lattice</span> <span class="o">=</span> <span class="n">Direct</span><span class="p">((</span><span class="mf">3.95</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mf">12.9</span><span class="p">),</span> <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span> <span class="s1">&#39;I4/mmm&#39;</span><span class="p">)</span>
-<span class="n">brillouin_zone</span> <span class="o">=</span> <span class="n">BrillouinZone</span><span class="p">(</span><span class="n">direct_lattice</span><span class="o">.</span><span class="n">star</span><span class="p">)</span>
+<span class="n">lattice</span> <span class="o">=</span> <span class="n">Lattice</span><span class="p">((</span><span class="mf">3.95</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mf">12.9</span><span class="p">),</span> <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span> <span class="s1">&#39;I4/mmm&#39;</span><span class="p">)</span>
+<span class="n">brillouin_zone</span> <span class="o">=</span> <span class="n">BrillouinZone</span><span class="p">(</span><span class="n">lattice</span><span class="p">)</span>
 
 <span class="n">bplot</span><span class="p">(</span><span class="n">brillouin_zone</span><span class="p">)</span>
 </pre></div>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Symmetry &#8212; brille 0.7.1.dev23+gc9ca4f3 documentation</title>
+    <title>Symmetry &#8212; brille 0.7.1.dev26+g04d39e0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -39,7 +39,7 @@
     <script src="../_static/katex_autorenderer.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Remainder" href="everything.html" />
+    <link rel="next" title="Enumerated values" href="enum.html" />
     <link rel="prev" title="Grids" href="grids.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -629,9 +629,10 @@ which allows for specifying either a list of matrices and list of vectors or a s
 </div>
 <p>With a CIF xyz encoded string from, e.g., a CIF file, one can directly create a <code class="xref py py-class docutils literal notranslate"><span class="pre">Direct</span></code> lattice object
 with the appropriate symmetry operations without also specifying, e.g., the spacegroup:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">basis_lengths</span><span class="p">,</span> <span class="n">basis_angles</span><span class="p">,</span> <span class="n">xyz_string</span> <span class="o">=</span> <span class="n">hypothetical_CIF_parser</span><span class="p">(</span><span class="s1">&#39;some_system.cif&#39;</span><span class="p">)</span>
-<span class="n">lattice</span> <span class="o">=</span> <span class="n">brille</span><span class="o">.</span><span class="n">_brille</span><span class="o">.</span><span class="n">Direct</span><span class="p">(</span><span class="n">basis_lengths</span><span class="p">,</span> <span class="n">basis_angles</span><span class="p">)</span>
-<span class="n">lattice</span><span class="o">.</span><span class="n">spacegroup</span> <span class="o">=</span> <span class="n">brille</span><span class="o">.</span><span class="n">_brille</span><span class="o">.</span><span class="n">Symmetry</span><span class="p">(</span><span class="n">xyz_string</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brille</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Symmetry</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">basis_lengths</span><span class="p">,</span> <span class="n">basis_angles</span><span class="p">,</span> <span class="n">xyz_string</span> <span class="o">=</span> <span class="n">hypothetical_CIF_parser</span><span class="p">(</span><span class="s1">&#39;some.cif&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lattice</span> <span class="o">=</span> <span class="n">Lattice</span><span class="p">(</span><span class="n">basis_lengths</span><span class="p">,</span> <span class="n">basis_angles</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lattice</span><span class="o">.</span><span class="n">spacegroup</span> <span class="o">=</span> <span class="n">Symmetry</span><span class="p">(</span><span class="n">xyz_string</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>in setting the lattice spacegroup, the <a class="reference internal" href="#brille._brille.Symmetry.generate" title="brille._brille.Symmetry.generate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">generate()</span></code></a> method is called,
@@ -693,9 +694,10 @@ applications of the operation is equivalent to the identity operator.</p>
 which has the advantage of representing all unique crystallographic lattices as an encoded set of generators.</p>
 <p>Within <a class="reference internal" href="../brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a>, <a class="reference internal" href="#brille._brille.HallSymbol" title="brille._brille.HallSymbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">HallSymbol</span></code></a> can be used to decode an arbitrary Hall symbol.
 And then its generators can be extracted to create the spacegroup for lattice:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">basis_lengths</span><span class="p">,</span> <span class="n">basis_angles</span><span class="p">,</span> <span class="n">hall_symbol</span> <span class="o">=</span> <span class="n">hypothetical_CIF_parser</span><span class="p">(</span><span class="s1">&#39;some_system.cif&#39;</span><span class="p">)</span>
-<span class="n">lattice</span> <span class="o">=</span> <span class="n">brille</span><span class="o">.</span><span class="n">_brille</span><span class="o">.</span><span class="n">Direct</span><span class="p">(</span><span class="n">basis_lengths</span><span class="p">,</span> <span class="n">basis_angles</span><span class="p">)</span>
-<span class="n">lattice</span><span class="o">.</span><span class="n">spacegroup</span> <span class="o">=</span> <span class="n">brille</span><span class="o">.</span><span class="n">_brille</span><span class="o">.</span><span class="n">HallSymbol</span><span class="p">(</span><span class="n">hall_symbol</span><span class="p">)</span><span class="o">.</span><span class="n">generators</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brille</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">HallSymbol</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">basis_lengths</span><span class="p">,</span> <span class="n">basis_angles</span><span class="p">,</span> <span class="n">hall_symbol</span> <span class="o">=</span> <span class="n">hypothetical_CIF_parser</span><span class="p">(</span><span class="s1">&#39;some.cif&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lattice</span> <span class="o">=</span> <span class="n">Lattice</span><span class="p">(</span><span class="n">basis_lengths</span><span class="p">,</span> <span class="n">basis_angles</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lattice</span><span class="o">.</span><span class="n">spacegroup</span> <span class="o">=</span> <span class="n">HallSymbol</span><span class="p">(</span><span class="n">hall_symbol</span><span class="p">)</span><span class="o">.</span><span class="n">generators</span>
 </pre></div>
 </div>
 <dl class="py class">
@@ -738,6 +740,37 @@ with none of its translations.</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="brille._brille.Pointgroup">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">Pointgroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">brille._brille.Pointgroup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Pointgroup</span> <span class="pre">number:</span> <span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.Pointgroup" title="Permalink to this definition">#</a></dt>
+<dd><p>Point group information as in <code class="xref py py-mod docutils literal notranslate"><span class="pre">spglib</span></code></p>
+<p>Wrapped access to the struct originally in
+<a class="reference external" href="https://github.com/spglib/spglib/blob/develop/src/pointgroup.h">pointgroup.h</a></p>
+<p>Initialize from the serial index in the static <cite>pointgroup_data</cite> array</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.Pointgroup.holohedry">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">holohedry</span></span><a class="headerlink" href="#brille._brille.Pointgroup.holohedry" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a string representation of the Holohedry value</p>
+<p>One of <cite>triclinic</cite>, <cite>monoclinic</cite>, <cite>orthogonal</cite>, <cite>tetragonal</cite>, <cite>trigonal</cite>, <cite>hexagonal</cite>, or <cite>cubic</cite>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.Pointgroup.laue">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">laue</span></span><a class="headerlink" href="#brille._brille.Pointgroup.laue" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a string representation of the Laue class</p>
+<p>One of <cite>1</cite>, <cite>2m</cite>, <cite>mmm</cite>, <cite>4m</cite>, <cite>4mmm</cite>, <cite>3</cite>, <cite>3m</cite>, <cite>6m</cite>, <cite>6mmm</cite>, <cite>m3</cite>, or <cite>m3m</cite>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="brille._brille.Spacegroup">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">Spacegroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self:</span> <span class="pre">brille._brille.Spacegroup</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Hall</span> <span class="pre">number:</span> <span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.Spacegroup" title="Permalink to this definition">#</a></dt>
+<dd><p>The space group information as in :py:mod:<a href="#id1"><span class="problematic" id="id2">`</span></a>spglib:</p>
+<p>Equivalent to the struct <cite>SpacegroupType</cite> from
+<a class="reference external" href="https://github.com/spglib/spglib/blob/develop/src/spg_database.h">spg_database.h</a></p>
+</dd></dl>
+
 </section>
 </section>
 
@@ -756,10 +789,10 @@ with none of its translations.</p>
             <p class="prev-next-title">Grids</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="everything.html" title="next page">
+    <a class='right-next' id="next-link" href="enum.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Remainder</p>
+        <p class="prev-next-title">Enumerated values</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

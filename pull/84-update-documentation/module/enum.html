@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>OpenGL visualisation &#8212; brille 0.7.1.dev26+g04d39e0 documentation</title>
+    <title>Enumerated values &#8212; brille 0.7.1.dev26+g04d39e0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -39,8 +39,8 @@
     <script src="../_static/katex_autorenderer.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Utilities for brille" href="../utils.html" />
-    <link rel="prev" title="Matplotlib utilities for brille" href="plotting.html" />
+    <link rel="next" title="Floating point tolerance" href="tolerance.html" />
+    <link rel="prev" title="Symmetry" href="symmetry.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -155,16 +155,16 @@
    </code>
   </a>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../visualisation.html">
    Visualisation
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="plotting.html">
      Matplotlib utilities for
@@ -175,8 +175,8 @@
      </code>
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="vis.html">
      OpenGL visualisation
     </a>
    </li>
@@ -458,7 +458,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/brille/brille/issues/new?title=Issue%20on%20page%20%2Fmodule/vis.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/brille/brille/issues/new?title=Issue%20on%20page%20%2Fmodule/enum.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -475,7 +475,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/brille/brille/edit/master/docs/module/vis.rst"
+        <a href="https://github.com/brille/brille/edit/master/docs/module/enum.rst"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -504,7 +504,7 @@ title="Edit this page"
 <div class="menu-dropdown__content" >
     <ul>
       <li>
-        <a href="../_sources/module/vis.rst.txt"
+        <a href="../_sources/module/enum.rst.txt"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -553,7 +553,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>OpenGL visualisation</h1>
+                <h1>Enumerated values</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -565,84 +565,89 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="opengl-visualisation">
-<h1>OpenGL visualisation<a class="headerlink" href="#opengl-visualisation" title="Permalink to this headline">#</a></h1>
+  <section id="enumerated-values">
+<h1>Enumerated values<a class="headerlink" href="#enumerated-values" title="Permalink to this headline">#</a></h1>
+<p>py:<a class="reference internal" href="../brille.html#module-brille._brille" title="brille._brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a> uses a number of enumerated values to control its behaviour
+and convey information.</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="brille.vis.VisPolyhedron">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille.vis.</span></span><span class="sig-name descname"><span class="pre">VisPolyhedron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polyhedron</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">brille._brille.Polyhedron</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">face_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><span class="pre">vispy.color.Color</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">vispy.color.Color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><span class="pre">vispy.color.Color</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">vispy.color.Color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.vis.VisPolyhedron" title="Permalink to this definition">#</a></dt>
-<dd><p>A wrapper class to contain visualisation options for a <code class="xref py py-class docutils literal notranslate"><span class="pre">brille.Polyhedron</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">brille.LPolyhedron</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Variables</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>polyhedron</strong> (Union[<code class="xref py py-class docutils literal notranslate"><span class="pre">Polyhedron</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">LPolyhedron</span></code>]) – The polyhedron to be visualised. A LPolyhedron will be converted automatically to its Cartesian equivalent.</p></li>
-<li><p><strong>face_color</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><em>vispy.color.Color</em></a><em>]</em>) – The face color of the visualised polyhedron, default ‘black’</p></li>
-<li><p><strong>edge_color</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><em>vispy.color.Color</em></a><em>]</em>) – The edge color of the visualised polyhedron, default ‘black’</p></li>
-<li><p><strong>fill</strong> (<em>bool</em>) – Control drawing of the faces, default True</p></li>
-<li><p><strong>outline</strong> (<em>bool</em>) – Control drawing of the edges, default True</p></li>
-</ul>
-</dd>
-</dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In the case that a polyhedron with vertices expressed in units of a lattice basis is provided, the oriented lattice
-basis vectors will be used to convert the vertices into an orthonormal frame during object initialisation.</p>
+<dt class="sig sig-object py" id="brille._brille.AngleUnit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">AngleUnit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.AngleUnit" title="brille._brille.AngleUnit"><span class="pre">brille._brille.AngleUnit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.AngleUnit" title="Permalink to this definition">#</a></dt>
+<dd><blockquote>
+<div><p>The units of a number representing an angle.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brille</span> <span class="kn">import</span> <span class="n">AngleUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">AngleUnit</span><span class="o">.</span><span class="n">radian</span>
+</pre></div>
 </div>
+</div></blockquote>
+<p>Members:</p>
+<blockquote>
+<div><p>not_provided : unknown, will be inferred</p>
+<p>radian : radian</p>
+<p>degree : degree</p>
+<p>pi : radian divided by pi</p>
+</div></blockquote>
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.AngleUnit.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#brille._brille.AngleUnit.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="brille.vis.vis_polyhedron">
-<span class="sig-prename descclassname"><span class="pre">brille.vis.</span></span><span class="sig-name descname"><span class="pre">vis_polyhedron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polyhedron</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille.vis.VisPolyhedron" title="brille.vis.VisPolyhedron"><span class="pre">brille.vis.VisPolyhedron</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.vis.vis_polyhedron" title="Permalink to this definition">#</a></dt>
-<dd><p>Visualise a single <a class="reference internal" href="#brille.vis.VisPolyhedron" title="brille.vis.VisPolyhedron"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisPolyhedron</span></code></a> wrapped polyhedron</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>polyhedron</strong> (Union[<a class="reference internal" href="#brille.vis.VisPolyhedron" title="brille.vis.VisPolyhedron"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisPolyhedron</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Polyhedron</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">LPolyhedron</span></code>]) – The polyhedron to be visualised. Any object with similar <cite>vertices</cite> and <cite>faces</cite> properties may work as well.</p></li>
-<li><p><strong>**kwargs</strong> – Optional keyword arguments for the VisPolyhedron constructor. Only used if a Polyhedron or LPolyhedron
-is provided as input. See other parameters below for expected keyword arguments.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Other Parameters</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>face_color</strong> (<em>Union[str, vispy.color.Color]</em>) – The face color used for Polyhedron or LPolyhedron object input.</p></li>
-<li><p><strong>edge_color</strong> (<em>Union[str, vispy.color.Color]</em>) – The edge color used for Polyhedron or LPolyhedron object input.</p></li>
-<li><p><strong>fill</strong> (<em>bool</em>) – Control drawing the faces of the Polyhedron or LPolyhedron object.</p></li>
-<li><p><strong>outline</strong> (<em>bool</em>) – Control drawing the edges of the Polyhedron or LPolyhedron object.</p></li>
-</ul>
-</dd>
-</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="brille._brille.LengthUnit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">LengthUnit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.LengthUnit" title="brille._brille.LengthUnit"><span class="pre">brille._brille.LengthUnit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.LengthUnit" title="Permalink to this definition">#</a></dt>
+<dd><blockquote>
+<div><p>The units of a number representing a length.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brille</span> <span class="kn">import</span> <span class="n">LengthUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">LengthUnit</span><span class="o">.</span><span class="n">angstrom</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Members:</p>
+<blockquote>
+<div><p>none : A default value, the used value may be inferred</p>
+<p>angstrom : 10<sup>-10</sup> meter</p>
+<p>inverse_angstrom : 1 / angstrom</p>
+<p>real_lattice : fractional coordinates of real lattice</p>
+<p>reciprocal_lattice : fractional coordinates of reciprocal lattice</p>
+</div></blockquote>
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.LengthUnit.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#brille._brille.LengthUnit.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="brille.vis.vis_polyhedra">
-<span class="sig-prename descclassname"><span class="pre">brille.vis.</span></span><span class="sig-name descname"><span class="pre">vis_polyhedra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polyhedra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#brille.vis.VisPolyhedron" title="brille.vis.VisPolyhedron"><span class="pre">brille.vis.VisPolyhedron</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.vis.vis_polyhedra" title="Permalink to this definition">#</a></dt>
-<dd><p>Visualise multiple polyhedra</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>polyhedra</strong> (List[Union[<a class="reference internal" href="#brille.vis.VisPolyhedron" title="brille.vis.VisPolyhedron"><code class="xref py py-class docutils literal notranslate"><span class="pre">VisPolyhedron</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Polyhedron</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">LPolyhedron</span></code>]]) – The polyhedron to be visualised. Any object with similar <cite>vertices</cite> and <cite>faces</cite> properties may work as well.</p></li>
-<li><p><strong>**kwargs</strong> – Optional keyword arguments for the VisPolyhedron constructor. Only used if a Polyhedron or LPolyhedron
-is provided in the polyhedron list.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Other Parameters</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>face_color</strong> (<em>Union[List[Union[str, vispy.color.Color]],Union[str, vispy.color.Color]]</em>) – A single face color used for all Polyhedron and LPolyhedron objects or a list of colors which will be tiled
-to the size of the full polyhedra list.</p></li>
-<li><p><strong>edge_color</strong> (<em>Union[List[Union[str, vispy.color.Color]],Union[str, vispy.color.Color]]</em>) – A single edge color used for all Polyhedron and LPolyhedron objects or a list of colors which will be tiled
-to the size of the full polyhedra list.</p></li>
-<li><p><strong>fill</strong> (<em>Union[List[bool], bool]</em>) – A single value to control drawing the faces of all Polyhedron and LPolyhedron objects or a list of boolean
-values which will be tiled to the size of the full polyhedra list.</p></li>
-<li><p><strong>outline</strong> (<em>Union[List[bool], bool]</em>) – A single value to control drawing the edges of all Polyhedron and LPolyhedron objects or a list of boolean
-values which will be tiled to the size of the full polyhedra list.</p></li>
-<li><p><strong>opacity</strong> (<em>Union[List[float], float]</em>) – A single value to control face opacity of all Polyhedron and LPolyhedron objects or a list of floating point
-values which will be tiled to the size of the full polyhedra list.</p></li>
-</ul>
-</dd>
-</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="brille._brille.NodeType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">NodeType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.NodeType" title="brille._brille.NodeType"><span class="pre">brille._brille.NodeType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#brille._brille.NodeType" title="Permalink to this definition">#</a></dt>
+<dd><blockquote>
+<div><p>An enumeration to differentiate between Node types of the <a class="reference internal" href="grids.html#brille._brille.BZTrellisQdd" title="brille._brille.BZTrellisQdd"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.BZTrellisQdd</span></code></a>,
+<a class="reference internal" href="grids.html#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.BZTrellisQdc</span></code></a>, and <a class="reference internal" href="grids.html#brille._brille.BZTrellisQcc" title="brille._brille.BZTrellisQcc"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.BZTrellisQcc</span></code></a>, classes.</p>
+<p>The return type of the methods, e.g.,
+<a class="reference internal" href="grids.html#brille._brille.BZTrellisQdc.node_at_type" title="brille._brille.BZTrellisQdc.node_at_type"><code class="xref py py-meth docutils literal notranslate"><span class="pre">node_at_type()</span></code></a>,
+<a class="reference internal" href="grids.html#brille._brille.BZTrellisQdc.node_containing_type" title="brille._brille.BZTrellisQdc.node_containing_type"><code class="xref py py-meth docutils literal notranslate"><span class="pre">node_containing_type()</span></code></a>, and
+<a class="reference internal" href="grids.html#brille._brille.BZTrellisQdc.all_node_types" title="brille._brille.BZTrellisQdc.all_node_types"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all_node_types()</span></code></a>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brill</span> <span class="kn">import</span> <span class="n">NodeType</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nt</span> <span class="o">=</span> <span class="n">NodeType</span><span class="o">.</span><span class="n">polygon</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Members:</p>
+<blockquote>
+<div><p>assumed_null : Indicates a node which should be null but no explicit check was performed</p>
+<p>found_null : A node which an explicit check found to be null</p>
+<p>null : A null node</p>
+<p>cube : A cube shaped node</p>
+<p>polygon : A convex polygon shaped node</p>
+</div></blockquote>
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.NodeType.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#brille._brille.NodeType.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
-<span class="target" id="module-brille.vis"></span><p>Interface to VisPy for OpenGL visualisation</p>
-<p>See <a class="reference external" href="https://vispy.org">VisPy</a> for installation and configuration directions</p>
 </section>
 
 
@@ -653,17 +658,17 @@ values which will be tiled to the size of the full polyhedra list.</p></li>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="plotting.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="symmetry.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Matplotlib utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></p>
+            <p class="prev-next-title">Symmetry</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../utils.html" title="next page">
+    <a class='right-next' id="next-link" href="tolerance.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></p>
+        <p class="prev-next-title">Floating point tolerance</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
