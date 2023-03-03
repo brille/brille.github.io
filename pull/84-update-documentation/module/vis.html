@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>OpenGL visualisation &#8212; brille 0.7.1.dev26+g04d39e0 documentation</title>
+    <title>OpenGL visualisation &#8212; brille 0.7.1.dev27+g8a21f36 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -569,7 +569,7 @@ title="Print to PDF"
 <h1>OpenGL visualisation<a class="headerlink" href="#opengl-visualisation" title="Permalink to this headline">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="brille.vis.VisPolyhedron">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille.vis.</span></span><span class="sig-name descname"><span class="pre">VisPolyhedron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polyhedron</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">brille._brille.Polyhedron</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">face_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><span class="pre">vispy.color.Color</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">vispy.color.Color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><span class="pre">vispy.color.Color</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">vispy.color.Color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.vis.VisPolyhedron" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille.vis.</span></span><span class="sig-name descname"><span class="pre">VisPolyhedron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polyhedron:</span> <span class="pre">brille._brille.Polyhedron</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">face_color:</span> <span class="pre">vispy.color.Color</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_color:</span> <span class="pre">vispy.color.Color</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outline:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opacity:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.vis.VisPolyhedron" title="Permalink to this definition">#</a></dt>
 <dd><p>A wrapper class to contain visualisation options for a <code class="xref py py-class docutils literal notranslate"><span class="pre">brille.Polyhedron</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">brille.LPolyhedron</span></code></p>
 <dl class="field-list simple">
 <dt class="field-odd">Variables</dt>
@@ -616,6 +616,18 @@ is provided as input. See other parameters below for expected keyword arguments.
 <dt class="sig sig-object py" id="brille.vis.vis_polyhedra">
 <span class="sig-prename descclassname"><span class="pre">brille.vis.</span></span><span class="sig-name descname"><span class="pre">vis_polyhedra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polyhedra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#brille.vis.VisPolyhedron" title="brille.vis.VisPolyhedron"><span class="pre">brille.vis.VisPolyhedron</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.vis.vis_polyhedra" title="Permalink to this definition">#</a></dt>
 <dd><p>Visualise multiple polyhedra</p>
+<p>This function can be used to visualise the polyhedra that make up a space-filling mesh, but doing so will likely be slow.
+Pre-filtering out all polyhedra which can not be seen (those fully surrounded by other polyhedra) may improve the visualisation speed.</p>
+<dl class="simple">
+<dt>The visualisation includes interactive elements:</dt><dd><ul class="simple">
+<li><p>The view can be changed via the mouse</p></li>
+<li><p>The shading-style can be cycled by pressing ‘s’ between (<cite>None</cite>, <cite>‘smooth’</cite>, and <a href="#id1"><span class="problematic" id="id2">`</span></a>’flat’)</p></li>
+<li><p>The shading <cite>shininess</cite> can be increased by pressing ‘+’ or decreased by pressing ‘-’</p></li>
+<li><p>The polygon facet fill and wire display can be cycled by pressing ‘f’</p></li>
+<li><p>The wireframe display can be toggled by pressing ‘w’</p></li>
+</ul>
+</dd>
+</dl>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -636,6 +648,10 @@ values which will be tiled to the size of the full polyhedra list.</p></li>
 values which will be tiled to the size of the full polyhedra list.</p></li>
 <li><p><strong>opacity</strong> (<em>Union[List[float], float]</em>) – A single value to control face opacity of all Polyhedron and LPolyhedron objects or a list of floating point
 values which will be tiled to the size of the full polyhedra list.</p></li>
+<li><p><strong>elevation</strong> (<em>number</em>) – A single value to control the view ‘elevation’, the angle in degrees above the (x, y) plane of the view</p></li>
+<li><p><strong>azimuth</strong> (<em>number</em>) – A single value to control the view ‘azimuth’, the angle in degrees (from -1 * hat(y)?) of the view</p></li>
+<li><p><strong>wireframe_color</strong> (<em>Union[str, vispy.color.Color]</em>) – A single color used to draw the wireframe of <em>every</em> polyhedron.</p></li>
+<li><p><strong>axis</strong> (<em>bool</em>) – Control whether a set of axes are displayed along x, y, and z</p></li>
 </ul>
 </dd>
 </dl>
