@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Symmetry &#8212; brille 0.7.1.dev27+g8a21f36 documentation</title>
+    <title>Symmetry &#8212; brille 0.7.1.dev28+gf0fde23 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -627,7 +627,7 @@ which allows for specifying either a list of matrices and list of vectors or a s
 <span class="go">True</span>
 </pre></div>
 </div>
-<p>With a CIF xyz encoded string from, e.g., a CIF file, one can directly create a <code class="xref py py-class docutils literal notranslate"><span class="pre">Direct</span></code> lattice object
+<p>With a CIF xyz encoded string from, e.g., a CIF file, one can directly create a <a class="reference internal" href="lattice.html#brille._brille.Lattice" title="brille._brille.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lattice</span></code></a> object
 with the appropriate symmetry operations without also specifying, e.g., the spacegroup:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brille</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Symmetry</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">basis_lengths</span><span class="p">,</span> <span class="n">basis_angles</span><span class="p">,</span> <span class="n">xyz_string</span> <span class="o">=</span> <span class="n">hypothetical_CIF_parser</span><span class="p">(</span><span class="s1">&#39;some.cif&#39;</span><span class="p">)</span>

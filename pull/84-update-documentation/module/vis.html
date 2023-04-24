@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>OpenGL visualisation &#8212; brille 0.7.1.dev27+g8a21f36 documentation</title>
+    <title>OpenGL visualisation &#8212; brille 0.7.1.dev28+gf0fde23 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -575,10 +575,10 @@ title="Print to PDF"
 <dt class="field-odd">Variables</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>polyhedron</strong> (Union[<code class="xref py py-class docutils literal notranslate"><span class="pre">Polyhedron</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">LPolyhedron</span></code>]) – The polyhedron to be visualised. A LPolyhedron will be converted automatically to its Cartesian equivalent.</p></li>
-<li><p><strong>face_color</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><em>vispy.color.Color</em></a><em>]</em>) – The face color of the visualised polyhedron, default ‘black’</p></li>
-<li><p><strong>edge_color</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><em>vispy.color.Color</em></a><em>]</em>) – The edge color of the visualised polyhedron, default ‘black’</p></li>
-<li><p><strong>fill</strong> (<em>bool</em>) – Control drawing of the faces, default True</p></li>
-<li><p><strong>outline</strong> (<em>bool</em>) – Control drawing of the edges, default True</p></li>
+<li><p><strong>face_color</strong> (Union[<code class="docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.color.Color</span></code></a>]) – The face color of the visualised polyhedron, default ‘black’</p></li>
+<li><p><strong>edge_color</strong> (Union[<code class="docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.color.Color</span></code></a>]) – The edge color of the visualised polyhedron, default ‘black’</p></li>
+<li><p><strong>fill</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – Control drawing of the faces, default True</p></li>
+<li><p><strong>outline</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – Control drawing of the edges, default True</p></li>
 </ul>
 </dd>
 </dl>
@@ -603,10 +603,10 @@ is provided as input. See other parameters below for expected keyword arguments.
 </dd>
 <dt class="field-even">Other Parameters</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>face_color</strong> (<em>Union[str, vispy.color.Color]</em>) – The face color used for Polyhedron or LPolyhedron object input.</p></li>
-<li><p><strong>edge_color</strong> (<em>Union[str, vispy.color.Color]</em>) – The edge color used for Polyhedron or LPolyhedron object input.</p></li>
-<li><p><strong>fill</strong> (<em>bool</em>) – Control drawing the faces of the Polyhedron or LPolyhedron object.</p></li>
-<li><p><strong>outline</strong> (<em>bool</em>) – Control drawing the edges of the Polyhedron or LPolyhedron object.</p></li>
+<li><p><strong>face_color</strong> (Union[<code class="docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.color.Color</span></code></a>]) – The face color used for Polyhedron or LPolyhedron object input.</p></li>
+<li><p><strong>edge_color</strong> (Union[<code class="docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.color.Color</span></code></a>]) – The edge color used for Polyhedron or LPolyhedron object input.</p></li>
+<li><p><strong>fill</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – Control drawing the faces of the Polyhedron or LPolyhedron object.</p></li>
+<li><p><strong>outline</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – Control drawing the edges of the Polyhedron or LPolyhedron object.</p></li>
 </ul>
 </dd>
 </dl>
@@ -621,7 +621,7 @@ Pre-filtering out all polyhedra which can not be seen (those fully surrounded by
 <dl class="simple">
 <dt>The visualisation includes interactive elements:</dt><dd><ul class="simple">
 <li><p>The view can be changed via the mouse</p></li>
-<li><p>The shading-style can be cycled by pressing ‘s’ between (<cite>None</cite>, <cite>‘smooth’</cite>, and <a href="#id1"><span class="problematic" id="id2">`</span></a>’flat’)</p></li>
+<li><p>The shading-style can be cycled by pressing ‘s’ between (<cite>None</cite>, <cite>‘smooth’</cite>, and <cite>‘flat’</cite>)</p></li>
 <li><p>The shading <cite>shininess</cite> can be increased by pressing ‘+’ or decreased by pressing ‘-’</p></li>
 <li><p>The polygon facet fill and wire display can be cycled by pressing ‘f’</p></li>
 <li><p>The wireframe display can be toggled by pressing ‘w’</p></li>
@@ -638,20 +638,20 @@ is provided in the polyhedron list.</p></li>
 </dd>
 <dt class="field-even">Other Parameters</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>face_color</strong> (<em>Union[List[Union[str, vispy.color.Color]],Union[str, vispy.color.Color]]</em>) – A single face color used for all Polyhedron and LPolyhedron objects or a list of colors which will be tiled
+<li><p><strong>face_color</strong> (Union[List[Union[<code class="docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.color.Color</span></code></a>]],Union[<code class="docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.color.Color</span></code></a>]]) – A single face color used for all Polyhedron and LPolyhedron objects or a list of colors which will be tiled
 to the size of the full polyhedra list.</p></li>
-<li><p><strong>edge_color</strong> (<em>Union[List[Union[str, vispy.color.Color]],Union[str, vispy.color.Color]]</em>) – A single edge color used for all Polyhedron and LPolyhedron objects or a list of colors which will be tiled
+<li><p><strong>edge_color</strong> (Union[List[Union[<code class="docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.color.Color</span></code></a>]],Union[<code class="docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.color.Color</span></code></a>]]) – A single edge color used for all Polyhedron and LPolyhedron objects or a list of colors which will be tiled
 to the size of the full polyhedra list.</p></li>
-<li><p><strong>fill</strong> (<em>Union[List[bool], bool]</em>) – A single value to control drawing the faces of all Polyhedron and LPolyhedron objects or a list of boolean
+<li><p><strong>fill</strong> (Union[List[<code class="docutils literal notranslate"><span class="pre">bool</span></code>], <code class="docutils literal notranslate"><span class="pre">bool</span></code>]) – A single value to control drawing the faces of all Polyhedron and LPolyhedron objects or a list of boolean
 values which will be tiled to the size of the full polyhedra list.</p></li>
-<li><p><strong>outline</strong> (<em>Union[List[bool], bool]</em>) – A single value to control drawing the edges of all Polyhedron and LPolyhedron objects or a list of boolean
+<li><p><strong>outline</strong> (Union[List[<code class="docutils literal notranslate"><span class="pre">bool</span></code>], <code class="docutils literal notranslate"><span class="pre">bool</span></code>]) – A single value to control drawing the edges of all Polyhedron and LPolyhedron objects or a list of boolean
 values which will be tiled to the size of the full polyhedra list.</p></li>
-<li><p><strong>opacity</strong> (<em>Union[List[float], float]</em>) – A single value to control face opacity of all Polyhedron and LPolyhedron objects or a list of floating point
+<li><p><strong>opacity</strong> (Union[List[<code class="docutils literal notranslate"><span class="pre">float</span></code>], <code class="docutils literal notranslate"><span class="pre">float</span></code>]) – A single value to control face opacity of all Polyhedron and LPolyhedron objects or a list of floating point
 values which will be tiled to the size of the full polyhedra list.</p></li>
 <li><p><strong>elevation</strong> (<em>number</em>) – A single value to control the view ‘elevation’, the angle in degrees above the (x, y) plane of the view</p></li>
 <li><p><strong>azimuth</strong> (<em>number</em>) – A single value to control the view ‘azimuth’, the angle in degrees (from -1 * hat(y)?) of the view</p></li>
-<li><p><strong>wireframe_color</strong> (<em>Union[str, vispy.color.Color]</em>) – A single color used to draw the wireframe of <em>every</em> polyhedron.</p></li>
-<li><p><strong>axis</strong> (<em>bool</em>) – Control whether a set of axes are displayed along x, y, and z</p></li>
+<li><p><strong>wireframe_color</strong> (Union[<code class="docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">vispy.color.Color</span></code></a>]) – A single color used to draw the wireframe of <em>every</em> polyhedron.</p></li>
+<li><p><strong>axis</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – Control whether a set of axes are displayed along x, y, and z</p></li>
 </ul>
 </dd>
 </dl>

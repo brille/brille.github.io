@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Specifying a lattice Spacegroup &#8212; brille 0.7.1.dev27+g8a21f36 documentation</title>
+    <title>Specifying a lattice Spacegroup &#8212; brille 0.7.1.dev28+gf0fde23 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -835,14 +835,6 @@ object plus a set of generators for the group:</p>
 which also contains different methods of constructing a real space lattice
 which contains the spacegroup symmetry information.</p>
 <p>As a teaser, the two lattices <cite>lat0</cite> and <cite>lat1</cite> are identically the same:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">5.69</span>  <span class="c1"># angstrom, the approximate lattice constant for NaCl</span>
-
-<span class="n">lat0</span> <span class="o">=</span> <span class="n">brille</span><span class="o">.</span><span class="n">Direct</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span> <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span> <span class="s1">&#39;-F 4 2 3&#39;</span><span class="p">)</span>
-
-<span class="n">lat1</span> <span class="o">=</span> <span class="n">brille</span><span class="o">.</span><span class="n">Direct</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span> <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">))</span>
-<span class="n">lat1</span><span class="o">.</span><span class="n">spacegroup</span> <span class="o">=</span> <span class="n">brille</span><span class="o">.</span><span class="n">Symmetry</span><span class="p">(</span><span class="s1">&#39;-F 4 2 3&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">generators</span>
-</pre></div>
-</div>
 </section>
 </section>
 
