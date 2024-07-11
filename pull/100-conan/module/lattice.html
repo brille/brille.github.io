@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lattices &mdash; brille 0.7.1.dev31+g7fccb4c documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d220a608"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/katex.min.js?v=be8ff15f"></script>
+        <script src="../_static/auto-render.min.js?v=ad136472"></script>
+        <script src="../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Debugging" href="debug.html" />
+    <link rel="prev" title="Python module brille" href="../brille.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            brille
+              <img src="../_static/brille.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.7.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install_guide.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../motivation.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../memory_usage.html">Memory Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">User Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../brille.html#documented-thus-far">Documented thus far:</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lattices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#brille.Lattice"><code class="docutils literal notranslate"><span class="pre">Lattice()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#brille._brille.Bravais"><code class="docutils literal notranslate"><span class="pre">Bravais</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#brille._brille.Lattice"><code class="docutils literal notranslate"><span class="pre">Lattice</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#brille._brille.Lattice.get_contravariant_metric_tensor"><code class="docutils literal notranslate"><span class="pre">Lattice.get_contravariant_metric_tensor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#brille._brille.Lattice.get_covariant_metric_tensor"><code class="docutils literal notranslate"><span class="pre">Lattice.get_covariant_metric_tensor()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bz.html">Brillouin Zone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grids.html">Grids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symmetry.html">Symmetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="everything.html">Remainder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting.html">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting.html#brille.plotting.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting.html#brille.plotting.plot_bz"><code class="docutils literal notranslate"><span class="pre">plot_bz()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting.html#brille.plotting.plot_points"><code class="docutils literal notranslate"><span class="pre">plot_points()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting.html#brille.plotting.plot_points_with_lines"><code class="docutils literal notranslate"><span class="pre">plot_points_with_lines()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting.html#brille.plotting.plot_polyhedron"><code class="docutils literal notranslate"><span class="pre">plot_polyhedron()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting.html#brille.plotting.plot_tetrahedra"><code class="docutils literal notranslate"><span class="pre">plot_tetrahedra()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting.html#brille.plotting.plot_tetrahedron"><code class="docutils literal notranslate"><span class="pre">plot_tetrahedron()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html#brille.utils.create_bz"><code class="docutils literal notranslate"><span class="pre">create_bz()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html#brille.utils.create_grid"><code class="docutils literal notranslate"><span class="pre">create_grid()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doxygen.html">Doxygen documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">Undocumented C++ Classes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">brille</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+      <li class="breadcrumb-item active">Lattices</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/module/lattice.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lattices">
+<h1>Lattices<a class="headerlink" href="#lattices" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="brille.Lattice">
+<span class="sig-prename descclassname"><span class="pre">brille.</span></span><span class="sig-name descname"><span class="pre">Lattice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spacegroup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetry</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.Lattice" title="Link to this definition"></a></dt>
+<dd><p>Construct a space-spanning lattice in three dimensions</p>
+<p>A space-spanning lattice in <span class="math">\(N\)</span> dimensions has <span class="math">\(N\)</span> basis vectors
+which can be described fully by their <span class="math">\(N\)</span> lengths and the
+<span class="math">\(\frac{1}{2} N (N-1)\)</span> angles between each set of basis vectors, or
+<span class="math">\(\frac{1}{2}N(N+1)\)</span> scalars in total.
+This class stores the basis vectors of the lattice described in an orthonormal space,
+plus the metric of the space, and the equivalent information for the dual of the lattice.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brille</span> <span class="kn">import</span> <span class="n">Lattice</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mf">3.95</span><span class="p">,</span> <span class="mf">12.9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">avec</span><span class="p">,</span> <span class="n">bvec</span><span class="p">,</span> <span class="n">cvec</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">basis</span> <span class="o">=</span> <span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">symmetry</span> <span class="o">=</span> <span class="p">(</span><span class="n">rotations</span><span class="p">,</span> <span class="n">translations</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lat</span> <span class="o">=</span> <span class="n">Lattice</span><span class="p">(([</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="p">[</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">]),</span> <span class="n">spacegroup</span><span class="o">=</span><span class="s1">&#39;I4/mmm&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="n">basis</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lat</span> <span class="o">=</span> <span class="n">Lattice</span><span class="p">(([</span><span class="n">avec</span><span class="p">,</span> <span class="n">bvec</span><span class="p">,</span> <span class="n">cvec</span><span class="p">],),</span> <span class="n">symmetry</span><span class="o">=</span><span class="n">symmetry</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="n">basis</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lat</span> <span class="o">=</span> <span class="n">Lattice</span><span class="p">([</span><span class="n">avec</span><span class="p">,</span> <span class="n">bvec</span><span class="p">,</span> <span class="n">cvec</span><span class="p">],</span> <span class="n">spacegroup</span><span class="o">=</span><span class="s1">&#39;I4/mmm&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="n">basis</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The parameters packed into <code class="docutils literal notranslate"><span class="pre">values</span></code> are position-based and should be <em>either</em> <code class="docutils literal notranslate"><span class="pre">(lengths,</span> <span class="pre">angles)</span></code>
+<em>or</em> <code class="docutils literal notranslate"><span class="pre">(vectors,)</span></code> [which also requires setting <code class="docutils literal notranslate"><span class="pre">row_vectors=False</span></code> if the matrix represents column vectors].
+The lengths or vector components are interpreted in angstrom or inverse angstrom for real or reciprocal lattice
+parameters, respectively, and are assumed to be angstrom if the keyword <code class="docutils literal notranslate"><span class="pre">real_space</span></code> is missing or True.</p>
+</div>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul>
+<li><p><strong>values</strong> (<em>(lengths, angles), vectors</em>) – See the note above and the documenation for <code class="docutils literal notranslate"><span class="pre">lengths</span></code>, <code class="docutils literal notranslate"><span class="pre">angles</span></code>, and <code class="docutils literal notranslate"><span class="pre">vectors</span></code> below.</p></li>
+<li><p><strong>lengths</strong> (<em>list, tuple, numpy.ndarray</em>) – The three basis vector lengths in angstrom for real lattice, or inverse angstrom for reciprocal lattices</p></li>
+<li><p><strong>angles</strong> (<em>list, tuple, numpy.ndarray</em>) – The three angles between the basis vectors in degrees or radians. The angles are interpreted as radians
+if none are greater than pi and are otherwise assumed to be degrees.</p></li>
+<li><p><strong>vectors</strong> (<em>list[list,…], tuple(tuple,…), numpy.ndarray</em>) – The basis vectors in angstrom for real lattices, or inverse angstrom for reciprocal lattices,
+expressed in an orthorhombic coordinate system. An optional keyword argument, <code class="docutils literal notranslate"><span class="pre">row_vectors</span></code>, identifies
+if the provided basis vectors are row vectors [<cite>row_vectors=True</cite>, default] or column vectors
+[<code class="docutils literal notranslate"><span class="pre">row_vectors=False</span></code>].</p></li>
+<li><p><strong>spacegroup</strong> (<em>str, tuple(str, str)</em>) – The International Tables name, Hermann-Mauguin symbol with optional choice, or Hall symbol for the
+spacegroup of the lattice. The spacegroup may be provided as positional argument(s) or by keyword.
+If present, the <code class="docutils literal notranslate"><span class="pre">symmetry</span></code> keyword must not be used.
+Valid syntax for <code class="docutils literal notranslate"><span class="pre">(Hermann-Mauguin,</span> <span class="pre">choice)</span></code> input depends on the spacegroup but is generally one of:</p>
+<ul class="simple">
+<li><p>a single letter (‘a’, ‘b’, or ‘c’) with possible prepended ‘-’, denoting unique-axis choice</p></li>
+<li><p>a single digit (‘1’, ‘2’, or ‘3’), denoting origin choice</p></li>
+<li><p>a letter and digit, denoting unique-axis and origin choice</p></li>
+<li><p>a permutation of ‘abc’ with possible ‘-’ before one of the letters, denoting axis permutation</p></li>
+<li><p>or ‘R’ or ‘H’ for trigonal systems with Rhombohedral or Hexagonal lattice settings, respectively.</p></li>
+</ul>
+<p>Acceptable values are contained in the C++ source code in the seventh column of
+<a class="reference external" href="https://github.com/brille/brille/blob/eecb4cb28227665908793abc47e88c69518c09fc/src/spg_database.cpp#L63-L610">this table</a>
+with each line representing one spacegroup with values, in order, defined by the
+<a class="reference external" href="https://github.com/brille/brille/blob/eecb4cb28227665908793abc47e88c69518c09fc/src/spg_database.hpp#L80-L91">class signature</a>
+These values come from spglib, which likely obtained them from
+<a class="reference external" href="https://web.archive.org/web/20210621195003/http://pmsl.planet.sci.kobe-u.ac.jp/~seto/?page_id=37&amp;lang=en">Seto’s Home Page</a>.</p>
+</li>
+<li><p><strong>symmetry</strong> (<em>brille.Symmetry, tuple(matrices, vectors), str</em>) – The spacegroup symmetry operations as an object, a tuple of the (pseudo)rotation matrices and translation
+vectors, or a CIF xyz encoded string. The symmetry information must be provided by keyword.
+If present, the ‘spacegroup’ positional argument(s) or keyword must not be used.</p></li>
+<li><p><strong>basis</strong> (<em>brille.Basis, tuple(positions, types)</em>) – The atom basis information of the lattice, expressed in units of the real space basis vectors. The types
+must be integer and are used only to identify equivalent atoms – they should probably be contiguous from
+zero to 1-N where N is the number of unique atoms in the atom basis.
+If present, either spacegroup or symmetry information must be provided.</p></li>
+<li><p><strong>kwargs</strong> – Keyword arguments are passed to the <a class="reference internal" href="#brille._brille.Lattice" title="brille._brille.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Lattice</span></code></a> constructor,
+see its documentation for details.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="brille._brille.Bravais">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">Bravais</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.Bravais" title="brille._brille.Bravais"><span class="pre">brille._brille.Bravais</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.Bravais" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><p>A Bravais letter indicating the centering of a lattice</p>
+<p>When the unit cell does not reflect the symmetry of the lattice, it is usual
+to refer to a ‘conventional’ crystallographic basis,
+<span class="math">\((\mathbf{a}_s\,\mathbf{b}_s\,\mathbf{c}_s)\)</span>, instead of
+a primitive basis, <span class="math">\((\mathbf{a}_p\,\mathbf{b}_p\,\mathbf{c}_p)\)</span>.
+Such a conventional basis has ‘extra’ lattice points added at the centre of
+the unit cell, the centre of a face, or the centre of three faces.
+The ‘extra’ nodes in the conventional basis are displaced from the origin of
+the unit cell by ‘centring vectors’. As with any space-spanning basis, any
+whole-number linear combination of the conventional basis vectors is a lattice
+point but in addition there exist linear combinations
+<span class="math">\(x\mathbf{a}_s+y\mathbf{b}_s+z\mathbf{c}_s\)</span> with at least
+two fractional coefficients <span class="math">\((x,y,z)\)</span> that are lattice points as well.</p>
+<p>Each conventional basis is ascribed a Bravais letter, which forms part of the
+Hermann-Mauguin symbol of a space group.
+A subset of the 10 possible Bravais letters is used herein:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Bravais letter</p></th>
+<th class="head"><p>Centring</p></th>
+<th class="head"><p>Centring vectors</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>P</p></td>
+<td><p>primitive</p></td>
+<td><p><span class="math">\(\mathbf{0}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>A</p></td>
+<td><p>A-face centred</p></td>
+<td><p><span class="math">\(\frac{\mathbf{b}_s+\mathbf{c}_s}{2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>B</p></td>
+<td><p>B-face centred</p></td>
+<td><p><span class="math">\(\frac{\mathbf{c}_s+\mathbf{a}_s}{2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>C</p></td>
+<td><p>C-face centred</p></td>
+<td><p><span class="math">\(\frac{\mathbf{a}_s+\mathbf{b}_s}{2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>I</p></td>
+<td><p>body centred (<em>Innenzentriert</em>)</p></td>
+<td><p><span class="math">\(\frac{\mathbf{a}_s+\mathbf{b}_s+\mathbf{c}_s}{2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>F</p></td>
+<td><p>all-face centred</p></td>
+<td><p><span class="math">\(\frac{\mathbf{b}_s+\mathbf{c}_s}{2}\)</span>,
+<span class="math">\(\frac{\mathbf{c}_s+\mathbf{a}_s}{2}\)</span>,
+<span class="math">\(\frac{\mathbf{a}_s+\mathbf{b}_s}{2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>R</p></td>
+<td><p>rhombohedrally centred (hexagonal axes)</p></td>
+<td><p><span class="math">\(\frac{2\mathbf{a}_s+\mathbf{b}_s+\mathbf{c}_s}{3}\)</span>
+<span class="math">\(\frac{\mathbf{a}_s+2\mathbf{b}_s+2\mathbf{c}_s}{3}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>For further details, see the <a class="reference external" href="http://reference.iucr.org/dictionary/Centred_lattice">IUCr Online Dictionary of Crystallography</a>.</p>
+</div></blockquote>
+<p>Members:</p>
+<blockquote>
+<div><p>invalid</p>
+<p>P : primitive</p>
+<p>A : A-face centred</p>
+<p>B : B-face centred</p>
+<p>C : C-face centred</p>
+<p>I : body-centred</p>
+<p>F : face centred</p>
+<p>R : rhombohedrally centred</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="brille._brille.Lattice">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">Lattice</span></span><a class="headerlink" href="#brille._brille.Lattice" title="Link to this definition"></a></dt>
+<dd><p>A space-spanning lattice in three dimensions</p>
+<p>A space-spanning lattice in <span class="math">\(N\)</span> dimensions has <span class="math">\(N\)</span> basis vectors
+which can be described fully by their <span class="math">\(N\)</span> lengths and the
+<span class="math">\(\sum_1^{N-1} 1\)</span> angles between each set of basis vectors, or
+<span class="math">\(\sum_1^N 1 = \frac{1}{2}N(N+1)\)</span> scalars in total.
+This class stores the basis vectors of the lattice described in an orthonormal space,
+plus the metric of the space, and the equivalent information for the dual of the lattice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong><strong>,</strong><strong>b</strong><strong>,</strong><strong>c</strong> (<em>float</em>) – The basis vector lengths</p></li>
+<li><p><strong>alpha</strong><strong>,</strong><strong>beta</strong><strong>,</strong><strong>gamma</strong> (<em>float</em>) – The angles between the basis vectors, internally always in radian</p></li>
+<li><p><strong>volume</strong> (<em>float</em>) – The volume of the lattice unit cell in units of length cubed.</p></li>
+<li><p><strong>bravais</strong> (<a class="reference internal" href="#brille._brille.Bravais" title="brille._brille.Bravais"><code class="xref py py-class docutils literal notranslate"><span class="pre">Bravais</span></code></a>) – The centring type of the lattice</p></li>
+<li><p><strong>spacegroup</strong> (<a class="reference internal" href="symmetry.html#brille._brille.Symmetry" title="brille._brille.Symmetry"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symmetry</span></code></a>) – The Spacegroup symmetry operations of the lattice</p></li>
+<li><p><strong>pointgroup</strong> (<a class="reference internal" href="symmetry.html#brille._brille.PointSymmetry" title="brille._brille.PointSymmetry"><code class="xref py py-class docutils literal notranslate"><span class="pre">PointSymmetry</span></code></a>) – The Pointgroup symmetry operations of the lattice</p></li>
+<li><p><strong>basis</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Basis</span></code>) – The positions of all atoms within the lattice unit cell</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="brille._brille.Lattice.get_contravariant_metric_tensor">
+<span class="sig-name descname"><span class="pre">get_contravariant_metric_tensor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.Lattice.get_contravariant_metric_tensor" title="Link to this definition"></a></dt>
+<dd><p>Calculate the contravariant metric tensor of the lattice</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p>The inverse of the metric of the lattice</p>
+<div class="math">
+\[g^{ij} =
+\begin{pmatrix}
+a^2 & ab\cos\gamma & ac\cos\beta \\
+ab\cos\gamma & b^2 & bc\cos\alpha \\
+ac\cos\beta & bc\cos\alpha & c^2
+\end{pmatrix}^{-1}
+
+\]</div>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>matrix_like</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="brille._brille.Lattice.get_covariant_metric_tensor">
+<span class="sig-name descname"><span class="pre">get_covariant_metric_tensor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.Lattice.get_covariant_metric_tensor" title="Link to this definition"></a></dt>
+<dd><p>Calculate the covariant metric tensor of the lattice</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p>The metric of the lattice</p>
+<div class="math">
+\[g_{ij} =
+\begin{pmatrix}
+a^2 & ab\cos\gamma & ac\cos\beta \\
+ab\cos\gamma & b^2 & bc\cos\alpha \\
+ac\cos\beta & bc\cos\alpha & c^2
+\end{pmatrix}
+
+\]</div>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>matrix_like</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../brille.html" class="btn btn-neutral float-left" title="Python module brille" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="debug.html" class="btn btn-neutral float-right" title="Debugging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Gregory Tucker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

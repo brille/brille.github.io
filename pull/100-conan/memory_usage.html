@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Use &mdash; brille 0.7.1.dev31+g7fccb4c documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="_static/katex-math.css?v=91adb8b6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=d220a608"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/katex.min.js?v=be8ff15f"></script>
+        <script src="_static/auto-render.min.js?v=ad136472"></script>
+        <script src="_static/katex_autorenderer.js?v=bebc588a"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="User Guide" href="tutorial.html" />
+    <link rel="prev" title="Introduction" href="motivation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            brille
+              <img src="_static/brille.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                0.7.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install_guide.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="motivation.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Memory Use</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#orthogonal-grid">Orthogonal grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-grids">Other grids</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">User Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="brille.html#documented-thus-far">Documented thus far:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#brille.plotting.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#brille.plotting.plot_bz"><code class="docutils literal notranslate"><span class="pre">plot_bz()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#brille.plotting.plot_points"><code class="docutils literal notranslate"><span class="pre">plot_points()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#brille.plotting.plot_points_with_lines"><code class="docutils literal notranslate"><span class="pre">plot_points_with_lines()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#brille.plotting.plot_polyhedron"><code class="docutils literal notranslate"><span class="pre">plot_polyhedron()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#brille.plotting.plot_tetrahedra"><code class="docutils literal notranslate"><span class="pre">plot_tetrahedra()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html#brille.plotting.plot_tetrahedron"><code class="docutils literal notranslate"><span class="pre">plot_tetrahedron()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html#brille.utils.create_bz"><code class="docutils literal notranslate"><span class="pre">create_bz()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html#brille.utils.create_grid"><code class="docutils literal notranslate"><span class="pre">create_grid()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="doxygen.html">Doxygen documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="undoc_brille.html">Undocumented C++ Classes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">brille</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Memory Use</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/memory_usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="memory-use">
+<h1>Memory Use<a class="headerlink" href="#memory-use" title="Link to this heading"></a></h1>
+<p>The size of a grid-like object in memory depends on a number of factors, some
+of which we can state explicitly and some which can only be estimated in the
+general case.</p>
+<section id="orthogonal-grid">
+<h2>Orthogonal grid<a class="headerlink" href="#orthogonal-grid" title="Link to this heading"></a></h2>
+<p>An orthogonal grid in <span class="math">\(n\)</span> dimensions is comprised of cells which are
+defined by their <span class="math">\(2^n\)</span> vertices.
+While <a class="reference internal" href="brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> does not implement a basic three dimensional orthogonal
+grid, it represents a useful starting point for memory use calculations.</p>
+<p>An orthogonal grid would need to envelop the polyhedron used in its
+construction and would have cell edge lengths determined by either a specified
+cell volume or specified number density.
+If <span class="math">\(V_\text{c}\)</span> is the cell volume and <span class="math">\(V_\text{p}\)</span> the polyhedron
+volume, then the number of cells is <span class="math">\(N = V_\text{p}/V_\text{c}\)</span>.</p>
+<p>The number of grid vertices within the polyhedron would depend on the shape
+of the polyhedron, but should be similar to the number density times the
+polyhedron volume in all cases.
+As with the <a class="reference internal" href="brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> grids, for each vertex equal-sized data is stored,
+depending entirely on what the user provides.
+In the case of phonon mode data for a crystal with <span class="math">\(n_\text{atom}\)</span> atoms
+each phonon mode is comprised of one real scalar and <span class="math">\(n_\text{atom}\)</span>
+complex valued three-vectors, and there are <span class="math">\(3n_\text{atom}\)</span> modes in all.
+Thus, for each vertex the grid stores
+<span class="math">\(3 n_\text{atom} + 18 n_\text{atom}^2\)</span> 8-byte values.</p>
+<p>The grid itself would be stored as list of its cell boundaries, each of which is
+approximately <span class="math">\(N^{1/3}+1\)</span> in length, and for each cell at least partly in
+the polyhedron the eight corner vertex indices would be stored stored in a
+structure as well.
+Since all vertices are indexed this meta information totals
+<span class="math">\(N + 3 N^{1/3} + 3\)</span> 8-byte values.
+And therefore, the total memory required for an orthogonal grid storing
+phonon data is on the order of</p>
+<div class="math" id="equation-memuse">
+<span class="eqno">(1)<a class="headerlink" href="#equation-memuse" title="Permalink to this equation"></a></span>\[\left[N \left(1 + 3 n_\text{atom} + 18 n_\text{atom}^2\right) + 3 N^{1/3} + 3\right]\times 8\text{bytes}
+
+\]</div>
+<p>For a grid with <span class="math">\(10^5\)</span> cells, a system with ten atoms would therefore
+need up to 1.36 GB and one with one hundred atoms would need up to 134 GB.</p>
+</section>
+<section id="other-grids">
+<h2>Other grids<a class="headerlink" href="#other-grids" title="Link to this heading"></a></h2>
+<p>For other grids, the per vertex memory usage is similar but the total number of
+vertices is not as easy to estimate. The expression in <a class="reference internal" href="#equation-memuse">(1)</a> should be
+an appropriate order-of-magnitude estimate of memory use.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="motivation.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Gregory Tucker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
