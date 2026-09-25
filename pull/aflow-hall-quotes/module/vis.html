@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenGL visualisation &mdash; brille 0.8.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=b41f4c93"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/katex.min.js?v=be8ff15f"></script>
+        <script src="../_static/auto-render.min.js?v=ad136472"></script>
+        <script src="../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Utilities for brille" href="../utils.html" />
+    <link rel="prev" title="Plotting utilities for brille" href="plotting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            brille
+              <img src="../_static/brille.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install_guide.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../motivation.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../memory_usage.html">Memory Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../threads.html">Parallel threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../phase_convention.html">Eigenvector phase convention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">User Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.AngleUnit"><code class="docutils literal notranslate"><span class="pre">AngleUnit</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.ApproxConfig"><code class="docutils literal notranslate"><span class="pre">ApproxConfig</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZMeshQcc"><code class="docutils literal notranslate"><span class="pre">BZMeshQcc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZMeshQdc"><code class="docutils literal notranslate"><span class="pre">BZMeshQdc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZMeshQdd"><code class="docutils literal notranslate"><span class="pre">BZMeshQdd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZNestQcc"><code class="docutils literal notranslate"><span class="pre">BZNestQcc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZNestQdc"><code class="docutils literal notranslate"><span class="pre">BZNestQdc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZNestQdd"><code class="docutils literal notranslate"><span class="pre">BZNestQdd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZTrellisQcc"><code class="docutils literal notranslate"><span class="pre">BZTrellisQcc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZTrellisQdc"><code class="docutils literal notranslate"><span class="pre">BZTrellisQdc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZTrellisQdd"><code class="docutils literal notranslate"><span class="pre">BZTrellisQdd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Basis"><code class="docutils literal notranslate"><span class="pre">Basis</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Bravais"><code class="docutils literal notranslate"><span class="pre">Bravais</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BrillouinZone"><code class="docutils literal notranslate"><span class="pre">BrillouinZone</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.HallSymbol"><code class="docutils literal notranslate"><span class="pre">HallSymbol</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.LPolyhedron"><code class="docutils literal notranslate"><span class="pre">LPolyhedron</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Lattice"><code class="docutils literal notranslate"><span class="pre">Lattice()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.LengthUnit"><code class="docutils literal notranslate"><span class="pre">LengthUnit</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.NodeType"><code class="docutils literal notranslate"><span class="pre">NodeType</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.PointSymmetry"><code class="docutils literal notranslate"><span class="pre">PointSymmetry</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Pointgroup"><code class="docutils literal notranslate"><span class="pre">Pointgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Polyhedron"><code class="docutils literal notranslate"><span class="pre">Polyhedron</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.PrimitiveTransform"><code class="docutils literal notranslate"><span class="pre">PrimitiveTransform</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.RotatesLike"><code class="docutils literal notranslate"><span class="pre">RotatesLike</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.SortingStatus"><code class="docutils literal notranslate"><span class="pre">SortingStatus</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Spacegroup"><code class="docutils literal notranslate"><span class="pre">Spacegroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Symmetry"><code class="docutils literal notranslate"><span class="pre">Symmetry</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.real_space_tolerance"><code class="docutils literal notranslate"><span class="pre">real_space_tolerance()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.reciprocal_space_tolerance"><code class="docutils literal notranslate"><span class="pre">reciprocal_space_tolerance()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#documented-thus-far">Documented thus far:</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../visualisation.html">Visualisation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plotting.html">Plotting utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#brille.plotting.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#brille.plotting.plot_bz"><code class="docutils literal notranslate"><span class="pre">plot_bz()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#brille.plotting.plot_points"><code class="docutils literal notranslate"><span class="pre">plot_points()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#brille.plotting.plot_points_with_lines"><code class="docutils literal notranslate"><span class="pre">plot_points_with_lines()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#brille.plotting.plot_polyhedron"><code class="docutils literal notranslate"><span class="pre">plot_polyhedron()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#brille.plotting.plot_tetrahedra"><code class="docutils literal notranslate"><span class="pre">plot_tetrahedra()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#brille.plotting.plot_tetrahedron"><code class="docutils literal notranslate"><span class="pre">plot_tetrahedron()</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OpenGL visualisation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#brille.vis.VisPolyhedron"><code class="docutils literal notranslate"><span class="pre">VisPolyhedron</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#brille.vis.vis_polyhedron"><code class="docutils literal notranslate"><span class="pre">vis_polyhedron()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#brille.vis.vis_polyhedra"><code class="docutils literal notranslate"><span class="pre">vis_polyhedra()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html#brille.utils.create_bz"><code class="docutils literal notranslate"><span class="pre">create_bz()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html#brille.utils.create_grid"><code class="docutils literal notranslate"><span class="pre">create_grid()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doxygen.html">Doxygen documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">Undocumented C++ Classes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">brille</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../visualisation.html">Visualisation</a></li>
+      <li class="breadcrumb-item active">OpenGL visualisation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/module/vis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="opengl-visualisation">
+<h1>OpenGL visualisation<a class="headerlink" href="#opengl-visualisation" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="brille.vis.VisPolyhedron">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille.vis.</span></span><span class="sig-name descname"><span class="pre">VisPolyhedron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polyhedron</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../brille.html#brille.Polyhedron" title="brille._brille.Polyhedron"><span class="pre">Polyhedron</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">face_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.17)"><span class="pre">vispy.color.Color</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">vispy.color.Color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.17)"><span class="pre">vispy.color.Color</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">vispy.color.Color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.vis.VisPolyhedron" title="Link to this definition"></a></dt>
+<dd><p>Wrapper to contain visualisation options for a brille.Polyhedron or brille.LPolyhedron</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>polyhedron</strong> (<em>Union</em><em>[</em><a class="reference internal" href="../brille.html#brille.Polyhedron" title="brille.Polyhedron"><em>Polyhedron</em></a><em>, </em><a class="reference internal" href="../brille.html#brille.LPolyhedron" title="brille.LPolyhedron"><em>LPolyhedron</em></a><em>]</em>) – The polyhedron to be visualised. A LPolyhedron will be converted automatically to its Cartesian equivalent.</p></li>
+<li><p><strong>face_color</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.17)"><em>vispy.color.Color</em></a><em>]</em>) – The face color of the visualised polyhedron, default ‘black’</p></li>
+<li><p><strong>edge_color</strong> (<em>Union</em><em>[</em><em>str</em><em>, </em><a class="reference external" href="https://vispy.org/api/vispy.color.html#vispy.color.Color" title="(in VisPy v0.17)"><em>vispy.color.Color</em></a><em>]</em>) – The edge color of the visualised polyhedron, default ‘black’</p></li>
+<li><p><strong>fill</strong> (<em>bool</em>) – Control drawing of the faces, default True</p></li>
+<li><p><strong>outline</strong> (<em>bool</em>) – Control drawing of the edges, default True</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the case that a polyhedron with vertices expressed in units of a lattice basis is provided, the oriented lattice
+basis vectors will be used to convert the vertices into an orthonormal frame during object initialisation.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="brille.vis.vis_polyhedron">
+<span class="sig-prename descclassname"><span class="pre">brille.vis.</span></span><span class="sig-name descname"><span class="pre">vis_polyhedron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polyhedron</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille.vis.VisPolyhedron" title="brille.vis.VisPolyhedron"><span class="pre">VisPolyhedron</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.vis.vis_polyhedron" title="Link to this definition"></a></dt>
+<dd><p>Visualise a single wrapped polyhedron</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul>
+<li><p><strong>polyhedron</strong> (<em>Union[VisPolyhedron, brille.Polyhedron, brille.LPolyhedron]</em>) – The polyhedron to be visualised. Any object with similar <cite>vertices</cite> and <cite>faces</cite> properties may work as well.</p></li>
+<li><p><strong>kwargs</strong> – Optional keyword arguments for the VisPolyhedron constructor. Only used if a Polyhedron or LPolyhedron
+is provided as input.</p>
+<dl class="simple">
+<dt>face_color<span class="classifier">Union[str, vispy.color.Color]</span></dt><dd><p>The face color used for Polyhedron or LPolyhedron object input.</p>
+</dd>
+<dt>edge_color<span class="classifier">Union[str, vispy.color.Color]</span></dt><dd><p>The edge color used for Polyhedron or LPolyhedron object input.</p>
+</dd>
+<dt>fill<span class="classifier">bool</span></dt><dd><p>Control drawing the faces of the Polyhedron or LPolyhedron object.</p>
+</dd>
+<dt>outline<span class="classifier">bool</span></dt><dd><p>Control drawing the edges of the Polyhedron or LPolyhedron object.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="brille.vis.vis_polyhedra">
+<span class="sig-prename descclassname"><span class="pre">brille.vis.</span></span><span class="sig-name descname"><span class="pre">vis_polyhedra</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">polyhedra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#brille.vis.VisPolyhedron" title="brille.vis.VisPolyhedron"><span class="pre">VisPolyhedron</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille.vis.vis_polyhedra" title="Link to this definition"></a></dt>
+<dd><p>Visualise multiple polyhedra</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul>
+<li><p><strong>polyhedra</strong> (<em>List[Union[VisPolyhedron, brille.Polyhedron, brille.LPolyhedron]]</em>) – The polyhedron to be visualised. Any object with similar <cite>vertices</cite> and <cite>faces</cite> properties may work as well.</p></li>
+<li><p><strong>kwargs</strong> – Optional keyword arguments for the VisPolyhedron constructor. Only used if a Polyhedron or LPolyhedron
+is provided in the polyhedron list.</p>
+<dl class="simple">
+<dt>face_color<span class="classifier">Union[List[Union[str, vispy.color.Color]],Union[str, vispy.color.Color]]</span></dt><dd><p>A single face color used for all Polyhedron and LPolyhedron objects or a list of colors which will be tiled
+to the size of the full polyhedra list.</p>
+</dd>
+<dt>edge_color<span class="classifier">Union[List[Union[str, vispy.color.Color]],Union[str, vispy.color.Color]]</span></dt><dd><p>A single edge color used for all Polyhedron and LPolyhedron objects or a list of colors which will be tiled
+to the size of the full polyhedra list.</p>
+</dd>
+<dt>fill<span class="classifier">Union[List[bool], bool]</span></dt><dd><p>A single value to control drawing the faces of all Polyhedron and LPolyhedron objects or a list of boolean
+values which will be tiled to the size of the full polyhedra list.</p>
+</dd>
+<dt>outline<span class="classifier">Union[List[bool], bool]</span></dt><dd><p>A single value to control drawing the edges of all Polyhedron and LPolyhedron objects or a list of boolean
+values which will be tiled to the size of the full polyhedra list.</p>
+</dd>
+<dt>opacity<span class="classifier">Union[List[float], float]</span></dt><dd><p>A single value to control face opacity of all Polyhedron and LPolyhedron objects or a list of floating point
+values which will be tiled to the size of the full polyhedra list.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p id="module-brille.vis">Interface to VisPy for OpenGL visualisation</p>
+<p>See <a class="reference external" href="https://vispy.org">VisPy</a> for installation and configuration directions</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="plotting.html" class="btn btn-neutral float-left" title="Plotting utilities for brille" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../utils.html" class="btn btn-neutral float-right" title="Utilities for brille" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Gregory Tucker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
