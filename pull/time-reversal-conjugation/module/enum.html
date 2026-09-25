@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enumerated values &mdash; brille 0.8.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=b41f4c93"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/katex.min.js?v=be8ff15f"></script>
+        <script src="../_static/auto-render.min.js?v=ad136472"></script>
+        <script src="../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Floating point tolerance" href="tolerance.html" />
+    <link rel="prev" title="Symmetry" href="symmetry.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            brille
+              <img src="../_static/brille.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install_guide.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../motivation.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../memory_usage.html">Memory Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../threads.html">Parallel threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../phase_convention.html">Eigenvector phase convention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">User Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.AngleUnit"><code class="docutils literal notranslate"><span class="pre">AngleUnit</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.ApproxConfig"><code class="docutils literal notranslate"><span class="pre">ApproxConfig</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZMeshQcc"><code class="docutils literal notranslate"><span class="pre">BZMeshQcc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZMeshQdc"><code class="docutils literal notranslate"><span class="pre">BZMeshQdc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZMeshQdd"><code class="docutils literal notranslate"><span class="pre">BZMeshQdd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZNestQcc"><code class="docutils literal notranslate"><span class="pre">BZNestQcc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZNestQdc"><code class="docutils literal notranslate"><span class="pre">BZNestQdc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZNestQdd"><code class="docutils literal notranslate"><span class="pre">BZNestQdd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZTrellisQcc"><code class="docutils literal notranslate"><span class="pre">BZTrellisQcc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZTrellisQdc"><code class="docutils literal notranslate"><span class="pre">BZTrellisQdc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZTrellisQdd"><code class="docutils literal notranslate"><span class="pre">BZTrellisQdd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Basis"><code class="docutils literal notranslate"><span class="pre">Basis</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Bravais"><code class="docutils literal notranslate"><span class="pre">Bravais</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BrillouinZone"><code class="docutils literal notranslate"><span class="pre">BrillouinZone</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.HallSymbol"><code class="docutils literal notranslate"><span class="pre">HallSymbol</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.LPolyhedron"><code class="docutils literal notranslate"><span class="pre">LPolyhedron</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Lattice"><code class="docutils literal notranslate"><span class="pre">Lattice()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.LengthUnit"><code class="docutils literal notranslate"><span class="pre">LengthUnit</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.NodeType"><code class="docutils literal notranslate"><span class="pre">NodeType</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.PointSymmetry"><code class="docutils literal notranslate"><span class="pre">PointSymmetry</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Pointgroup"><code class="docutils literal notranslate"><span class="pre">Pointgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Polyhedron"><code class="docutils literal notranslate"><span class="pre">Polyhedron</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.PrimitiveTransform"><code class="docutils literal notranslate"><span class="pre">PrimitiveTransform</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.RotatesLike"><code class="docutils literal notranslate"><span class="pre">RotatesLike</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.SortingStatus"><code class="docutils literal notranslate"><span class="pre">SortingStatus</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Spacegroup"><code class="docutils literal notranslate"><span class="pre">Spacegroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Symmetry"><code class="docutils literal notranslate"><span class="pre">Symmetry</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.real_space_tolerance"><code class="docutils literal notranslate"><span class="pre">real_space_tolerance()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.reciprocal_space_tolerance"><code class="docutils literal notranslate"><span class="pre">reciprocal_space_tolerance()</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../brille.html#documented-thus-far">Documented thus far:</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lattice.html">Lattices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bz.html">Brillouin Zone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grids.html">Grids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symmetry.html">Symmetry</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Enumerated values</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#brille._brille.AngleUnit"><code class="docutils literal notranslate"><span class="pre">AngleUnit</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#brille._brille.AngleUnit.name"><code class="docutils literal notranslate"><span class="pre">AngleUnit.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#brille._brille.LengthUnit"><code class="docutils literal notranslate"><span class="pre">LengthUnit</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#brille._brille.LengthUnit.name"><code class="docutils literal notranslate"><span class="pre">LengthUnit.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#brille._brille.NodeType"><code class="docutils literal notranslate"><span class="pre">NodeType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#brille._brille.NodeType.name"><code class="docutils literal notranslate"><span class="pre">NodeType.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tolerance.html">Floating point tolerance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="everything.html">Remainder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html#brille.utils.create_bz"><code class="docutils literal notranslate"><span class="pre">create_bz()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html#brille.utils.create_grid"><code class="docutils literal notranslate"><span class="pre">create_grid()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doxygen.html">Doxygen documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">Undocumented C++ Classes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">brille</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+      <li class="breadcrumb-item active">Enumerated values</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/module/enum.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="enumerated-values">
+<h1>Enumerated values<a class="headerlink" href="#enumerated-values" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="../brille.html#module-brille._brille" title="brille._brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a> uses a number of enumerated values to control its behaviour
+and convey information.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="brille._brille.AngleUnit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">AngleUnit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.AngleUnit" title="brille._brille.AngleUnit"><span class="pre">brille._brille.AngleUnit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.AngleUnit" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><p>The units of a number representing an angle.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brille</span> <span class="kn">import</span> <span class="n">AngleUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">AngleUnit</span><span class="o">.</span><span class="n">radian</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Members:</p>
+<blockquote>
+<div><p>not_provided : unknown, will be inferred</p>
+<p>radian : radian</p>
+<p>degree : degree</p>
+<p>pi : radian divided by pi</p>
+</div></blockquote>
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.AngleUnit.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#brille._brille.AngleUnit.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="brille._brille.LengthUnit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">LengthUnit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.LengthUnit" title="brille._brille.LengthUnit"><span class="pre">brille._brille.LengthUnit</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.LengthUnit" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><p>The units of a number representing a length.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brille</span> <span class="kn">import</span> <span class="n">LengthUnit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">LengthUnit</span><span class="o">.</span><span class="n">angstrom</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Members:</p>
+<blockquote>
+<div><p>none : A default value, the used value may be inferred</p>
+<p>angstrom : 10<sup>-10</sup> meter</p>
+<p>inverse_angstrom : 1 / angstrom</p>
+<p>real_lattice : fractional coordinates of real lattice</p>
+<p>reciprocal_lattice : fractional coordinates of reciprocal lattice</p>
+</div></blockquote>
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.LengthUnit.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#brille._brille.LengthUnit.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="brille._brille.NodeType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">NodeType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.NodeType" title="brille._brille.NodeType"><span class="pre">brille._brille.NodeType</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.NodeType" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><p>An enumeration to differentiate between Node types of the <a class="reference internal" href="grids.html#brille._brille.BZTrellisQdd" title="brille._brille.BZTrellisQdd"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.BZTrellisQdd</span></code></a>,
+<a class="reference internal" href="grids.html#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.BZTrellisQdc</span></code></a>, and <a class="reference internal" href="grids.html#brille._brille.BZTrellisQcc" title="brille._brille.BZTrellisQcc"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.BZTrellisQcc</span></code></a>, classes.</p>
+<p>The return type of the methods, e.g.,
+<a class="reference internal" href="grids.html#brille._brille.BZTrellisQdc.node_at_type" title="brille._brille.BZTrellisQdc.node_at_type"><code class="xref py py-meth docutils literal notranslate"><span class="pre">node_at_type()</span></code></a>,
+<a class="reference internal" href="grids.html#brille._brille.BZTrellisQdc.node_containing_type" title="brille._brille.BZTrellisQdc.node_containing_type"><code class="xref py py-meth docutils literal notranslate"><span class="pre">node_containing_type()</span></code></a>, and
+<a class="reference internal" href="grids.html#brille._brille.BZTrellisQdc.all_node_types" title="brille._brille.BZTrellisQdc.all_node_types"><code class="xref py py-meth docutils literal notranslate"><span class="pre">all_node_types()</span></code></a>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brill</span> <span class="kn">import</span> <span class="n">NodeType</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nt</span> <span class="o">=</span> <span class="n">NodeType</span><span class="o">.</span><span class="n">polygon</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Members:</p>
+<blockquote>
+<div><p>assumed_null : Indicates a node which should be null but no explicit check was performed</p>
+<p>found_null : A node which an explicit check found to be null</p>
+<p>null : A null node</p>
+<p>cube : A cube shaped node</p>
+<p>polygon : A convex polygon shaped node</p>
+</div></blockquote>
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.NodeType.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#brille._brille.NodeType.name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="symmetry.html" class="btn btn-neutral float-left" title="Symmetry" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tolerance.html" class="btn btn-neutral float-right" title="Floating point tolerance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Gregory Tucker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
