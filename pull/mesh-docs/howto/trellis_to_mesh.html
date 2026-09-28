@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Switch from BZTrellisQ to BZMeshQ &mdash; brille 0.8.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=b41f4c93"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/katex.min.js?v=be8ff15f"></script>
+        <script src="../_static/auto-render.min.js?v=ad136472"></script>
+        <script src="../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Python module brille" href="../brille.html" />
+    <link rel="prev" title="Specifying a lattice Spacegroup" href="../tutorials/tutorial_01.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            brille
+              <img src="../_static/brille.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install_guide.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../motivation.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../memory_usage.html">Memory Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../threads.html">Parallel threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../phase_convention.html">Eigenvector phase convention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">User Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Switch from BZTrellisQ to BZMeshQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#change-the-constructor">Change the constructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#through-euphonic">Through Euphonic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-else-changes">What else changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trade-offs">Trade-offs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#measure-for-your-own-system">Measure for your own system</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.AngleUnit"><code class="docutils literal notranslate"><span class="pre">AngleUnit</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.ApproxConfig"><code class="docutils literal notranslate"><span class="pre">ApproxConfig</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZMeshQcc"><code class="docutils literal notranslate"><span class="pre">BZMeshQcc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZMeshQdc"><code class="docutils literal notranslate"><span class="pre">BZMeshQdc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZMeshQdd"><code class="docutils literal notranslate"><span class="pre">BZMeshQdd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZNestQcc"><code class="docutils literal notranslate"><span class="pre">BZNestQcc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZNestQdc"><code class="docutils literal notranslate"><span class="pre">BZNestQdc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZNestQdd"><code class="docutils literal notranslate"><span class="pre">BZNestQdd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZTrellisQcc"><code class="docutils literal notranslate"><span class="pre">BZTrellisQcc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZTrellisQdc"><code class="docutils literal notranslate"><span class="pre">BZTrellisQdc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZTrellisQdd"><code class="docutils literal notranslate"><span class="pre">BZTrellisQdd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Basis"><code class="docutils literal notranslate"><span class="pre">Basis</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Bravais"><code class="docutils literal notranslate"><span class="pre">Bravais</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BrillouinZone"><code class="docutils literal notranslate"><span class="pre">BrillouinZone</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.HallSymbol"><code class="docutils literal notranslate"><span class="pre">HallSymbol</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.LPolyhedron"><code class="docutils literal notranslate"><span class="pre">LPolyhedron</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Lattice"><code class="docutils literal notranslate"><span class="pre">Lattice()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.LengthUnit"><code class="docutils literal notranslate"><span class="pre">LengthUnit</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.NearSymmetryWarning"><code class="docutils literal notranslate"><span class="pre">NearSymmetryWarning</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.NodeType"><code class="docutils literal notranslate"><span class="pre">NodeType</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.PointSymmetry"><code class="docutils literal notranslate"><span class="pre">PointSymmetry</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Pointgroup"><code class="docutils literal notranslate"><span class="pre">Pointgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Polyhedron"><code class="docutils literal notranslate"><span class="pre">Polyhedron</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.PrimitiveTransform"><code class="docutils literal notranslate"><span class="pre">PrimitiveTransform</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.RotatesLike"><code class="docutils literal notranslate"><span class="pre">RotatesLike</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.SortingStatus"><code class="docutils literal notranslate"><span class="pre">SortingStatus</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Spacegroup"><code class="docutils literal notranslate"><span class="pre">Spacegroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Symmetry"><code class="docutils literal notranslate"><span class="pre">Symmetry</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.real_space_tolerance"><code class="docutils literal notranslate"><span class="pre">real_space_tolerance()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.reciprocal_space_tolerance"><code class="docutils literal notranslate"><span class="pre">reciprocal_space_tolerance()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#documented-thus-far">Documented thus far:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html#brille.utils.create_bz"><code class="docutils literal notranslate"><span class="pre">create_bz()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html#brille.utils.create_grid"><code class="docutils literal notranslate"><span class="pre">create_grid()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doxygen.html">Doxygen documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">Undocumented C++ Classes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">brille</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Switch from BZTrellisQ to BZMeshQ</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/howto/trellis_to_mesh.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="switch-from-bztrellisq-to-bzmeshq">
+<span id="howto-trellis-to-mesh"></span><h1>Switch from BZTrellisQ to BZMeshQ<a class="headerlink" href="#switch-from-bztrellisq-to-bzmeshq" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQdc</span></code></a> and its siblings can replace
+<a class="reference internal" href="../module/grids.html#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQdc</span></code></a> in most code: they are filled and
+interpolated in the same way. This page shows what to change, what to watch
+for, and how to check whether the mesh suits your system.</p>
+<p>The code on this page comes from <a class="reference download internal" download="" href="../_downloads/81a873b4d707637282d40a5e5fafa1cb/trellis_to_mesh.py"><code class="xref download docutils literal notranslate"><span class="pre">trellis_to_mesh.py</span></code></a>, which the
+tests run.</p>
+<section id="change-the-constructor">
+<h2>Change the constructor<a class="headerlink" href="#change-the-constructor" title="Link to this heading"></a></h2>
+<p>A trellis like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">volume</span> <span class="o">=</span> <span class="n">bz</span><span class="o">.</span><span class="n">ir_polyhedron</span><span class="o">.</span><span class="n">volume</span>
+<span class="n">trellis</span> <span class="o">=</span> <span class="n">BZTrellisQdc</span><span class="p">(</span><span class="n">bz</span><span class="p">,</span> <span class="n">node_volume_fraction</span><span class="o">=</span><span class="n">volume</span> <span class="o">/</span> <span class="n">points</span><span class="p">)</span>
+<span class="n">trellis</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="o">*</span><span class="n">grid_data</span><span class="p">(</span><span class="n">trellis</span><span class="o">.</span><span class="n">rlu</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>becomes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mesh</span> <span class="o">=</span> <span class="n">BZMeshQdc</span><span class="p">(</span><span class="n">bz</span><span class="p">,</span> <span class="n">max_size</span><span class="o">=</span><span class="n">volume</span> <span class="o">/</span> <span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="n">points</span><span class="p">))</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="o">*</span><span class="n">grid_data</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">rlu</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Both size parameters are volumes in Å⁻³, not fractions:</p>
+<ul class="simple">
+<li><p>The trellis’s <code class="docutils literal notranslate"><span class="pre">node_volume_fraction</span></code> is, despite its name, the volume of
+one cube of the trellis.</p></li>
+<li><p>The mesh’s <code class="docutils literal notranslate"><span class="pre">max_size</span></code> is the largest volume of one tetrahedron.</p></li>
+</ul>
+<p>A cell of the mesh’s grid holds six tetrahedra, so dividing by six gives a mesh
+with about as many vertices as the trellis:</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Vertices for <code class="docutils literal notranslate"><span class="pre">node_volume_fraction</span> <span class="pre">=</span> <span class="pre">V/N</span></code> and <code class="docutils literal notranslate"><span class="pre">max_size</span> <span class="pre">=</span> <span class="pre">V/(6N)</span></code>, where <code class="docutils literal notranslate"><span class="pre">V</span></code> is the irreducible zone’s volume</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Lattice</p></th>
+<th class="head"><p>N</p></th>
+<th class="head"><p>Trellis</p></th>
+<th class="head"><p>Mesh</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>triclinic <code class="docutils literal notranslate"><span class="pre">-P</span> <span class="pre">1</span></code></p></td>
+<td><p>10,000</p></td>
+<td><p>14,139</p></td>
+<td><p>18,215</p></td>
+</tr>
+<tr class="row-odd"><td><p>hexagonal <code class="docutils literal notranslate"><span class="pre">-P</span> <span class="pre">6</span></code></p></td>
+<td><p>10,000</p></td>
+<td><p>13,248</p></td>
+<td><p>14,641</p></td>
+</tr>
+<tr class="row-even"><td><p>fcc <code class="docutils literal notranslate"><span class="pre">-F</span> <span class="pre">4</span> <span class="pre">2</span> <span class="pre">3</span></code></p></td>
+<td><p>10,000</p></td>
+<td><p>14,572</p></td>
+<td><p>14,840</p></td>
+</tr>
+</tbody>
+</table>
+<p>All other arguments, and <a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdc.fill" title="brille._brille.BZMeshQdc.fill"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fill()</span></code></a>,
+<a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdc.ir_interpolate_at" title="brille._brille.BZMeshQdc.ir_interpolate_at"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ir_interpolate_at()</span></code></a>,
+<a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdc.sort" title="brille._brille.BZMeshQdc.sort"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sort()</span></code></a>, and saving and loading, work as
+before.</p>
+<p>If you create grids with <a class="reference internal" href="../utils.html#brille.utils.create_grid" title="brille.utils.create_grid"><code class="xref py py-func docutils literal notranslate"><span class="pre">brille.utils.create_grid()</span></code></a>, pass
+<code class="docutils literal notranslate"><span class="pre">mesh=True</span></code> and <code class="docutils literal notranslate"><span class="pre">max_size</span></code> in place of <code class="docutils literal notranslate"><span class="pre">node_volume_fraction</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">create_grid</span><span class="p">(</span><span class="n">bz</span><span class="p">,</span> <span class="n">complex_vectors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mesh</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_size</span><span class="o">=</span><span class="n">volume</span> <span class="o">/</span> <span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="n">points</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="through-euphonic">
+<h2>Through Euphonic<a class="headerlink" href="#through-euphonic" title="Link to this heading"></a></h2>
+<p>Euphonic’s <code class="docutils literal notranslate"><span class="pre">BrilleInterpolator.from_force_constants</span></code> takes
+<code class="docutils literal notranslate"><span class="pre">grid_type=&quot;mesh&quot;</span></code>. For the same <code class="docutils literal notranslate"><span class="pre">grid_npts</span></code>, it asks the mesh for
+between a fifth and a half as many points as the trellis (in Euphonic 2.1). To keep the
+number of points, give the mesh’s size directly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">brille</span> <span class="kn">import</span> <span class="n">BrillouinZone</span>
+<span class="kn">from</span> <span class="nn">euphonic.brille</span> <span class="kn">import</span> <span class="n">BrilleInterpolator</span>
+
+<span class="n">volume</span> <span class="o">=</span> <span class="n">BrillouinZone</span><span class="p">(</span><span class="n">lattice</span><span class="p">)</span><span class="o">.</span><span class="n">ir_polyhedron</span><span class="o">.</span><span class="n">volume</span>   <span class="c1"># your crystal&#39;s lattice</span>
+<span class="n">interpolator</span> <span class="o">=</span> <span class="n">BrilleInterpolator</span><span class="o">.</span><span class="n">from_force_constants</span><span class="p">(</span>
+    <span class="n">force_constants</span><span class="p">,</span> <span class="n">grid_type</span><span class="o">=</span><span class="s2">&quot;mesh&quot;</span><span class="p">,</span> <span class="n">grid_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;max_size&quot;</span><span class="p">:</span> <span class="n">volume</span> <span class="o">/</span> <span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="n">grid_npts</span><span class="p">)})</span>
+</pre></div>
+</div>
+</section>
+<section id="what-else-changes">
+<h2>What else changes<a class="headerlink" href="#what-else-changes" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Only on <a class="reference internal" href="../module/grids.html#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQdc</span></code></a></p></th>
+<th class="head"><p>Instead, on <a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQdc</span></code></a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">always_triangulate</span></code></p></td>
+<td><p>Not needed: the mesh is always tetrahedra.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">interpolate_at</span></code>, which moves points into the first zone only</p></td>
+<td><p><a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdc.ir_interpolate_at" title="brille._brille.BZMeshQdc.ir_interpolate_at"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ir_interpolate_at()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">inner_rlu</span></code>, <code class="docutils literal notranslate"><span class="pre">outer_rlu</span></code>, <code class="docutils literal notranslate"><span class="pre">node_at</span></code> and other node methods</p></td>
+<td><p>None: the mesh has no cubic nodes.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The mesh adds:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdc.refinement_points" title="brille._brille.BZMeshQdc.refinement_points"><code class="xref py py-meth docutils literal notranslate"><span class="pre">refinement_points()</span></code></a> and
+<a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdc.refine" title="brille._brille.BZMeshQdc.refine"><code class="xref py py-meth docutils literal notranslate"><span class="pre">refine()</span></code></a>, to add vertices where the
+interpolation needs them (see <a class="reference internal" href="../tutorials/tutorial_03.html#tutorial-mesh"><span class="std std-ref">Building and refining a mesh</span></a>);</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_points</span></code>, which caps the number of vertices.</p></li>
+</ul>
+<p>Interpolated values change slightly, because the vertices are different: by
+about the interpolation error, not more. On the zone boundary, the mesh
+matches itself across equivalent faces, so interpolation is continuous there.</p>
+<p>A saved trellis can only be read back as a trellis, so rebuild your grids as
+meshes rather than converting files. Meshes saved by earlier versions of brille,
+which built them with TetGen, still load, but cannot be refined.</p>
+</section>
+<section id="trade-offs">
+<h2>Trade-offs<a class="headerlink" href="#trade-offs" title="Link to this heading"></a></h2>
+<p>These figures compare the two grids for three lattices. They were measured on
+one machine, with one thread, interpolating a smooth symmetric function at
+100,000 random points. Accuracy is given as rms error × vertices<sup>2/3</sup>:
+for linear interpolation of a smooth function this hardly depends on the
+number of vertices, so it compares grids of different sizes, and lower is
+better.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Lattice</p></th>
+<th class="head"><p>Grid</p></th>
+<th class="head"><p>Vertices</p></th>
+<th class="head"><p>Build / s</p></th>
+<th class="head"><p>Interpolation / µs per point</p></th>
+<th class="head"><p>Error × N<sup>2/3</sup></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>triclinic</p></td>
+<td><p>trellis</p></td>
+<td><p>13,555</p></td>
+<td><p>7.56</p></td>
+<td><p>7.0</p></td>
+<td><p>5.91</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>mesh</p></td>
+<td><p>9,947</p></td>
+<td><p>0.44</p></td>
+<td><p>2.2</p></td>
+<td><p>5.96</p></td>
+</tr>
+<tr class="row-even"><td><p>hexagonal 6/m</p></td>
+<td><p>trellis</p></td>
+<td><p>4,008</p></td>
+<td><p>1.74</p></td>
+<td><p>5.9</p></td>
+<td><p>1.96</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>mesh</p></td>
+<td><p>8,141</p></td>
+<td><p>0.36</p></td>
+<td><p>2.2</p></td>
+<td><p>1.93</p></td>
+</tr>
+<tr class="row-even"><td><p>fcc</p></td>
+<td><p>trellis</p></td>
+<td><p>926</p></td>
+<td><p>0.46</p></td>
+<td><p>6.6</p></td>
+<td><p>1.51</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>mesh</p></td>
+<td><p>8,160</p></td>
+<td><p>0.66</p></td>
+<td><p>3.2</p></td>
+<td><p>1.19</p></td>
+</tr>
+</tbody>
+</table>
+<p>In short:</p>
+<ul class="simple">
+<li><p><strong>Interpolation</strong> with the mesh is 2–3 times faster: it finds the tetrahedron
+holding a point in constant time.</p></li>
+<li><p><strong>Building</strong> the mesh is faster, by a factor that grows with its size:
+17 times for the triclinic lattice above.</p></li>
+<li><p><strong>Accuracy per vertex</strong> is the same for fine grids, or better for the mesh
+(fcc above). For coarse grids of low-symmetry lattices, a trellis of a few
+hundred vertices can be up to twice as accurate per vertex as a mesh of the
+same size.</p></li>
+<li><p><strong>Memory</strong> held by the mesh is similar to the trellis’s, or less for the
+same number of vertices.</p></li>
+</ul>
+<p>Stay with the trellis if you rely on its node methods or on <code class="docutils literal notranslate"><span class="pre">interpolate_at</span></code>,
+if you need results identical to earlier runs, or if you use very coarse grids
+of low-symmetry lattices. Otherwise, the mesh is faster, and refinement lets it
+put vertices where your model needs them.</p>
+</section>
+<section id="measure-for-your-own-system">
+<h2>Measure for your own system<a class="headerlink" href="#measure-for-your-own-system" title="Link to this heading"></a></h2>
+<p>The best test is your own model. This builds both grids at three sizes, then
+reports build time, interpolation time and rms error; replace <code class="docutils literal notranslate"><span class="pre">lattice</span></code> and
+<code class="docutils literal notranslate"><span class="pre">model</span></code> in the script with yours.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="n">make</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build a grid, fill it with the model, and time interpolating at q&quot;&quot;&quot;</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">make</span><span class="p">()</span>
+    <span class="n">built</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+    <span class="n">grid</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="o">*</span><span class="n">grid_data</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">rlu</span><span class="p">))</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">repeat</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">ir_interpolate_at</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">threads</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">best</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">best</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">values</span> <span class="o">-</span> <span class="n">model</span><span class="p">(</span><span class="n">q</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">rlu</span><span class="p">),</span> <span class="n">built</span><span class="p">,</span> <span class="mf">1e6</span> <span class="o">*</span> <span class="n">best</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">q</span><span class="p">),</span> <span class="n">error</span>
+
+
+<span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">20000</span><span class="p">)):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build a trellis and a mesh of about each size in sizes, and compare them&quot;&quot;&quot;</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;grid&#39;</span><span class="si">:</span><span class="s2">8s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;vertices&#39;</span><span class="si">:</span><span class="s2">&gt;8s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;build/s&#39;</span><span class="si">:</span><span class="s2">&gt;8s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;µs/point&#39;</span><span class="si">:</span><span class="s2">&gt;9s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">&#39;rms error&#39;</span><span class="si">:</span><span class="s2">&gt;10s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">points</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">make</span> <span class="ow">in</span> <span class="p">((</span><span class="s2">&quot;trellis&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">BZTrellisQdc</span><span class="p">(</span><span class="n">bz</span><span class="p">,</span> <span class="n">node_volume_fraction</span><span class="o">=</span><span class="n">volume</span> <span class="o">/</span> <span class="n">points</span><span class="p">)),</span>
+                           <span class="p">(</span><span class="s2">&quot;mesh&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">BZMeshQdc</span><span class="p">(</span><span class="n">bz</span><span class="p">,</span> <span class="n">max_size</span><span class="o">=</span><span class="n">volume</span> <span class="o">/</span> <span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="n">points</span><span class="p">)))):</span>
+            <span class="n">vertices</span><span class="p">,</span> <span class="n">built</span><span class="p">,</span> <span class="n">per_point</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="n">measure</span><span class="p">(</span><span class="n">make</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">8s</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">vertices</span><span class="si">:</span><span class="s2">8d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">built</span><span class="si">:</span><span class="s2">8.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">per_point</span><span class="si">:</span><span class="s2">9.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">10.2e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">compare</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>For the example’s triclinic lattice:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>grid     vertices  build/s  µs/point  rms error
+trellis      1941     0.71      6.19   2.61e-02
+mesh         2886     0.48      1.55   2.53e-02
+trellis      7787     3.10      6.61   9.11e-03
+mesh         9947     1.12      2.15   9.06e-03
+trellis     26432    12.76      7.30   3.86e-03
+mesh        32505     2.76      3.11   3.59e-03
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../tutorials/tutorial_01.html" class="btn btn-neutral float-left" title="Specifying a lattice Spacegroup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../brille.html" class="btn btn-neutral float-right" title="Python module brille" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Gregory Tucker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

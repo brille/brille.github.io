@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building and refining a mesh &mdash; brille 0.8.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=b41f4c93"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/katex.min.js?v=be8ff15f"></script>
+        <script src="../_static/auto-render.min.js?v=ad136472"></script>
+        <script src="../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Simple Interpolation" href="tutorial_02.html" />
+    <link rel="prev" title="User Guide" href="../tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            brille
+              <img src="../_static/brille.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install_guide.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../motivation.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../memory_usage.html">Memory Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../threads.html">Parallel threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../phase_convention.html">Eigenvector phase convention</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../tutorial.html">User Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building and refining a mesh</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-lattice-and-its-zones">The lattice and its zones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-model-to-interpolate">A model to interpolate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-and-fill-the-mesh">Build and fill the mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-good-is-the-interpolation">How good is the interpolation?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#refine-where-needed">Refine where needed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compare-with-uniform-refinement">Compare with uniform refinement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#save-and-reload">Save and reload</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#drawing-with-vispy">Drawing with VisPy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#next-steps">Next steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_02.html">Simple Interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_00.html">Interpolating Sodium Chloride phonons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_01.html">Specifying a lattice Spacegroup</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto/trellis_to_mesh.html">Switch from BZTrellisQ to BZMeshQ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.AngleUnit"><code class="docutils literal notranslate"><span class="pre">AngleUnit</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.ApproxConfig"><code class="docutils literal notranslate"><span class="pre">ApproxConfig</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZMeshQcc"><code class="docutils literal notranslate"><span class="pre">BZMeshQcc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZMeshQdc"><code class="docutils literal notranslate"><span class="pre">BZMeshQdc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZMeshQdd"><code class="docutils literal notranslate"><span class="pre">BZMeshQdd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZNestQcc"><code class="docutils literal notranslate"><span class="pre">BZNestQcc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZNestQdc"><code class="docutils literal notranslate"><span class="pre">BZNestQdc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZNestQdd"><code class="docutils literal notranslate"><span class="pre">BZNestQdd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZTrellisQcc"><code class="docutils literal notranslate"><span class="pre">BZTrellisQcc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZTrellisQdc"><code class="docutils literal notranslate"><span class="pre">BZTrellisQdc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZTrellisQdd"><code class="docutils literal notranslate"><span class="pre">BZTrellisQdd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Basis"><code class="docutils literal notranslate"><span class="pre">Basis</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Bravais"><code class="docutils literal notranslate"><span class="pre">Bravais</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BrillouinZone"><code class="docutils literal notranslate"><span class="pre">BrillouinZone</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.HallSymbol"><code class="docutils literal notranslate"><span class="pre">HallSymbol</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.LPolyhedron"><code class="docutils literal notranslate"><span class="pre">LPolyhedron</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Lattice"><code class="docutils literal notranslate"><span class="pre">Lattice()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.LengthUnit"><code class="docutils literal notranslate"><span class="pre">LengthUnit</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.NearSymmetryWarning"><code class="docutils literal notranslate"><span class="pre">NearSymmetryWarning</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.NodeType"><code class="docutils literal notranslate"><span class="pre">NodeType</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.PointSymmetry"><code class="docutils literal notranslate"><span class="pre">PointSymmetry</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Pointgroup"><code class="docutils literal notranslate"><span class="pre">Pointgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Polyhedron"><code class="docutils literal notranslate"><span class="pre">Polyhedron</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.PrimitiveTransform"><code class="docutils literal notranslate"><span class="pre">PrimitiveTransform</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.RotatesLike"><code class="docutils literal notranslate"><span class="pre">RotatesLike</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.SortingStatus"><code class="docutils literal notranslate"><span class="pre">SortingStatus</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Spacegroup"><code class="docutils literal notranslate"><span class="pre">Spacegroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Symmetry"><code class="docutils literal notranslate"><span class="pre">Symmetry</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.real_space_tolerance"><code class="docutils literal notranslate"><span class="pre">real_space_tolerance()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.reciprocal_space_tolerance"><code class="docutils literal notranslate"><span class="pre">reciprocal_space_tolerance()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#documented-thus-far">Documented thus far:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html#brille.utils.create_bz"><code class="docutils literal notranslate"><span class="pre">create_bz()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html#brille.utils.create_grid"><code class="docutils literal notranslate"><span class="pre">create_grid()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doxygen.html">Doxygen documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">Undocumented C++ Classes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">brille</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../tutorial.html">User Guide</a></li>
+      <li class="breadcrumb-item active">Building and refining a mesh</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/tutorials/tutorial_03.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="building-and-refining-a-mesh">
+<span id="tutorial-mesh"></span><h1>Building and refining a mesh<a class="headerlink" href="#building-and-refining-a-mesh" title="Link to this heading"></a></h1>
+<p>In this tutorial you will build a <a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdd" title="brille._brille.BZMeshQdd"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQdd</span></code></a> for a
+hexagonal crystal, fill it with a model dispersion, measure how well it
+interpolates the model, and then refine it where it interpolates badly.
+Along the way you will draw the Brillouin zone and the mesh with
+<a class="reference external" href="https://vispy.org">VisPy</a>.</p>
+<p>The code is one script, <a class="reference download internal" download="" href="../_downloads/829df4c201b8fecf35e534f0b9d8f4ca/tutorial_03.py"><code class="xref download docutils literal notranslate"><span class="pre">tutorial_03.py</span></code></a>, which the tests run.
+To run it yourself you need <a class="reference internal" href="../brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a>, NumPy and, for the figures,
+VisPy with one of its backends (for example <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">vispy</span> <span class="pre">pyqt6</span></code>).
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">tutorial_03.py</span></code> opens each figure in a window.</p>
+<section id="the-lattice-and-its-zones">
+<h2>The lattice and its zones<a class="headerlink" href="#the-lattice-and-its-zones" title="Link to this heading"></a></h2>
+<p>Start with a hexagonal lattice, with point symmetry <span class="math">\(6/m\)</span> (Hall symbol
+<code class="docutils literal notranslate"><span class="pre">-P</span> <span class="pre">6</span></code>), and find its Brillouin zone:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">brille</span> <span class="kn">import</span> <span class="n">BrillouinZone</span><span class="p">,</span> <span class="n">Lattice</span>
+
+<span class="n">lattice</span> <span class="o">=</span> <span class="n">Lattice</span><span class="p">(((</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">),</span> <span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">120</span><span class="p">)),</span> <span class="n">spacegroup</span><span class="o">=</span><span class="s2">&quot;-P 6&quot;</span><span class="p">)</span>
+<span class="n">bz</span> <span class="o">=</span> <span class="n">BrillouinZone</span><span class="p">(</span><span class="n">lattice</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;first zone volume      </span><span class="si">{</span><span class="n">bz</span><span class="o">.</span><span class="n">polyhedron</span><span class="o">.</span><span class="n">volume</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> Å⁻³&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;irreducible volume     </span><span class="si">{</span><span class="n">bz</span><span class="o">.</span><span class="n">ir_polyhedron</span><span class="o">.</span><span class="n">volume</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> Å⁻³&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>first zone volume      6.3650 Å⁻³
+irreducible volume     0.5304 Å⁻³
+</pre></div>
+</div>
+<p>The first Brillouin zone is the hexagonal prism below. Its twelve symmetry
+operations (six rotations, each with and without inversion) map the orange
+irreducible zone onto the whole prism, so the irreducible zone is one twelfth
+of it. A grid only needs to cover the irreducible zone: brille uses the
+symmetry to interpolate anywhere else.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/tutorial_03_zone.png"><img alt="A hexagonal prism, with a wedge from its centre, Γ, highlighted in orange" src="../_images/tutorial_03_zone.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-text">The first Brillouin zone (blue) and the irreducible zone (orange).</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="a-model-to-interpolate">
+<h2>A model to interpolate<a class="headerlink" href="#a-model-to-interpolate" title="Link to this heading"></a></h2>
+<p>In practice the values on the grid come from an expensive calculation, such as
+phonon frequencies from a force-constant model. Here a simple function stands
+in: an acoustic-like branch that rises linearly from zero at the zone centre Γ.
+It is built from the symmetry-equivalents of the shortest direct-lattice
+vectors, so it has the lattice’s periodicity and symmetry, as a real
+dispersion does.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">acoustic_branch</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An acoustic-like dispersion, in meV, with the lattice&#39;s periodicity and symmetry.</span>
+
+<span class="sd">    Sums 1 - cos(2 pi r.q) over the symmetry-equivalents r of the shortest direct</span>
+<span class="sd">    lattice vectors, so that the energy rises linearly from zero at Gamma.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rotations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">lattice</span><span class="o">.</span><span class="n">pointgroup</span><span class="o">.</span><span class="n">W</span><span class="p">)</span>
+    <span class="n">star</span> <span class="o">=</span> <span class="p">{</span><span class="nb">tuple</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="p">(</span><span class="n">w</span> <span class="o">@</span> <span class="n">r</span><span class="p">))</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">rotations</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)}</span>
+    <span class="n">star</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">star</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">energy</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">scale</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">q</span> <span class="o">@</span> <span class="n">star</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">energy</span>
+
+
+<span class="n">energy</span> <span class="o">=</span> <span class="n">acoustic_branch</span><span class="p">(</span><span class="n">lattice</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The grids store, at each vertex, <em>values</em> (scalars such as energies) and
+<em>vectors</em> (such as eigenvectors). This model has no vectors, but the grid still
+expects them, so <code class="docutils literal notranslate"><span class="pre">grid_data</span></code> gives one zero per point:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">grid_data</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The values and vectors to give a grid at the points q (rlu).</span>
+
+<span class="sd">    One value per point, the energy; this model has no eigenvectors, but the</span>
+<span class="sd">    grid still expects a vectors array, so give it a single zero per point.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">energy</span><span class="p">(</span><span class="n">q</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+    <span class="n">vectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">values</span><span class="p">,</span> <span class="n">vectors</span>
+
+
+<span class="n">ELEMENTS</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span>   <span class="c1"># each point holds one scalar, in both values and vectors</span>
+</pre></div>
+</div>
+</section>
+<section id="build-and-fill-the-mesh">
+<h2>Build and fill the mesh<a class="headerlink" href="#build-and-fill-the-mesh" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdd" title="brille._brille.BZMeshQdd"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQdd</span></code></a> holds real (<code class="docutils literal notranslate"><span class="pre">d</span></code> for <code class="docutils literal notranslate"><span class="pre">double</span></code>) values
+and vectors; use <code class="docutils literal notranslate"><span class="pre">BZMeshQdc</span></code> for complex vectors, such as phonon
+eigenvectors. <code class="docutils literal notranslate"><span class="pre">max_size</span></code> is the largest tetrahedron volume, in Å⁻³. The mesh
+is a grid of the reciprocal lattice, divided finely enough that its tetrahedra
+are no bigger than that, and clipped exactly to the irreducible zone.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">brille</span> <span class="kn">import</span> <span class="n">BZMeshQdd</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">BZMeshQdd</span><span class="p">(</span><span class="n">bz</span><span class="p">,</span> <span class="n">max_size</span><span class="o">=</span><span class="n">bz</span><span class="o">.</span><span class="n">ir_polyhedron</span><span class="o">.</span><span class="n">volume</span> <span class="o">/</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">values</span><span class="p">,</span> <span class="n">vectors</span> <span class="o">=</span> <span class="n">grid_data</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">rlu</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">ELEMENTS</span><span class="p">,</span> <span class="n">vectors</span><span class="p">,</span> <span class="n">ELEMENTS</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;initial mesh           </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">rlu</span><span class="p">)</span><span class="si">}</span><span class="s2"> vertices, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">tetrahedra</span><span class="p">)</span><span class="si">}</span><span class="s2"> tetrahedra&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>initial mesh           197 vertices, 620 tetrahedra
+</pre></div>
+</div>
+<p>The vertices are available in reciprocal lattice units as <code class="docutils literal notranslate"><span class="pre">mesh.rlu</span></code> and in
+Å⁻¹ as <code class="docutils literal notranslate"><span class="pre">mesh.invA</span></code>; <code class="docutils literal notranslate"><span class="pre">mesh.tetrahedra</span></code> lists each tetrahedron’s four vertex
+indices. Evaluate the model at <code class="docutils literal notranslate"><span class="pre">mesh.rlu</span></code> and pass the results to
+<a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdc.fill" title="brille._brille.BZMeshQdc.fill"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fill()</span></code></a>, in the same order.</p>
+<p>The figure below shows the mesh’s surface, coloured by energy, from dark at Γ to
+yellow at the zone boundary.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/tutorial_03_mesh.png"><img alt="The irreducible wedge, its surface triangulated and coloured by energy" src="../_images/tutorial_03_mesh.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-text">The initial mesh: 197 vertices.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="how-good-is-the-interpolation">
+<h2>How good is the interpolation?<a class="headerlink" href="#how-good-is-the-interpolation" title="Link to this heading"></a></h2>
+<p>To judge the mesh, compare what it interpolates with the model itself. Two
+measures are useful: the error at the centre of each tetrahedron, which says
+where the mesh is too coarse, and the root-mean-square error at random points,
+which says how good it is overall.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tetrahedron_errors</span><span class="p">(</span><span class="n">mesh</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;How far the interpolated energy is from the model at each tetrahedron&#39;s centre&quot;&quot;&quot;</span>
+    <span class="n">rlu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">rlu</span><span class="p">)</span>
+    <span class="n">centres</span> <span class="o">=</span> <span class="n">rlu</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">tetrahedra</span><span class="p">)]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">interpolated</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">ir_interpolate_at</span><span class="p">(</span><span class="n">centres</span><span class="p">)[</span><span class="mi">0</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">interpolated</span> <span class="o">-</span> <span class="n">energy</span><span class="p">(</span><span class="n">centres</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">rms_error</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The root-mean-square interpolation error at the points q&quot;&quot;&quot;</span>
+    <span class="n">interpolated</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">ir_interpolate_at</span><span class="p">(</span><span class="n">q</span><span class="p">)[</span><span class="mi">0</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">interpolated</span> <span class="o">-</span> <span class="n">energy</span><span class="p">(</span><span class="n">q</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+
+
+<span class="n">test_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">errors</span> <span class="o">=</span> <span class="n">tetrahedron_errors</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;largest centre error   </span><span class="si">{</span><span class="n">errors</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> meV&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rms error              </span><span class="si">{</span><span class="n">rms_error</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span><span class="w"> </span><span class="n">test_points</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> meV&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>largest centre error   0.965 meV
+rms error              0.2307 meV
+</pre></div>
+</div>
+<p><a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdc.ir_interpolate_at" title="brille._brille.BZMeshQdc.ir_interpolate_at"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ir_interpolate_at()</span></code></a> accepts points anywhere
+in reciprocal space; it moves each into the irreducible zone, interpolates
+there, and (for vectors) rotates the result back.</p>
+</section>
+<section id="refine-where-needed">
+<h2>Refine where needed<a class="headerlink" href="#refine-where-needed" title="Link to this heading"></a></h2>
+<p>The errors are largest near Γ, where the energy has a sharp cone that linear
+interpolation cannot follow. Refining the whole mesh would waste points where
+it is already good. Instead, mark the tetrahedra whose centre error is above a
+tolerance and refine only those:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.05</span>     <span class="c1"># meV</span>
+<span class="n">resolution</span> <span class="o">=</span> <span class="mf">0.05</span>    <span class="c1"># inverse Angstrom</span>
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">where</span> <span class="o">=</span> <span class="n">tetrahedron_errors</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tolerance</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">refinement_points</span><span class="p">(</span><span class="n">where</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="n">resolution</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">mesh</span><span class="o">.</span><span class="n">refine</span><span class="p">(</span><span class="n">where</span><span class="p">,</span> <span class="o">*</span><span class="n">grid_data</span><span class="p">(</span><span class="n">points</span><span class="p">),</span> <span class="n">resolution</span><span class="o">=</span><span class="n">resolution</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;step </span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">where</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">:</span><span class="s2">5d</span><span class="si">}</span><span class="s2"> tetrahedra marked, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="si">:</span><span class="s2">5d</span><span class="si">}</span><span class="s2"> vertices added&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;refined mesh           </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">rlu</span><span class="p">)</span><span class="si">}</span><span class="s2"> vertices, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">tetrahedra</span><span class="p">)</span><span class="si">}</span><span class="s2"> tetrahedra&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;largest centre error   </span><span class="si">{</span><span class="n">tetrahedron_errors</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> meV&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rms error              </span><span class="si">{</span><span class="n">rms_error</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span><span class="w"> </span><span class="n">test_points</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> meV&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Each step has three parts:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdc.refinement_points" title="brille._brille.BZMeshQdc.refinement_points"><code class="xref py py-meth docutils literal notranslate"><span class="pre">refinement_points()</span></code></a> returns the vertices a
+refinement would add, without changing the mesh.</p></li>
+<li><p>Evaluate the model at those points.</p></li>
+<li><p><a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdc.refine" title="brille._brille.BZMeshQdc.refine"><code class="xref py py-meth docutils literal notranslate"><span class="pre">refine()</span></code></a> adds the vertices with the
+model’s values. Existing vertices keep their indices and their data.</p></li>
+</ol>
+<p>To keep the mesh conforming, refinement may also split neighbouring tetrahedra
+that were not marked. It also splits equivalent edges on the zone boundary
+together, so that the mesh keeps matching itself across equivalent zone faces.</p>
+<p>The cone at Γ never becomes linear, however small the tetrahedra are, so
+without a limit this loop would continue until it ran out of memory. The
+<code class="docutils literal notranslate"><span class="pre">resolution</span></code> argument stops it. No edge is split below
+<code class="docutils literal notranslate"><span class="pre">resolution</span> <span class="pre">/</span> <span class="pre">points_per_resolution</span></code> (here 0.05 Å⁻¹ / 2), so there is no
+detail finer than an instrument could resolve.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>step 0:   527 tetrahedra marked,   295 vertices added
+step 1:  1180 tetrahedra marked,   890 vertices added
+step 2:  1797 tetrahedra marked,  1020 vertices added
+step 3:  1463 tetrahedra marked,   874 vertices added
+step 4:   639 tetrahedra marked,   410 vertices added
+step 5:   284 tetrahedra marked,    91 vertices added
+step 6:   197 tetrahedra marked,    12 vertices added
+step 7:   194 tetrahedra marked,     3 vertices added
+refined mesh           3792 vertices, 18042 tetrahedra
+largest centre error   0.135 meV
+rms error              0.0238 meV
+</pre></div>
+</div>
+<p>The last steps still mark tetrahedra but add almost nothing: those tetrahedra
+touch Γ and are already at the resolution limit.</p>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/tutorial_03_refined.png"><img alt="The irreducible wedge after refinement, with small triangles crowded around Γ" src="../_images/tutorial_03_refined.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-text">The refined mesh: 3,792 vertices, concentrated around Γ.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="compare-with-uniform-refinement">
+<h2>Compare with uniform refinement<a class="headerlink" href="#compare-with-uniform-refinement" title="Link to this heading"></a></h2>
+<p>Passing <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default) as <code class="docutils literal notranslate"><span class="pre">where</span></code> refines every tetrahedron. Refining
+the initial mesh uniformly until it has at least as many vertices gives a worse
+result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uniform</span> <span class="o">=</span> <span class="n">BZMeshQdd</span><span class="p">(</span><span class="n">bz</span><span class="p">,</span> <span class="n">max_size</span><span class="o">=</span><span class="n">bz</span><span class="o">.</span><span class="n">ir_polyhedron</span><span class="o">.</span><span class="n">volume</span> <span class="o">/</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">values</span><span class="p">,</span> <span class="n">vectors</span> <span class="o">=</span> <span class="n">grid_data</span><span class="p">(</span><span class="n">uniform</span><span class="o">.</span><span class="n">rlu</span><span class="p">)</span>
+<span class="n">uniform</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">ELEMENTS</span><span class="p">,</span> <span class="n">vectors</span><span class="p">,</span> <span class="n">ELEMENTS</span><span class="p">)</span>
+<span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">uniform</span><span class="o">.</span><span class="n">rlu</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">rlu</span><span class="p">):</span>
+    <span class="n">uniform</span><span class="o">.</span><span class="n">refine</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">grid_data</span><span class="p">(</span><span class="n">uniform</span><span class="o">.</span><span class="n">refinement_points</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;uniformly refined      </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">uniform</span><span class="o">.</span><span class="n">rlu</span><span class="p">)</span><span class="si">}</span><span class="s2"> vertices, rms error </span><span class="si">{</span><span class="n">rms_error</span><span class="p">(</span><span class="n">uniform</span><span class="p">,</span><span class="w"> </span><span class="n">test_points</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> meV&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>uniformly refined      6032 vertices, rms error 0.0316 meV
+</pre></div>
+</div>
+<p>Refining only where the model needs it gives a smaller error with about 60% of
+the vertices. Every vertex means one more evaluation of the model, so fewer
+vertices means less time filling the mesh.</p>
+</section>
+<section id="save-and-reload">
+<h2>Save and reload<a class="headerlink" href="#save-and-reload" title="Link to this heading"></a></h2>
+<p>A mesh, its data and its refinement history can be saved to an HDF5 file.
+A reloaded mesh can be refined further:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">directory</span><span class="p">:</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;acoustic.h5&quot;</span>
+    <span class="n">mesh</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+    <span class="n">loaded</span> <span class="o">=</span> <span class="n">BZMeshQdd</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;reloaded               </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">loaded</span><span class="o">.</span><span class="n">rlu</span><span class="p">)</span><span class="si">}</span><span class="s2"> vertices, refinable: </span><span class="si">{</span><span class="n">loaded</span><span class="o">.</span><span class="n">refinable</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>reloaded               3792 vertices, refinable: True
+</pre></div>
+</div>
+</section>
+<section id="drawing-with-vispy">
+<h2>Drawing with VisPy<a class="headerlink" href="#drawing-with-vispy" title="Link to this heading"></a></h2>
+<p>The figures come from these helpers. <code class="docutils literal notranslate"><span class="pre">zone_visuals</span></code> uses
+<a class="reference internal" href="../module/vis.html#module-brille.vis" title="brille.vis"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille.vis</span></code></a> to turn a zone polyhedron into VisPy visuals, and
+<code class="docutils literal notranslate"><span class="pre">surface_visuals</span></code> draws the triangles on the mesh’s boundary, which are the
+faces that belong to only one tetrahedron.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">zone_visuals</span><span class="p">(</span><span class="n">polyhedron</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">opacity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;VisPy visuals for a Brillouin zone polyhedron: translucent faces and an outline&quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">brille.vis</span> <span class="kn">import</span> <span class="n">vis_polyhedron_boundary</span><span class="p">,</span> <span class="n">vis_polyhedron_to_mesh</span>
+
+    <span class="n">polyhedron</span> <span class="o">=</span> <span class="n">polyhedron</span><span class="o">.</span><span class="n">to_Cartesian</span><span class="p">()</span>
+    <span class="n">faces</span> <span class="o">=</span> <span class="n">vis_polyhedron_to_mesh</span><span class="p">(</span><span class="n">polyhedron</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="n">opacity</span><span class="p">)</span>
+    <span class="n">faces</span><span class="o">.</span><span class="n">set_gl_state</span><span class="p">(</span><span class="s2">&quot;translucent&quot;</span><span class="p">,</span> <span class="n">depth_test</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">faces</span><span class="p">,</span> <span class="o">*</span><span class="n">vis_polyhedron_boundary</span><span class="p">(</span><span class="n">polyhedron</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)]</span>
+
+
+<span class="k">def</span> <span class="nf">surface_visuals</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">tetrahedra</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;VisPy visuals for the surface of a tetrahedral mesh: the triangles on its</span>
+<span class="sd">    boundary, their vertices coloured, and their edges&quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">vispy.scene.visuals</span> <span class="kn">import</span> <span class="n">Line</span><span class="p">,</span> <span class="n">Mesh</span>
+
+    <span class="n">corners</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">triangles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">tetrahedra</span><span class="p">[:,</span> <span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">corners</span><span class="p">])</span>
+    <span class="c1"># a triangle on the boundary belongs to one tetrahedron, one inside to two</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">triangles</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">return_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">surface</span> <span class="o">=</span> <span class="n">triangles</span><span class="p">[</span><span class="n">first</span><span class="p">[</span><span class="n">count</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]]</span>
+    <span class="n">faces</span> <span class="o">=</span> <span class="n">Mesh</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">surface</span><span class="p">,</span> <span class="n">vertex_colors</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+    <span class="c1"># push the faces back a little, so that their edges are drawn over them</span>
+    <span class="n">faces</span><span class="o">.</span><span class="n">set_gl_state</span><span class="p">(</span><span class="n">depth_test</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">polygon_offset_fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">polygon_offset</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">surface</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">surface</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="n">surface</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]])</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">Line</span><span class="p">(</span><span class="n">vertices</span><span class="p">[</span><span class="n">edges</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">connect</span><span class="o">=</span><span class="s2">&quot;segments&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">faces</span><span class="p">,</span> <span class="n">lines</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">gamma_label</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">32</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A label for the zone centre&quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">vispy.scene.visuals</span> <span class="kn">import</span> <span class="n">Text</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">Text</span><span class="p">(</span><span class="s2">&quot;Γ&quot;</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">anchor_x</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">anchor_y</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">)]</span>
+
+
+<span class="k">def</span> <span class="nf">energy_colors</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Colours for the model energy at q, from dark (zero) to yellow (the maximum)&quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">vispy.color</span> <span class="kn">import</span> <span class="n">get_colormap</span>
+
+    <span class="n">e</span> <span class="o">=</span> <span class="n">energy</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">get_colormap</span><span class="p">(</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">e</span> <span class="o">/</span> <span class="n">e</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+
+<span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">visuals</span><span class="p">,</span> <span class="n">around</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=-</span><span class="mi">60</span><span class="p">,</span> <span class="n">elevation</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">640</span><span class="p">,</span> <span class="mi">520</span><span class="p">)):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw visuals in a new VisPy canvas, looking at the points around; show it</span>
+<span class="sd">    interactively or write it to a PNG file&quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">vispy</span> <span class="kn">import</span> <span class="n">app</span><span class="p">,</span> <span class="n">io</span><span class="p">,</span> <span class="n">scene</span>
+
+    <span class="n">canvas</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">SceneCanvas</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="s2">&quot;interactive&quot;</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="n">save</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">view</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">central_widget</span><span class="o">.</span><span class="n">add_view</span><span class="p">()</span>
+    <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">around</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">around</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">view</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">TurntableCamera</span><span class="p">(</span><span class="n">azimuth</span><span class="o">=</span><span class="n">azimuth</span><span class="p">,</span> <span class="n">elevation</span><span class="o">=</span><span class="n">elevation</span><span class="p">,</span> <span class="n">fov</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                                        <span class="n">center</span><span class="o">=</span><span class="nb">tuple</span><span class="p">((</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">scale_factor</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">visual</span> <span class="ow">in</span> <span class="n">visuals</span><span class="p">:</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">visual</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">save</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">io</span><span class="o">.</span><span class="n">write_png</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">save</span><span class="p">),</span> <span class="n">canvas</span><span class="o">.</span><span class="n">render</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Each figure is then one call to <code class="docutils literal notranslate"><span class="pre">show</span></code>. For example, the refined mesh:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rlu</span><span class="p">,</span> <span class="n">xyz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">rlu</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">invA</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">surface_visuals</span><span class="p">(</span><span class="n">xyz</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">tetrahedra</span><span class="p">),</span> <span class="n">energy_colors</span><span class="p">(</span><span class="n">rlu</span><span class="p">))</span> <span class="o">+</span> <span class="n">gamma_label</span><span class="p">(),</span> <span class="n">xyz</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="n">target</span><span class="p">(</span><span class="s2">&quot;refined&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">tutorial_03.py</span> <span class="pre">--save</span> <span class="pre">DIRECTORY</span></code> writes the figures as PNG files
+instead of showing them. On a machine without a display, add
+<code class="docutils literal notranslate"><span class="pre">--backend</span> <span class="pre">egl</span></code> to draw them with EGL, which needs an OpenGL driver such as
+Mesa (on Debian or Ubuntu: <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">install</span> <span class="pre">libegl1</span> <span class="pre">libgl1-mesa-dri</span></code>).</p>
+</section>
+<section id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../howto/trellis_to_mesh.html#howto-trellis-to-mesh"><span class="std std-ref">Switch from BZTrellisQ to BZMeshQ</span></a> compares <a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQdc</span></code></a>
+with <a class="reference internal" href="../module/grids.html#brille._brille.BZTrellisQdc" title="brille._brille.BZTrellisQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZTrellisQdc</span></code></a>, and shows how to switch.</p></li>
+<li><p><a class="reference internal" href="../module/grids.html#brille._brille.BZMeshQdc" title="brille._brille.BZMeshQdc"><code class="xref py py-class docutils literal notranslate"><span class="pre">BZMeshQdc</span></code></a> documents every method of the mesh.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../tutorial.html" class="btn btn-neutral float-left" title="User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial_02.html" class="btn btn-neutral float-right" title="Simple Interpolation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Gregory Tucker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
