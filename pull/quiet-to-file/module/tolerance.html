@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Floating point tolerance &mdash; brille 0.8.4 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=b41f4c93"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/katex.min.js?v=be8ff15f"></script>
+        <script src="../_static/auto-render.min.js?v=ad136472"></script>
+        <script src="../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Remainder" href="everything.html" />
+    <link rel="prev" title="Enumerated values" href="enum.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            brille
+              <img src="../_static/brille.svg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User documents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install_guide.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../motivation.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../memory_usage.html">Memory Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../threads.html">Parallel threads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../phase_convention.html">Eigenvector phase convention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">User Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API documents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.AngleUnit"><code class="docutils literal notranslate"><span class="pre">AngleUnit</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.ApproxConfig"><code class="docutils literal notranslate"><span class="pre">ApproxConfig</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZMeshQcc"><code class="docutils literal notranslate"><span class="pre">BZMeshQcc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZMeshQdc"><code class="docutils literal notranslate"><span class="pre">BZMeshQdc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZMeshQdd"><code class="docutils literal notranslate"><span class="pre">BZMeshQdd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZNestQcc"><code class="docutils literal notranslate"><span class="pre">BZNestQcc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZNestQdc"><code class="docutils literal notranslate"><span class="pre">BZNestQdc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZNestQdd"><code class="docutils literal notranslate"><span class="pre">BZNestQdd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZTrellisQcc"><code class="docutils literal notranslate"><span class="pre">BZTrellisQcc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZTrellisQdc"><code class="docutils literal notranslate"><span class="pre">BZTrellisQdc</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BZTrellisQdd"><code class="docutils literal notranslate"><span class="pre">BZTrellisQdd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Basis"><code class="docutils literal notranslate"><span class="pre">Basis</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Bravais"><code class="docutils literal notranslate"><span class="pre">Bravais</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.BrillouinZone"><code class="docutils literal notranslate"><span class="pre">BrillouinZone</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.HallSymbol"><code class="docutils literal notranslate"><span class="pre">HallSymbol</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.LPolyhedron"><code class="docutils literal notranslate"><span class="pre">LPolyhedron</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Lattice"><code class="docutils literal notranslate"><span class="pre">Lattice()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.LengthUnit"><code class="docutils literal notranslate"><span class="pre">LengthUnit</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.NearSymmetryWarning"><code class="docutils literal notranslate"><span class="pre">NearSymmetryWarning</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.NodeType"><code class="docutils literal notranslate"><span class="pre">NodeType</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.PointSymmetry"><code class="docutils literal notranslate"><span class="pre">PointSymmetry</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Pointgroup"><code class="docutils literal notranslate"><span class="pre">Pointgroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Polyhedron"><code class="docutils literal notranslate"><span class="pre">Polyhedron</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.PrimitiveTransform"><code class="docutils literal notranslate"><span class="pre">PrimitiveTransform</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.RotatesLike"><code class="docutils literal notranslate"><span class="pre">RotatesLike</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.SortingStatus"><code class="docutils literal notranslate"><span class="pre">SortingStatus</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Spacegroup"><code class="docutils literal notranslate"><span class="pre">Spacegroup</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.Symmetry"><code class="docutils literal notranslate"><span class="pre">Symmetry</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.real_space_tolerance"><code class="docutils literal notranslate"><span class="pre">real_space_tolerance()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../brille.html#brille.reciprocal_space_tolerance"><code class="docutils literal notranslate"><span class="pre">reciprocal_space_tolerance()</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../brille.html#documented-thus-far">Documented thus far:</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lattice.html">Lattices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debug.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bz.html">Brillouin Zone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grids.html">Grids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symmetry.html">Symmetry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum.html">Enumerated values</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Floating point tolerance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#brille._brille.real_space_tolerance"><code class="docutils literal notranslate"><span class="pre">real_space_tolerance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#brille._brille.reciprocal_space_tolerance"><code class="docutils literal notranslate"><span class="pre">reciprocal_space_tolerance()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#brille._brille.ApproxConfig"><code class="docutils literal notranslate"><span class="pre">ApproxConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#brille._brille.ApproxConfig.digits"><code class="docutils literal notranslate"><span class="pre">ApproxConfig.digits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#brille._brille.ApproxConfig.real_space_tolerance"><code class="docutils literal notranslate"><span class="pre">ApproxConfig.real_space_tolerance</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#brille._brille.ApproxConfig.reciprocal_space_tolerance"><code class="docutils literal notranslate"><span class="pre">ApproxConfig.reciprocal_space_tolerance</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="everything.html">Remainder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../visualisation.html">Visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html">Utilities for <code class="docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html#brille.utils.create_bz"><code class="docutils literal notranslate"><span class="pre">create_bz()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils.html#brille.utils.create_grid"><code class="docutils literal notranslate"><span class="pre">create_grid()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../doxygen.html">Doxygen documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../undoc_brille.html">Undocumented C++ Classes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">brille</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../brille.html">Python module <code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a></li>
+      <li class="breadcrumb-item active">Floating point tolerance</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/module/tolerance.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="floating-point-tolerance">
+<h1>Floating point tolerance<a class="headerlink" href="#floating-point-tolerance" title="Link to this heading"></a></h1>
+<p>Internally <a class="reference internal" href="../brille.html#module-brille" title="brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille</span></code></a> uses a mixture of ‘exact’ geometric predicates
+from Jonathan Richard Shewchuk’s <a class="reference external" href="http://www.cs.cmu.edu/~quake/robust.html">Fast Robust Predicates for Computational Geometry</a>
+via <a class="reference external" href="https://wias-berlin.de/software/index.jsp?id=TetGen">TetGen</a>, and approximate floating point comparisons.</p>
+<p>The latter comparisons are intended to allow for errors in the floating point
+representation of user-provided input <em>and</em> compounded rounding errors in geometric calculations.
+The internal floating point tolerance check compares the difference between two numbers to <em>both</em>
+the minimum floating point representation <em>difference</em>, so-called machine epsilon, <span class="math">\(\epsilon\)</span>,
+scaled up by the sum of the two values times a constant,
+<em>and</em> an absolute floating point tolerance.</p>
+<p>It has been found through experience that a single sensible default floating point tolerance does not exist
+for general user-provided input.
+And for particularly egregious cases the precision to which, e.g., the positions of atoms within a unit cell
+is provided may be significantly different than the same-lattice basis vectors.
+This difference can lead to a need for different absolute floating point tolerances for different operations within
+<a class="reference internal" href="../brille.html#module-brille._brille" title="brille._brille"><code class="xref py py-mod docutils literal notranslate"><span class="pre">brille._brille</span></code></a>.
+In the specific case of the atom positions being specified from, e.g., 32-bit floating point values written to
+a text file, it may be sufficient to specify a reduced absolute floating point tolerance only for real space calculations.
+For this reason, it is possible to change the absolute floating point tolerance for real and reciprocal space
+comparisons independently.</p>
+<p>At present the absolute floating point tolerances for real and reciprocal space comparisons has been set to
+<span class="math">\(10^{-12}\)</span> angstrom and inverse angstrom, respectively.
+If these values are found lacking, they can be modified at runtime via, e.g., as a global setting for the module:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">brille</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">brille</span><span class="o">.</span><span class="n">real_space_tolerance</span><span class="p">(</span><span class="mf">1e-10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">brille</span><span class="o">.</span><span class="n">reciprocal_space_tolerance</span><span class="p">(</span><span class="mf">1e-14</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or as a local setting, to be passed to a specific function,</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ac</span> <span class="o">=</span> <span class="n">brille</span><span class="o">.</span><span class="n">ApproxConfig</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ac</span><span class="o">.</span><span class="n">real_space_tolerance</span> <span class="o">=</span> <span class="mf">1e-10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ac</span><span class="o">.</span><span class="n">reciprocal_space_tolerance</span> <span class="o">=</span> <span class="mf">1e-14</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is hoped that these functions and methods are <strong>no longer necessary</strong> for typical input and typical users.
+Strange errors may occur when they are modified.
+Attempt to make use of, e.g., the <cite>snap_to_symmetry</cite>, functionality in <a class="reference internal" href="lattice.html#brille._brille.Lattice" title="brille._brille.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">brille._brille.Lattice</span></code></a> instead.</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="brille._brille.real_space_tolerance">
+<span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">real_space_tolerance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.real_space_tolerance" title="Link to this definition"></a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>real_space_tolerance() -&gt; float</p></li>
+</ol>
+<p>Return the module-global real space floating point tolerance in angstrom.</p>
+<ol class="arabic simple" start="2">
+<li><p>real_space_tolerance(tolerance: float) -&gt; None</p></li>
+</ol>
+<p>Set the module-global real space floating point tolerance in angstrom</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="brille._brille.reciprocal_space_tolerance">
+<span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">reciprocal_space_tolerance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.reciprocal_space_tolerance" title="Link to this definition"></a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>reciprocal_space_tolerance() -&gt; float</p></li>
+</ol>
+<p>Return the module-global reciprocal space floating point tolerance in inverse angstrom.</p>
+<ol class="arabic simple" start="2">
+<li><p>reciprocal_space_tolerance(tolerance: float) -&gt; None</p></li>
+</ol>
+<p>Set the module-global reciprocal space floating point tolerance in angstrom</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="brille._brille.ApproxConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">brille._brille.</span></span><span class="sig-name descname"><span class="pre">ApproxConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#brille._brille.ApproxConfig" title="brille._brille.ApproxConfig"><span class="pre">brille._brille.ApproxConfig</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">real_space_tolerance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reciprocal_space_tolerance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#brille._brille.ApproxConfig" title="Link to this definition"></a></dt>
+<dd><p>A local set of approximate floating point comparison values</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.ApproxConfig.digits">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">digits</span></span><a class="headerlink" href="#brille._brille.ApproxConfig.digits" title="Link to this definition"></a></dt>
+<dd><p>A multiplier on the machine epsilon, below which two floating point numbers are approximately the same.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.ApproxConfig.real_space_tolerance">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">real_space_tolerance</span></span><a class="headerlink" href="#brille._brille.ApproxConfig.real_space_tolerance" title="Link to this definition"></a></dt>
+<dd><p>An absolute real space floating point tolerance in angstrom</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="brille._brille.ApproxConfig.reciprocal_space_tolerance">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reciprocal_space_tolerance</span></span><a class="headerlink" href="#brille._brille.ApproxConfig.reciprocal_space_tolerance" title="Link to this definition"></a></dt>
+<dd><p>An absolute reciprocal space floating point tolerance in inverse angstrom</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="enum.html" class="btn btn-neutral float-left" title="Enumerated values" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="everything.html" class="btn btn-neutral float-right" title="Remainder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Gregory Tucker.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
